@@ -269,7 +269,7 @@ Returns all the songs created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /:userId/songs
+  * URL: /users/:userId/songs
   * Body: none
 
 * Successful Response
@@ -569,7 +569,7 @@ Returns all the Albums created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /:userId/albums
+  * URL: /users/:userId/albums
   * Body: none
 
 * Successful Response
@@ -1072,7 +1072,7 @@ Returns all the songs created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /artists/songs
+  * URL: /artists/:artistId/songs
   * Body: none
 
 * Successful Response
@@ -1164,7 +1164,7 @@ Returns all the playlists created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /artists/:artistId/playlists
+  * URL: /playlists/:artistId
   * Body: none
 
 * Successful Response
@@ -1261,7 +1261,7 @@ Add a song to a playlist specified by the playlist's id.
 * Require proper authorization: Playlist must belong to the current user
 * Request
   * Method: POST
-  * URL: /playlists/:playlistId
+  * URL: /playlists/:playlistId/songs
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1475,7 +1475,7 @@ Returns all the playlists created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /:userId/playlists
+  * URL: /users/:userId/playlists
   * Body: none
 
 * Successful Response
