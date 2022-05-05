@@ -1,7 +1,9 @@
-# `<Soundcloud Clone>`
+# Soundcloud Clone
 
 ## Database Schema Design
-`<insert database schema design here>`
+![name-of-you-image](https://github.com/HTran106/Soundcloud-Project/blob/main/dbdiagram.png?raw=true)
+
+
 
 ## API Documentation
 
