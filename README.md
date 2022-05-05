@@ -1,7 +1,6 @@
 # `<Soundcloud Clone>`
 
 ## Database Schema Design
-![alt text]('../Desktop/')
 `<insert database schema design here>`
 
 ## API Documentation
