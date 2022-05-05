@@ -1,7 +1,7 @@
 # Soundcloud Clone
 
 ## Database Schema Design
-![Soundcloud Schema](https://github.com/HTran106/Soundcloud-Project/blob/main/dbdiagram.png?raw=true)
+![Soundcloud Schema](https://github.com/HTran106/Soundcloud-Project/blob/main/Soundcloud%20dbdiagram.png?raw=true)
 
 
 
