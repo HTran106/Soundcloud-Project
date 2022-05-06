@@ -1,7 +1,7 @@
 # Soundcloud Clone
 
 ## Database Schema Design
-![Soundcloud Schema](https://github.com/HTran106/Soundcloud-Project/blob/main/Soundcloud%20dbdiagram.png?raw=true)
+![Soundcloud Schema](https://github.com/HTran106/Soundcloud-Project/blob/main/Soundcloud-dbdiagram.png?raw=true)
 
 
 
@@ -51,7 +51,7 @@ Returns the information about the current user that is logged in.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /users/:userId
+  * URL: /users/:userId/info
   * Body: none
 
 * Successful Response
@@ -1033,7 +1033,7 @@ Returns the details of an artist specified by their id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /artists/:artistId
+  * URL: /users/:userId/music
   * Body: none
 
 * Successful Response
@@ -1072,7 +1072,7 @@ Returns all the songs created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /artists/:artistId/songs
+  * URL: /users/:userId/songs
   * Body: none
 
 * Successful Response
@@ -1119,7 +1119,7 @@ Returns all the albums created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /artists/:artistId/albums
+  * URL: /users/:userId/songs/albums
   * Body: none
 
 * Successful Response
@@ -1164,7 +1164,7 @@ Returns all the playlists created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /playlists/:artistId
+  * URL: /users/:userId/playlists
   * Body: none
 
 * Successful Response
