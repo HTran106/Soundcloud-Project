@@ -51,7 +51,7 @@ Returns the information about the current user that is logged in.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /users/:userId/info
+  * URL: /my/info
   * Body: none
 
 * Successful Response
@@ -269,7 +269,7 @@ Returns all the songs created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /users/:userId/songs
+  * URL: /my/songs
   * Body: none
 
 * Successful Response
@@ -428,7 +428,7 @@ Updates and returns an existing song.
 * Require Authentication: true
 * Require proper authorization: Song must belong to the current user
 * Request
-  * Method: PUT/PATCH
+  * Method: PUT
   * URL: /songs/:songId
   * Headers:
     * Content-Type: application/json
@@ -569,7 +569,7 @@ Returns all the Albums created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /users/:userId/albums
+  * URL: /my/albums
   * Body: none
 
 * Successful Response
@@ -714,7 +714,7 @@ Updates and returns an existing album.
 * Require Authentication: true
 * Require proper authorization: Album must belong to the current user
 * Request
-  * Method: PUT/PATCH
+  * Method: PUT
   * URL: /albums/:albumId
   * Headers:
     * Content-Type: application/json
@@ -931,7 +931,7 @@ Update and return an existing comment.
 * Require Authentication: true
 * Require proper authorization: Comment must belong to the current user
 * Request
-  * Method: PUT/PATCH
+  * Method: PUT
   * URL: /songs/:songId/:commentId
   * Headers:
     * Content-Type: application/json
@@ -1033,7 +1033,7 @@ Returns the details of an artist specified by their id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /users/:userId/music
+  * URL: /artists/:userId
   * Body: none
 
 * Successful Response
@@ -1072,7 +1072,7 @@ Returns all the songs created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /users/:userId/songs
+  * URL: /artists/:userId/songs
   * Body: none
 
 * Successful Response
@@ -1119,7 +1119,7 @@ Returns all the albums created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /users/:userId/songs/albums
+  * URL: /artists/:userId/albums
   * Body: none
 
 * Successful Response
@@ -1164,7 +1164,7 @@ Returns all the playlists created by the specified artist.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: /users/:userId/playlists
+  * URL: /artists/:userId/playlists
   * Body: none
 
 * Successful Response
@@ -1372,7 +1372,7 @@ Updates and returns an existing playlist.
 * Require Authentication: true
 * Require proper authorization: Playlist must belong to the current user
 * Request
-  * Method: PUT/PATCH
+  * Method: PUT
   * URL: /playlists/:playlistId
   * Headers:
     * Content-Type: application/json
@@ -1475,7 +1475,7 @@ Returns all the playlists created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /users/:userId/playlists
+  * URL: /my/playlists
   * Body: none
 
 * Successful Response
