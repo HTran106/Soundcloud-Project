@@ -1,9 +1,8 @@
 # Soundcloud Clone
 
 ## Database Schema Design
-![Soundcloud Schema](https://github.com/HTran106/Soundcloud-Project/blob/main/Soundcloud-dbdiagram.png?raw=true)
 
-
+![Soundcloud Schema](./Soundcloud-dbdiagram.png)
 
 ## API Documentation
 
@@ -11,12 +10,13 @@
 
 All endpoints that require a current user to be logged in.
 
-* Request: endpoints that require authentication
-* Error Response: Require authentication
-  * Status Code: 401
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Request: endpoints that require authentication
+- Error Response: Require authentication
+
+  - Status Code: 401
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -30,12 +30,13 @@ All endpoints that require a current user to be logged in.
 All endpoints that require authentication and the current user does not have the
 correct role(s) or permission(s).
 
-* Request: endpoints that require proper authorization
-* Error Response: Require proper authorization
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Request: endpoints that require proper authorization
+- Error Response: Require proper authorization
+
+  - Status Code: 403
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -48,17 +49,19 @@ correct role(s) or permission(s).
 
 Returns the information about the current user that is logged in.
 
-* Require Authentication: true
-* Request
-  * Method: GET
-  * URL: /my/info
-  * Body: none
+- Require Authentication: true
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /my/info
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -75,13 +78,14 @@ Returns the information about the current user that is logged in.
 Logs in a current user with valid credentials and returns the current user's
 information.
 
-* Require Authentication: false
-* Request
-  * Method: POST
-  * URL: /login
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Require Authentication: false
+- Request
+
+  - Method: POST
+  - URL: /login
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -90,11 +94,12 @@ information.
     }
     ```
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -107,11 +112,12 @@ information.
     }
     ```
 
-* Error Response: Invalid credentials
-  * Status Code: 401
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error Response: Invalid credentials
+
+  - Status Code: 401
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -120,11 +126,12 @@ information.
     }
     ```
 
-* Error response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Body validation errors
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -142,13 +149,14 @@ information.
 Creates a new user, logs them in as the current user, and returns the current
 user's information.
 
-* Require Authentication: false
-* Request
-  * Method: POST
-  * URL: /users/signup
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Require Authentication: false
+- Request
+
+  - Method: POST
+  - URL: /users/signup
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -160,11 +168,12 @@ user's information.
     }
     ```
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -177,11 +186,12 @@ user's information.
     }
     ```
 
-* Error response: User already exists with the specified email
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: User already exists with the specified email
+
+  - Status Code: 403
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -193,11 +203,12 @@ user's information.
     }
     ```
 
-* Error response: User already exists with the specified username
-  * Status Code: 403
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: User already exists with the specified username
+
+  - Status Code: 403
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -209,11 +220,12 @@ user's information.
     }
     ```
 
-* Error response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Body validation errors
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -232,21 +244,23 @@ user's information.
 
 Returns all the songs.
 
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /songs
-  * Body: none
+- Require Authentication: false
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /songs
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
-      "Songs":[
+      "Songs": [
         {
           "id": 1,
           "userId": 1,
@@ -266,17 +280,19 @@ Returns all the songs.
 
 Returns all the songs created by the current user.
 
-* Require Authentication: true
-* Request
-  * Method: GET
-  * URL: /my/songs
-  * Body: none
+- Require Authentication: true
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /my/songs
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -300,17 +316,19 @@ Returns all the songs created by the current user.
 
 Returns the details of a song specified by its id.
 
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /songs/:songId
-  * Body: none
+- Require Authentication: false
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /songs/:songId
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -336,11 +354,12 @@ Returns the details of a song specified by its id.
     }
     ```
 
-* Error response: Couldn't find a Song with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Song with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -353,14 +372,15 @@ Returns the details of a song specified by its id.
 
 Creates and returns a new song.
 
-* Require Authentication: true
-* Require proper authorization: Album must belong to the current user
-* Request
-  * Method: POST
-  * URL: /albums/:albumId
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Require Authentication: true
+- Require proper authorization: Album must belong to the current user
+- Request
+
+  - Method: POST
+  - URL: /albums/:albumId
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -371,11 +391,12 @@ Creates and returns a new song.
     }
     ```
 
-* Successful Response
-  * Status Code: 201
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response
+
+  - Status Code: 201
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -391,11 +412,12 @@ Creates and returns a new song.
     }
     ```
 
-* Error Response: Body validation error
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error Response: Body validation error
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -408,11 +430,12 @@ Creates and returns a new song.
     }
     ```
 
-* Error response: Couldn't find an Album with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find an Album with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -425,14 +448,15 @@ Creates and returns a new song.
 
 Updates and returns an existing song.
 
-* Require Authentication: true
-* Require proper authorization: Song must belong to the current user
-* Request
-  * Method: PUT
-  * URL: /songs/:songId
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Require Authentication: true
+- Require proper authorization: Song must belong to the current user
+- Request
+
+  - Method: PUT
+  - URL: /songs/:songId
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -443,11 +467,12 @@ Updates and returns an existing song.
     }
     ```
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -463,11 +488,12 @@ Updates and returns an existing song.
     }
     ```
 
-* Error Response: Body validation error
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error Response: Body validation error
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -480,11 +506,12 @@ Updates and returns an existing song.
     }
     ```
 
-* Error response: Couldn't find a Song with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Song with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -497,18 +524,20 @@ Updates and returns an existing song.
 
 Deletes an existing song.
 
-* Require Authentication: true
-* Require proper authorization: Song must belong to the current user
-* Request
-  * Method: DELETE
-  * URL: /songs/:songId
-  * Body: none
+- Require Authentication: true
+- Require proper authorization: Song must belong to the current user
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: DELETE
+  - URL: /songs/:songId
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -517,11 +546,12 @@ Deletes an existing song.
     }
     ```
 
-* Error response: Couldn't find a Song with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Song with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -534,17 +564,19 @@ Deletes an existing song.
 
 Returns all the Albums.
 
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /albums
-  * Body: none
+- Require Authentication: false
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /albums
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -566,21 +598,23 @@ Returns all the Albums.
 
 Returns all the Albums created by the current user.
 
-* Require Authentication: true
-* Request
-  * Method: GET
-  * URL: /my/albums
-  * Body: none
+- Require Authentication: true
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /my/albums
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
-      "Albums":[
+      "Albums": [
         {
           "id": 1,
           "userId": 1,
@@ -598,17 +632,19 @@ Returns all the Albums created by the current user.
 
 Returns the details of an album specified by its id.
 
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /albums/:albumId
-  * Body: none
+- Require Authentication: false
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /albums/:albumId
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -640,11 +676,12 @@ Returns the details of an album specified by its id.
     }
     ```
 
-* Error response: Couldn't find an Album with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find an Album with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -657,13 +694,14 @@ Returns the details of an album specified by its id.
 
 Creates and returns a new album.
 
-* Require Authentication: true
-* Request
-  * Method: POST
-  * URL: /albums
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Require Authentication: true
+- Request
+
+  - Method: POST
+  - URL: /albums
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -673,11 +711,12 @@ Creates and returns a new album.
     }
     ```
 
-* Successful Response
-  * Status Code: 201
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response
+
+  - Status Code: 201
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -691,11 +730,12 @@ Creates and returns a new album.
     }
     ```
 
-* Error Response: Body validation error
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error Response: Body validation error
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -711,14 +751,15 @@ Creates and returns a new album.
 
 Updates and returns an existing album.
 
-* Require Authentication: true
-* Require proper authorization: Album must belong to the current user
-* Request
-  * Method: PUT
-  * URL: /albums/:albumId
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Require Authentication: true
+- Require proper authorization: Album must belong to the current user
+- Request
+
+  - Method: PUT
+  - URL: /albums/:albumId
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -728,11 +769,12 @@ Updates and returns an existing album.
     }
     ```
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -746,11 +788,12 @@ Updates and returns an existing album.
     }
     ```
 
-* Error Response: Body validation error
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error Response: Body validation error
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -762,11 +805,12 @@ Updates and returns an existing album.
     }
     ```
 
-* Error response: Couldn't find an Album with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find an Album with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -779,18 +823,20 @@ Updates and returns an existing album.
 
 Deletes an existing album.
 
-* Require Authentication: true
-* Require proper authorization: Album must belong to the current user
-* Request
-  * Method: DELETE
-  * URL: /albums/:albumId
-  * Body: none
+- Require Authentication: true
+- Require proper authorization: Album must belong to the current user
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: DELETE
+  - URL: /albums/:albumId
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -799,11 +845,12 @@ Deletes an existing album.
     }
     ```
 
-* Error response: Couldn't find an Album with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find an Album with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -816,17 +863,19 @@ Deletes an existing album.
 
 Returns all the comments that belong to a song specified by id.
 
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /songs/:songId/comments
-  * Body: none
+- Require Authentication: false
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /songs/:songId/comments
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -837,21 +886,22 @@ Returns all the comments that belong to a song specified by id.
           "songId": 1,
           "body": "I love this song!",
           "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36" ,
+          "updatedAt": "2021-11-19 20:39:36",
           "User": {
             "id": 1,
             "username": "JohnSmith"
-          },
+          }
         }
       ]
     }
     ```
 
-* Error response: Couldn't find a Song with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Song with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -864,13 +914,14 @@ Returns all the comments that belong to a song specified by id.
 
 Create and return a new comment for a song specified by id.
 
-* Require Authentication: true
-* Request
-  * Method: POST
-  * URL: /songs/:songId
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Require Authentication: true
+- Request
+
+  - Method: POST
+  - URL: /songs/:songId
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -878,11 +929,12 @@ Create and return a new comment for a song specified by id.
     }
     ```
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -891,15 +943,16 @@ Create and return a new comment for a song specified by id.
       "songId": 1,
       "body": "I love this song!",
       "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-19 20:39:36" ,
+      "updatedAt": "2021-11-19 20:39:36"
     }
     ```
 
-* Error Response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error Response: Body validation errors
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -911,11 +964,12 @@ Create and return a new comment for a song specified by id.
     }
     ```
 
-* Error response: Couldn't find a Song with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Song with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -928,14 +982,15 @@ Create and return a new comment for a song specified by id.
 
 Update and return an existing comment.
 
-* Require Authentication: true
-* Require proper authorization: Comment must belong to the current user
-* Request
-  * Method: PUT
-  * URL: /songs/:songId/:commentId
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Require Authentication: true
+- Require proper authorization: Comment must belong to the current user
+- Request
+
+  - Method: PUT
+  - URL: /songs/:songId/:commentId
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -943,11 +998,12 @@ Update and return an existing comment.
     }
     ```
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -960,27 +1016,29 @@ Update and return an existing comment.
     }
     ```
 
-* Error Response: Body validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error Response: Body validation errors
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
       "message": "Validation error",
       "statusCode": 400,
       "errors": {
-        "body": "Comment body text is required",
+        "body": "Comment body text is required"
       }
     }
     ```
 
-* Error response: Couldn't find a Comment with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Comment with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -993,18 +1051,20 @@ Update and return an existing comment.
 
 Delete an existing comment.
 
-* Require Authentication: true
-* Require proper authorization: Comment must belong to the current user
-* Request
-  * Method: DELETE
-  * URL: /songs/:songId/:commentId
-  * Body: none
+- Require Authentication: true
+- Require proper authorization: Comment must belong to the current user
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: DELETE
+  - URL: /songs/:songId/:commentId
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1013,11 +1073,12 @@ Delete an existing comment.
     }
     ```
 
-* Error response: Couldn't find a Comment with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Comment with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1030,17 +1091,19 @@ Delete an existing comment.
 
 Returns the details of an artist specified by their id.
 
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /artists/:userId
-  * Body: none
+- Require Authentication: false
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /artists/:userId
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1052,11 +1115,12 @@ Returns the details of an artist specified by their id.
     }
     ```
 
-* Error response: Couldn't find an Artists with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find an Artists with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1069,17 +1133,19 @@ Returns the details of an artist specified by their id.
 
 Returns all the songs created by the specified artist.
 
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /artists/:userId/songs
-  * Body: none
+- Require Authentication: false
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /artists/:userId/songs
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1099,11 +1165,12 @@ Returns all the songs created by the specified artist.
     }
     ```
 
-* Error response: Couldn't find an Artist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find an Artist with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1116,17 +1183,19 @@ Returns all the songs created by the specified artist.
 
 Returns all the albums created by the specified artist.
 
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /artists/:userId/albums
-  * Body: none
+- Require Authentication: false
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /artists/:userId/albums
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1144,11 +1213,12 @@ Returns all the albums created by the specified artist.
     }
     ```
 
-* Error response: Couldn't find an Artist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find an Artist with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1161,17 +1231,19 @@ Returns all the albums created by the specified artist.
 
 Returns all the playlists created by the specified artist.
 
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /artists/:userId/playlists
-  * Body: none
+- Require Authentication: false
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /artists/:userId/playlists
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1188,11 +1260,12 @@ Returns all the playlists created by the specified artist.
     }
     ```
 
-* Error response: Couldn't find an Artist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find an Artist with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1205,13 +1278,14 @@ Returns all the playlists created by the specified artist.
 
 Creates and returns a new playlist.
 
-* Require Authentication: true
-* Request
-  * Method: POST
-  * URL: /playlists
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Require Authentication: true
+- Request
+
+  - Method: POST
+  - URL: /playlists
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1220,11 +1294,12 @@ Creates and returns a new playlist.
     }
     ```
 
-* Successful Response
-  * Status Code: 201
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response
+
+  - Status Code: 201
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1237,11 +1312,12 @@ Creates and returns a new playlist.
     }
     ```
 
-* Error Response: Body validation error
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error Response: Body validation error
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1257,14 +1333,15 @@ Creates and returns a new playlist.
 
 Add a song to a playlist specified by the playlist's id.
 
-* Require Authentication: true
-* Require proper authorization: Playlist must belong to the current user
-* Request
-  * Method: POST
-  * URL: /playlists/:playlistId/songs
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Require Authentication: true
+- Require proper authorization: Playlist must belong to the current user
+- Request
+
+  - Method: POST
+  - URL: /playlists/:playlistId/songs
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1272,11 +1349,12 @@ Add a song to a playlist specified by the playlist's id.
     }
     ```
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1286,11 +1364,12 @@ Add a song to a playlist specified by the playlist's id.
     }
     ```
 
-* Error response: Couldn't find a Playlist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Playlist with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1299,11 +1378,12 @@ Add a song to a playlist specified by the playlist's id.
     }
     ```
 
-* Error response: Couldn't find a Song with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Song with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1316,17 +1396,19 @@ Add a song to a playlist specified by the playlist's id.
 
 Returns the details of a playlist specified by its id.
 
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /playlists/:playlistId
-  * Body: none
+- Require Authentication: false
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /playlists/:playlistId
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1352,11 +1434,12 @@ Returns the details of a playlist specified by its id.
     }
     ```
 
-* Error response: Couldn't find a Playlist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Playlist with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1369,14 +1452,15 @@ Returns the details of a playlist specified by its id.
 
 Updates and returns an existing playlist.
 
-* Require Authentication: true
-* Require proper authorization: Playlist must belong to the current user
-* Request
-  * Method: PUT
-  * URL: /playlists/:playlistId
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Require Authentication: true
+- Require proper authorization: Playlist must belong to the current user
+- Request
+
+  - Method: PUT
+  - URL: /playlists/:playlistId
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1385,11 +1469,12 @@ Updates and returns an existing playlist.
     }
     ```
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1402,11 +1487,12 @@ Updates and returns an existing playlist.
     }
     ```
 
-* Error Response: Body validation error
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error Response: Body validation error
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1418,11 +1504,12 @@ Updates and returns an existing playlist.
     }
     ```
 
-* Error response: Couldn't find a Playlist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Playlist with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1435,18 +1522,20 @@ Updates and returns an existing playlist.
 
 Deletes an existing playlist.
 
-* Require Authentication: true
-* Require proper authorization: Playlist must belong to the current user
-* Request
-  * Method: DELETE
-  * URL: /playlists/:playlistId
-  * Body: none
+- Require Authentication: true
+- Require proper authorization: Playlist must belong to the current user
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: DELETE
+  - URL: /playlists/:playlistId
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1455,11 +1544,12 @@ Deletes an existing playlist.
     }
     ```
 
-* Error response: Couldn't find a Playlist with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Playlist with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -1472,21 +1562,23 @@ Deletes an existing playlist.
 
 Returns all the playlists created by the current user.
 
-* Require Authentication: true
-* Request
-  * Method: GET
-  * URL: /my/playlists
-  * Body: none
+- Require Authentication: true
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /my/playlists
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
-      "Playlists":[
+      "Playlists": [
         {
           "id": 1,
           "userId": 1,
@@ -1503,26 +1595,28 @@ Returns all the playlists created by the current user.
 
 Return songs filtered by query parameters.
 
-* Require Authentication: false
-* Request
-  * Method: GET
-  * URL: /search
-  * Query Parameters
-    * page: integer, minimum: 0, maximum: 10, default: 0
-    * size: integer, minimum: 0, maximum: 20, default: 20
-    * title: string, optional
-    * createdAt: string, optional
-  * Body: none
+- Require Authentication: false
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: GET
+  - URL: /search
+  - Query Parameters
+    - page: integer, minimum: 0, maximum: 10, default: 0
+    - size: integer, minimum: 0, maximum: 20, default: 20
+    - title: string, optional
+    - createdAt: string, optional
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
-      "Songs":[
+      "Songs": [
         {
           "id": 1,
           "userId": 1,
@@ -1540,11 +1634,12 @@ Return songs filtered by query parameters.
     }
     ```
 
-* Error Response: Query parameter validation errors
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error Response: Query parameter validation errors
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
