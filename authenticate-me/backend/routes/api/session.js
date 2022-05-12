@@ -3,9 +3,7 @@ const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const router = express.Router();
 
-router.post(
-  '/',
-  async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     const { credential, password } = req.body;
     const user = await User.login({ credential, password });
 
@@ -22,7 +20,6 @@ router.post(
     return res.json({
       user
     });
-  }
-);
+});
 
 module.exports = router;
