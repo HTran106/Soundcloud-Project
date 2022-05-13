@@ -1,0 +1,20 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "## Database Schema Design",
+  "main": "index.js",
+  "scripts": {
+    "install": "npm --prefix backend install backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HTran106/Soundcloud-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HTran106/Soundcloud-Project/issues"
+  },
+  "homepage": "https://github.com/HTran106/Soundcloud-Project#readme"
+}
