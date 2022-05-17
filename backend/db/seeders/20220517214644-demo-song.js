@@ -14,7 +14,7 @@ module.exports = {
       {
         albumId: 2,
         userId: 2,
-        title: 'Hip-hop song',
+        title: 'Hip-hop Song',
         description: "Nice rap song",
         url: 'www.songURLtesting.com',
         previewImage: 'www.songIMGtesting.com'
@@ -31,6 +31,9 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-
+    const Op = Sequelize.Op;
+    return queryInterface.bulkDelete('Songs', {
+      title: { [Op.in]: ['Wonderful World', 'Hip-hop Song', 'Pop Song'] }
+    }, {});
   }
 };
