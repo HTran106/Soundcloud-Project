@@ -62,14 +62,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     firstName: {
-      type: DataTypes.String,
+      type: DataTypes.STRING,
       allowNull: false
     },
     lastName: {
-      type: DataTypes.String,
+      type: DataTypes.STRING,
       allowNull: false
     },
-    username: {
+    userName: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
