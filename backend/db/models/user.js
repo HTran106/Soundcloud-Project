@@ -61,6 +61,14 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
+    firstName: {
+      type: DataTypes.String,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.String,
+      allowNull: false
+    },
     username: {
         type: DataTypes.STRING,
         allowNull: false,
