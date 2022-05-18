@@ -9,11 +9,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       albumId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Albums'
+        }
       },
       userId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users'
+        },
+        onDelete: 'CASCADE'
       },
       title: {
         allowNull: false,
