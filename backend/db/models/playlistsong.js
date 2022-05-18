@@ -16,11 +16,17 @@ module.exports = (sequelize, DataTypes) => {
   PlaylistSong.init({
     playlistId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Playlists'
+      }
     },
     songId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Songs'
+      }
     }
   }, {
     sequelize,

@@ -18,11 +18,19 @@ module.exports = (sequelize, DataTypes) => {
   Comment.init({
     userId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users'
+      },
+      onDelete: 'CASCADE'
     },
     songId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Songs'
+      },
+      onDelete: 'CASCADE'
     },
     body: {
       allowNull: false,
