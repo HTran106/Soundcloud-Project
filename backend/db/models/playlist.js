@@ -18,7 +18,12 @@ module.exports = (sequelize, DataTypes) => {
   Playlist.init({
     userId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id'
+      },
+      onDelete: 'CASCADE'
     },
     name: {
       allowNull: false,

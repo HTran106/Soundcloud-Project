@@ -16,11 +16,21 @@ module.exports = (sequelize, DataTypes) => {
   PlaylistSong.init({
     playlistId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Playlists',
+        key: 'id'
+      },
+      onDelete: 'CASCADE'
     },
     songId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Songs',
+        key: 'id'
+      },
+      onDelete: 'CASCADE'
     }
   }, {
     sequelize,
