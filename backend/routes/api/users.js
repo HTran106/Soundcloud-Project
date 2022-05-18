@@ -40,9 +40,7 @@ const validateSignup = [
 ];
 
 //test route
-router.get('/', async (req, res) => {
-  res.send('hello')
-})
+
 
 
 

@@ -6,8 +6,11 @@ const usersRouter = require('./users.js');
 
 router.use('/session', sessionRouter);
 
-router.use('/my', usersRouter);
+router.use('/users', usersRouter);
 
+router.get('/', async (req, res) => {
+  res.send('hello')
+})
 
 router.post('/test', (req, res) => {
   res.json({ requestBody: req.body });
