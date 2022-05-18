@@ -52,6 +52,9 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       // define association here
+      User.hasMany(models.Album, { foreignKey: 'userId' })
+      User.hasMany(models.Song, { foreignKey: 'userId' })
+      User.hasMany(models.Playlist, { foreignKey: 'userId' })
     }
   }
   User.init({
@@ -85,7 +88,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [3, 256]
+          len: [3, 256],
+          isEmail: true
         }
       },
       hashedPassword: {

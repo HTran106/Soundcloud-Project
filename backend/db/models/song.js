@@ -2,9 +2,8 @@
 const {
   Model
 } = require('sequelize');
-const { Sequelize } = require('.');
 module.exports = (sequelize, DataTypes) => {
-  class Album extends Model {
+  class Song extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,39 +11,38 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Album.hasMany(models.Song, { foreignKey: 'albumId' });
-      Album.belongsTo(models.User, { foreignKey: 'userId', onDelete: 'CASCADE'});
+      Song.hasMany(models.Comment, { foreignKey: 'songId', onDelete: 'CASCADE' })
+      Song.belongsTo(models.Album, { foreignKey: 'albumId' })
+      Song.belongsTo(models.User, { foreignKey: 'userId', onDelete: 'CASCADE'})
+      Song.belongsToMany(models.Playlist, { through: models.PlaylistSong })
     }
   }
-  Album.init({
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
+  Song.init({
+    albumId: {
       type: DataTypes.INTEGER,
     },
     userId: {
+      allowNull: false,
       type: DataTypes.INTEGER
     },
     title: {
-      allowNull: false,
+      allowNull:false,
       type: DataTypes.STRING
     },
     description: {
+      allowNull: false,
       type: DataTypes.STRING
     },
-    createdAt: {
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      type: DataTypes.DATE
+    url: {
+      allowNull: false,
+      type: DataTypes.STRING
     },
     previewImage: {
       type: DataTypes.STRING
     }
   }, {
     sequelize,
-    modelName: 'Album',
+    modelName: 'Song',
   });
-  return Album;
+  return Song;
 };

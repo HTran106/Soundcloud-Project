@@ -1,14 +1,21 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Albums', {
+    await queryInterface.createTable('Songs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      albumId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Albums'
+        }
+      },
       userId: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Users'
@@ -20,6 +27,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       description: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      url: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       previewImage: {
@@ -28,7 +40,8 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
+
       },
       updatedAt: {
         allowNull: false,
@@ -38,6 +51,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Albums');
+    await queryInterface.dropTable('Songs');
   }
 };
