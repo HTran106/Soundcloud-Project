@@ -20,9 +20,15 @@ const validateLogin = [
 
 
 
-router.get('/info', async (req, res, next) => {
-    const user = await User.scope('currentUser').findByPk(user.id)
-    console.log(user)
+router.get('/info', restoreUser, async (req, res, next) => {
+    const { user, cookies } = req;
+
+    const info = user.toSafeObject()
+
+    res.json({
+      user: info,
+      token: cookies.token
+    })
 })
 
 module.exports = router
