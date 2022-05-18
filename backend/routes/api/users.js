@@ -42,21 +42,19 @@ const validateSignup = [
 //test route
 
 
-
-
-
 // backend/routes/api/users.js
 // ...
 
+//Sign up a user
+router.post('/signup', validateSignup, async (req, res) => {
+    const { email, firstName, lastName, password, username } = req.body;
+    const user = await User.signup({ email, firstName, lastName, username, password });
 
-router.post('/', validateSignup, async (req, res) => {
-    const { email, password, username } = req.body;
-    const user = await User.signup({ email, username, password });
-
-    await setTokenCookie(res, user);
+    const token = await setTokenCookie(res, user);
 
     return res.json({
       user,
+      token,
     });
   }
 );

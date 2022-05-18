@@ -3,7 +3,7 @@ const router = express.Router();
 const apiRouter = require('./api');
 const myRouter = require('./my')
 
-router.use('/api', apiRouter);
+router.use(apiRouter);
 router.use('/my', myRouter)
 
 router.get("/api/csrf/restore", (req, res) => {
