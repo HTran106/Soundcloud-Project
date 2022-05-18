@@ -2,7 +2,7 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    return queryInterface.bulkInsert('Playlists', [
+    await queryInterface.bulkInsert('Playlists', [
       {
         userId: 1,
         name: 'Wonderland Playlist',
@@ -23,7 +23,7 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
     const Op = Sequelize.Op;
-    return queryInterface.bulkDelete('Playlists', {
+    await queryInterface.bulkDelete('Playlists', {
       userId: { [Op.in]: [1, 2, 3]}
     }, {})
   }
