@@ -20,7 +20,7 @@ const validateLogin = [
 
 
 
-router.get('/info', restoreUser, async (req, res, next) => {
+router.get('/info', requireAuth, restoreUser, async (req, res, next) => {
     const { user, cookies } = req;
 
     const info = user.toSafeObject()
