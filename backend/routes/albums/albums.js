@@ -6,5 +6,11 @@ const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth')
 const { User, Song, Album } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
+router.get('/', async (req, res) => {
+    const allAlbums = await Album.findAll()
+
+    res.json(allAlbums)
+})
+
 
 module.exports = router

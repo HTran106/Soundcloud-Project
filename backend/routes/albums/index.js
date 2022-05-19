@@ -1,4 +1,4 @@
-const router = require('exoress').Router()
+const router = require('express').Router()
 const albumsRouter = require('./albums.js')
 
 router.use(albumsRouter)
