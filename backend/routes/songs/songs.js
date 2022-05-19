@@ -6,7 +6,7 @@ const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth')
 const { User, Song, Album, Comment } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
-
+//create comment based on songId
 router.post('/:songId', requireAuth, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { songId } = req.params;
