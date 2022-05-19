@@ -7,7 +7,31 @@ const { User, Song, Album, Comment } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
 
+router.post('/:songId', requireAuth, restoreUser, async (req, res, next) => {
+    const { user } = req;
+    const { songId } = req.params;
+    const { body } = req.body
 
+    const song = await Song.findByPk(songId)
+
+    if (song) {
+        const comment = await Comment.create({
+            userId: user.id,
+            songId,
+            body,
+        })
+
+        res.json(comment)
+
+    } else {
+        const err = new Error('Song does not exist');
+        err.status = 404;
+        err.title = "Song does not exist";
+        return next(err)
+    }
+
+
+})
 
 //Get all comments by songId
 router.get('/:songId/comments', async (req, res, next) => {
@@ -15,16 +39,19 @@ router.get('/:songId/comments', async (req, res, next) => {
 
     const song = await Song.findByPk(songId)
 
-    const comment = await Comment.findAll({
-        where: { songId, },
-        include: {
-            model: User,
-            attributes: ['id', 'username']
-        }
-    })
 
     if (song) {
+
+        const comment = await Comment.findAll({
+            where: { songId, },
+            include: {
+                model: User,
+                attributes: ['id', 'username']
+            }
+        })
+
         res.json(comment)
+
     } else {
         const err = new Error('Song does not exist');
         err.status = 404;
