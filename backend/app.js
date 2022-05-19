@@ -62,6 +62,7 @@ app.use((err, _req, _res, next) => {
   if (err instanceof ValidationError) {
     err.errors = err.errors.map((e) => e.message);
     err.title = 'Validation error';
+    err.status = 400;
   }
   next(err);
 });
