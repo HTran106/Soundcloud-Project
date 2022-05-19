@@ -3,14 +3,22 @@ const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song, Album, } = require('../../db/models');
+const { User, Song, Album } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
-//Get all Albums
-router.get('/', async (req, res) => {
-    const allAlbums = await Album.findAll()
+//create new album
+router.post('/', requireAuth, restoreUser, async (req, res) => {
+    const { user } = req
+    const { title, description, previewImage } = req.body
 
-    res.json(allAlbums)
+    const newAlbum = await Album.create({
+        userId: user.id,
+        title: "Newest test album",
+        description: "testing create new album route",
+        previewImage: 'www.newAlbumRouteTest.com'
+    })
+
+    res.json(newAlbum)
 })
 
 //Get details of an album from albumId
@@ -70,7 +78,12 @@ router.post('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
 
 })
 
+//Get all Albums
+router.get('/', async (req, res) => {
+    const allAlbums = await Album.findAll()
 
+    res.json(allAlbums)
+})
 
 
 module.exports = router
