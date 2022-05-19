@@ -3,8 +3,15 @@ const router = express.Router();
 const apiRouter = require('./api');
 const myRouter = require('./my')
 
+
+const artistRouter = require('./artists')
+
 router.use(apiRouter);
 router.use('/my', myRouter)
+
+
+
+router.use('/artists', artistRouter)
 
 router.get("/api/csrf/restore", (req, res) => {
   const csrfToken = req.csrfToken();
