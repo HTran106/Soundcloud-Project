@@ -68,7 +68,7 @@ router.get('/set-token-cookie', async (_req, res) => {
 });
 
 const { restoreUser } = require('../../utils/auth.js');
-const { ValidationError } = require('sequelize/types');
+
 router.get(
   '/restore-user',
   restoreUser,
