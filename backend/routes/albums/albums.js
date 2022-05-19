@@ -16,7 +16,7 @@ router.delete('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
 
     if (album) {
         if (album.userId === user.id) {
-            album.destroy();
+            await album.destroy();
             res.json({msg: 'Album has been deleted'})
         } else {
             const err = new Error('Not authorized');
