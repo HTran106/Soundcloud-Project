@@ -3,14 +3,53 @@ const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const { setTokenCookie } = require('../../utils/auth.js');
-const { User } = require('../../db/models');
+const { User, Song } = require('../../db/models');
 
 router.use(sessionRouter);
 
 router.use('/users', usersRouter);
 
-router.get('/', async (req, res) => {
-  res.send('hello')
+//Search query route
+router.get('/search', async (req, res) => {
+  let { page, size, title, createdAt } = req.query;
+
+  if (page) {
+    if (page > 0 && page <= 10) {
+      page = parseInt(page)
+    } else {
+      page = 0
+    }
+  } else {
+    page = 0
+  }
+
+
+  if (size) {
+    if (size > 0 && size <= 20) {
+      size = parseInt(size)
+    } else {
+      size = 20
+    }
+  } else {
+    size = 20
+  }
+
+  let where = {}
+  if (title) where.title = title
+  if (createdAt) where.createdAt = createdAt
+
+  let songs = await Song.findAll({
+    where: {...where},
+    limit: size,
+    offset: size * (page - 1)
+  })
+
+
+  res.json({
+    songs,
+    page,
+    size,
+  })
 })
 
 router.post('/test', (req, res) => {
