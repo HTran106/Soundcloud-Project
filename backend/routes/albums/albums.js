@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 })
 
 //Get details of an album from albumId
-router.get('/:albumId', async (req, res) => {
+router.get('/:albumId', async (req, res, next) => {
     const { albumId } = req.params;
 
 
@@ -22,6 +22,7 @@ router.get('/:albumId', async (req, res) => {
         include: [
             {
                 model: User,
+                as: 'Artist',
                 attributes: ['id', 'username', 'previewImage']
             },
             {
@@ -35,6 +36,8 @@ router.get('/:albumId', async (req, res) => {
     } else {
         const error = new Error('Album does not exist');
         error.status = 404
+        error.title = 'Album does not exist'
+        return next(error)
     }
 })
 
@@ -60,7 +63,8 @@ router.post('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
         }
     } else {
         const error = new Error('Album does not exist')
-        error.status = 404
+        error.status = 404;
+        error.title = "Album does not exist"
         return next(error)
     }
 
