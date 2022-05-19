@@ -3,9 +3,35 @@ const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song, Album } = require('../../db/models');
+const { User, Song, Album, Comment } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
+
+
+
+//Get all comments by songId
+router.get('/:songId/comments', async (req, res, next) => {
+    const { songId } = req.params;
+
+    const song = await Song.findByPk(songId)
+
+    const comment = await Comment.findAll({
+        where: { songId, },
+        include: {
+            model: User,
+            attributes: ['id', 'username']
+        }
+    })
+
+    if (song) {
+        res.json(comment)
+    } else {
+        const err = new Error('Song does not exist');
+        err.status = 404;
+        err.title = 'Song does not exist'
+        return next(err)
+    }
+})
 
 
 //Delete song by songId   ////////DOES NOT DELETE FROM DATABASE
@@ -14,12 +40,9 @@ router.delete('/:songId', requireAuth, restoreUser, async (req, res, next) => {
     const { songId } = req.params;
 
     const song = await Song.findByPk(songId)
-    res.json(song)
-    song.destroy()
-    res.json(song)
-    // song.destroy({
-    //     force: true
-    // })
+    song.destroy({
+        force: true
+    })
     // res.json({msg: 'song is destroyed'})
     // if (song) {
     //     if (song.userId === user.id) {
