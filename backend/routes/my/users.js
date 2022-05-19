@@ -1,10 +1,11 @@
 const express = require('express')
 const router = express.Router();
-const { check, validationResult } = require('express-validator');
+const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song } = require('../../db/models');
+const { User, Song, Album } = require('../../db/models');
 const { jwtConfig } = require('../../config');
+
 
 const validateLogin = [
   check('credential')
@@ -17,8 +18,6 @@ const validateLogin = [
   handleValidationErrors
 ];
 
-// backend/routes/api/users.js
-// ...
 const validateSignup = [
   check('email')
     .exists({ checkFalsy: true })
@@ -39,36 +38,43 @@ const validateSignup = [
   handleValidationErrors
 ];
 
+//Get all Albums created by the Current User
+router.get('/albums', requireAuth, restoreUser, async (req, res) => {
+  const { user } = req;
+
+  const albums = await Album.findAll({
+    where: {
+      userId: user.id
+    }
+  })
+
+  res.json(albums)
+})
+
+//Get all Songs created by current User
+router.get('/songs', requireAuth, restoreUser, async (req, res) => {
+  const { user } = req;
+
+  const songs = await Song.findAll({
+    where: {
+      userId: user.id
+    }
+  })
+  res.json(songs)
+})
+
+//get all info on current user
+router.get('/info', requireAuth, restoreUser, async (req, res) => {
+    const { user, cookies } = req;
+
+    const info = user.toSafeObject()
+
+    res.json({
+      user: info,
+      token: cookies.token
+    })
+})
 
 
-//Sign up a user
-router.post('/signup', validateSignup, async (req, res, next) => {
 
-  const { email, firstName, lastName, password, username } = req.body;
-
-   const checkUser = await User.findOne({
-        where: {
-          email,
-        }
-      })
-
-      if(checkUser) {
-        const error = new Error('Email already exists')
-        error.status = 403
-        return next(error)
-      }
-
-    let user = await User.signup({ firstName, lastName, username, email, password});
-
-    const token = setTokenCookie(res, user);
-    user = user.toSafeObject()
-    return res.json({
-      user,
-      token,
-    });
-
-  }
-);
-
-
-module.exports = router;
+module.exports = router
