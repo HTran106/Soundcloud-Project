@@ -13,6 +13,7 @@ router.use('/users', usersRouter);
 router.get('/search', async (req, res) => {
   let { page, size, title, createdAt } = req.query;
 
+
   if (page) {
     if (page > 0 && page <= 10) {
       page = parseInt(page)
@@ -67,6 +68,7 @@ router.get('/set-token-cookie', async (_req, res) => {
 });
 
 const { restoreUser } = require('../../utils/auth.js');
+const { ValidationError } = require('sequelize/types');
 router.get(
   '/restore-user',
   restoreUser,
