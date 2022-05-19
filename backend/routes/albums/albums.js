@@ -3,7 +3,7 @@ const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song, Album } = require('../../db/models');
+const { User, Song, Album, } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
 //Get all Albums
@@ -13,7 +13,32 @@ router.get('/', async (req, res) => {
     res.json(allAlbums)
 })
 
-//Add song to album by ID
+//Get details of an album from albumId
+router.get('/:albumId', async (req, res) => {
+    const { albumId } = req.params;
+
+
+    const album = await Album.findByPk(albumId, {
+        include: [
+            {
+                model: User,
+                attributes: ['id', 'username', 'previewImage']
+            },
+            {
+                model: Song
+            }
+        ],
+    })
+
+    if (album) {
+        res.json(album)
+    } else {
+        const error = new Error('Album does not exist');
+        error.status = 404
+    }
+})
+
+//Add song to album by albumID
 router.post('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { albumId } = req.params
@@ -41,7 +66,7 @@ router.post('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
 
 })
 
-//Create a Song for an Album based on albums Id
+
 
 
 module.exports = router

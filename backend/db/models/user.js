@@ -104,6 +104,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         unique: true
       },
+      previewImage: DataTypes.String,
       hashedPassword: {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
