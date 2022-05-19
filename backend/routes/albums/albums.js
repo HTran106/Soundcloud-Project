@@ -7,7 +7,7 @@ const { User, Song, Album } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
 
-//Delete album by albumId
+//Delete album by albumId   /////DOES NOT DELETE FROM DATABASE
 router.delete('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { albumId } = req.params;
