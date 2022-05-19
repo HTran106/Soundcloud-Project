@@ -3,9 +3,9 @@ const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Song } = require('../../db/models');
 const { jwtConfig } = require('../../config');
-const user = require('../../db/models/user');
+
 
 const validateLogin = [
   check('credential')
@@ -18,9 +18,40 @@ const validateLogin = [
   handleValidationErrors
 ];
 
+const validateSignup = [
+  check('email')
+    .exists({ checkFalsy: true })
+    .isEmail()
+    .withMessage('Please provide a valid email.'),
+  check('username')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 4 })
+    .withMessage('Please provide a username with at least 4 characters.'),
+  check('username')
+    .not()
+    .isEmail()
+    .withMessage('Username cannot be an email.'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 6 })
+    .withMessage('Password must be 6 characters or more.'),
+  handleValidationErrors
+];
 
+//Get all Songs created by current User
+router.get('/songs', requireAuth, restoreUser, async (req, res) => {
+  const { user } = req;
 
-router.get('/info', requireAuth, restoreUser, async (req, res, next) => {
+  const songs = await Song.findAll({
+    where: {
+      userId: user.id
+    }
+  })
+  res.json(songs)
+})
+
+//get all info on current user
+router.get('/info', requireAuth, restoreUser, async (req, res) => {
     const { user, cookies } = req;
 
     const info = user.toSafeObject()
@@ -30,5 +61,7 @@ router.get('/info', requireAuth, restoreUser, async (req, res, next) => {
       token: cookies.token
     })
 })
+
+
 
 module.exports = router

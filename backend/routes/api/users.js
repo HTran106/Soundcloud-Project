@@ -3,7 +3,7 @@ const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Song } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
 const validateLogin = [
@@ -39,11 +39,7 @@ const validateSignup = [
   handleValidationErrors
 ];
 
-//test route
 
-
-// backend/routes/api/users.js
-// ...
 
 //Sign up a user
 router.post('/signup', validateSignup, async (req, res) => {
