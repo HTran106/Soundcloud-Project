@@ -3,7 +3,7 @@ const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song } = require('../../db/models');
+const { User, Song, Album } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
 
@@ -37,6 +37,19 @@ const validateSignup = [
     .withMessage('Password must be 6 characters or more.'),
   handleValidationErrors
 ];
+
+//Get all Albums created by the Current User
+router.get('/albums', requireAuth, restoreUser, async (req, res) => {
+  const { user } = req;
+
+  const albums = await Album.findAll({
+    where: {
+      userId: user.id
+    }
+  })
+
+  res.json(albums)
+})
 
 //Get all Songs created by current User
 router.get('/songs', requireAuth, restoreUser, async (req, res) => {
