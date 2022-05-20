@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Song.hasMany(models.Comment, { foreignKey: 'songId', onDelete: 'CASCADE' })
-      Song.belongsTo(models.Album, { foreignKey: 'albumId', onDelete: 'CASCADE' })
-      Song.belongsTo(models.User, { foreignKey: 'userId', onDelete: 'CASCADE', as: 'Artist'})
-      Song.belongsToMany(models.Playlist, { through: models.PlaylistSong, onDelete: 'CASCADE'})
+      Song.hasMany(models.Comment, { foreignKey: 'songId'})
+      Song.belongsTo(models.Album, { foreignKey: 'albumId'})
+      Song.belongsTo(models.User, { foreignKey: 'userId', as: 'Artist'})
+      Song.belongsToMany(models.Playlist, { through: models.PlaylistSong})
     }
   }
   Song.init({

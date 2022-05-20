@@ -13,7 +13,7 @@ module.exports = {
         references: {
           model: 'Albums'
         },
-        onDelete: 'CASCADE'
+        onDelete: 'SET NULL'
       },
       userId: {
         allowNull: false,
