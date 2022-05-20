@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const apiRouter = require('./api');
-const myRouter = require('./my')
+const myRouter = require('./my');
+const playlistRouter = require('./playlists')
 
+router.use('/playlists', playlistRouter)
 router.use(apiRouter);
 router.use('/my', myRouter)
 
