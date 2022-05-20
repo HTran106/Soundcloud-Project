@@ -6,7 +6,7 @@ const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth')
 const { User, Song, Album, Playlist, PlaylistSong } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
-//Add song to a playlist based on playlistId
+//Add song to a playlist based on playlistId   /////////IN PROGRESS
 router.post('/:playlistId/songs', requireAuth, restoreUser, async (req, res, next) => {
     const { playlistId } = req.params
     const { user } = req
