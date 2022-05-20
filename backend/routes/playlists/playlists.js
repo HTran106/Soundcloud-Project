@@ -11,5 +11,4 @@ const { jwtConfig } = require('../../config');
 
 
 
-
 module.exports = router
