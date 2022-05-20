@@ -7,6 +7,40 @@ const { User, Song, Album, Comment } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
 
+//Edit a song
+router.put('/:songId', requireAuth, restoreUser, async (req, res, next) => {
+    const { songId } = req.params;
+    const { user } = req;
+    const { albumId, title, description, url, previewImage } = req.body;
+
+
+    let song = await Song.findByPk(songId)
+
+    if (song) {
+        if (song.userId === user.id) {
+            await song.update({
+                userId: user.id,
+                albumId,
+                title,
+                description,
+                url,
+                previewImage,
+            })
+            res.json(song)
+        } else {
+            const err = new Error('Not authorized')
+            err.status = 400
+            err.title = 'Not authorized'
+            return next(err)
+        }
+    } else {
+        const err = new Error('Song does not exist')
+        err.status = 400
+        err.title = 'Song does not exist'
+        return next(err)
+    }
+})
+
 
 
 //create comment based on songId
