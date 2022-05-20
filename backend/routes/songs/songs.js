@@ -7,6 +7,36 @@ const { User, Song, Album, Comment } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
 
+//edit comment
+router.put('/:songId/:commentId', requireAuth, restoreUser, async (req, res, next) => {
+    const { songId, commentId } = req.params;
+    const { user } = req
+    const { body } = req.body
+
+    const comment = await Comment.findByPk(commentId)
+
+    if (comment) {
+        if (comment.userId === user.id) {
+            await comment.update({
+                body,
+            })
+            res.json(comment)
+        } else {
+            const err = new Error('Not authorized')
+            err.status = 401
+            err.title = 'Not authorized'
+            return next(err)
+        }
+    } else {
+        const err = new Error('Comment does not exist')
+        err.status = 404;
+        err.title = 'Comment does not exist'
+        return next(err)
+    }
+
+})
+
+
 //Edit a song
 router.put('/:songId', requireAuth, restoreUser, async (req, res, next) => {
     const { songId } = req.params;
@@ -29,7 +59,7 @@ router.put('/:songId', requireAuth, restoreUser, async (req, res, next) => {
             res.json(song)
         } else {
             const err = new Error('Not authorized')
-            err.status = 400
+            err.status = 401
             err.title = 'Not authorized'
             return next(err)
         }
