@@ -47,7 +47,7 @@ router.post('/', requireAuth, restoreUser, async (req, res) => {
     res.json(newAlbum)
 })
 
-//update album by albumId   ////////////NEED TO FIX VALIDATION ERROR
+//update album by albumId
 router.put('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { albumId } = req.params;
@@ -57,7 +57,7 @@ router.put('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
 
     if (album) {
         if (album.userId === user.id) {
-            album.update({
+            await album.update({
                 title,
                 description,
                 previewImage,
