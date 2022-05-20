@@ -3,7 +3,7 @@ const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song, Album, Playlist } = require('../../db/models');
+const { User, Song, Album, Playlist, PlaylistSong } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
 
@@ -14,6 +14,7 @@ router.get('/:playlistId', async (req, res, next) => {
     const playlist = await Playlist.findByPk(playlistId, {
         include: {
             model: Song,
+            through: { attributes: []}
         }
     })
 
