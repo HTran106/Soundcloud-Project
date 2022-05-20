@@ -12,7 +12,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'Albums'
-        }
+        },
+        onDelete: 'CASCADE'
       },
       userId: {
         allowNull: false,

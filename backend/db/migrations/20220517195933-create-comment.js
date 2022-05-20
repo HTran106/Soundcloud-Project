@@ -14,6 +14,7 @@ module.exports = {
         references: {
           model: 'Users'
         },
+        onDelete: 'CASCADE'
       },
       songId: {
         allowNull: false,
@@ -21,6 +22,7 @@ module.exports = {
         references: {
           model: 'Songs'
         },
+        onDelete: 'CASCADE'
       },
       body: {
         allowNull: false,
