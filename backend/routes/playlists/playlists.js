@@ -13,15 +13,16 @@ router.post('/:playlistId/songs', requireAuth, restoreUser, async (req, res, nex
     const { songId } = req.body
 
     const playlist = await Playlist.findByPk(playlistId)
-
+    const song = await Song.findByPk(songId)
     if (playlist) {
         if (playlist.userId === user.id) {
-            const newPlaylistSong = await PlaylistSong.create({
-                playlistId,
-                songId,
-            })
+            const newPlaylistSong = await playlist.addSong(songId)
+            // const newPlaylistSong = await PlaylistSong.create({
+            //     playlistId,
+            //     songId,
+            // })
             // Playlist.addSong()
-            console.log(newPlaylistSong)
+            // console.log(newPlaylistSong)
             // const playlistSong = await PlaylistSong.findOne({
             //     where: { playlistId, songId,},
             //     attributes: ['id', 'playlistId', 'songId']
