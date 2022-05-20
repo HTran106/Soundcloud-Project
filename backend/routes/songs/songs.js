@@ -7,9 +7,30 @@ const { User, Song, Album, Comment } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
 
+//delete comment
+router.delete('/:songId/:commentId', requireAuth, restoreUser, async (req, res, next) => {
+    const { commentId } = req.params;
+    const { user } = req;
+
+    const comment = await Comment.findByPk(commentId)
+
+    if (comment) {
+        if (comment.userId === user.id) {
+            await comment.destroy()
+            res.json({msg: 'Comment deleted'})
+        }
+    } else {
+        const err = new Error('Comment does not exist')
+        err.status = 404;
+        err.title = 'Comment does not exist'
+        return next(err)
+    }
+})
+
+
 //edit comment
 router.put('/:songId/:commentId', requireAuth, restoreUser, async (req, res, next) => {
-    const { songId, commentId } = req.params;
+    const { commentId } = req.params;
     const { user } = req
     const { body } = req.body
 
