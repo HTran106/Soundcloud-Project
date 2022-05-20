@@ -7,6 +7,26 @@ const { User, Song, Album, Playlist } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
 
+//Get details of playlist from an id
+router.get('/:playlistId', async (req, res, next) => {
+    const { playlistId } = req.params;
+
+    const playlist = await Playlist.findByPk(playlistId, {
+        include: {
+            model: Song,
+        }
+    })
+
+    if (playlist) {
+        res.json(playlist)
+    } else {
+        const err = new Error('Playlist does not exist')
+        err.status = 404
+        err.title = 'Playlist does not exist'
+        return next(err)
+    }
+})
+
 //Edit a playlist
 router.put('/:playlistId', requireAuth, restoreUser, async (req, res, next) => {
     const { user } = req;
