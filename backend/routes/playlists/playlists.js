@@ -2,9 +2,44 @@ const express = require('express')
 const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
+const { setTokenCookie, requireAuth, restoreUser, unauthorized, doesNotExist } = require('../../utils/auth');
 const { User, Song, Album, Playlist, PlaylistSong } = require('../../db/models');
 const { jwtConfig } = require('../../config');
+
+
+
+//Delete a playlist
+router.delete('/:playlistId', requireAuth, restoreUser, async (req, res, next) => {
+    const { user } = req;
+    const { playlistId } = req.params;
+
+    const playlist = await Playlist.findByPk(playlistId)
+
+    if (playlist) {
+        if (playlist.userId === user.id) {
+            await playlist.destroy();
+            res.json({ msg: 'Playlist deleted' })
+        } else {
+            unauthorized(next)
+        }
+    } else {
+        doesNotExist(next, 'Playlist')
+    }
+})
+
+
+//Create a playlist
+router.post('/', requireAuth, restoreUser, async (req, res, next) => {
+    const { user } = req;
+    const { name, previewImage } = req.body;
+
+    const newPlaylist = await Playlist.create({
+        userId: user.id,
+        name,
+        previewImage,
+    })
+    res.json(newPlaylist)
+})
 
 //Add song to a playlist based on playlistId
 router.post('/:playlistId/songs', requireAuth, restoreUser, async (req, res, next) => {
@@ -16,17 +51,11 @@ router.post('/:playlistId/songs', requireAuth, restoreUser, async (req, res, nex
     const song = await Song.findByPk(songId)
 
     if (!song) {
-        const err = new Error('Song does not exist')
-        err.status = 404
-        err.title = 'Song does not exist'
-        return next(err)
+        doesNotExist(next, 'Song')
     }
 
     if (!playlist) {
-        const err = new Error('Playlist does not exist')
-        err.status = 404
-        err.title = 'Playlist does not exist'
-        return next(err)
+        doesNotExist(next, 'Playlist')
     }
 
 
@@ -44,10 +73,7 @@ router.post('/:playlistId/songs', requireAuth, restoreUser, async (req, res, nex
         res.json(playlistSong)
 
     } else {
-        const err = new Error('Not authorized')
-        err.status = 401
-        err.title = 'Not authorized'
-        return next(err)
+        unauthorized(next)
     }
 })
 
@@ -66,10 +92,7 @@ router.get('/:playlistId', async (req, res, next) => {
     if (playlist) {
         res.json(playlist)
     } else {
-        const err = new Error('Playlist does not exist')
-        err.status = 404
-        err.title = 'Playlist does not exist'
-        return next(err)
+        doesNotExist(next, 'Playlist')
     }
 })
 
@@ -88,16 +111,10 @@ router.put('/:playlistId', requireAuth, restoreUser, async (req, res, next) => {
                 previewImage
             })
         } else {
-            const err = new Error('Not authorized')
-            err.status = 401
-            err.title = 'Not authorized'
-            return next(err)
+            unauthorized(next)
         }
     } else {
-        const err = new Error('Playlist does not exist')
-        err.status = 404
-        err.title = 'Playlist does not exist'
-        return next(err)
+        doesNotExist(next, 'Playlist')
     }
 })
 
