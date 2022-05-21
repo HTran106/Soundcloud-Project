@@ -69,8 +69,12 @@ router.get('/:userId/songs', async (req, res, next) => {
 router.get('/:userId', async (req, res, next) => {
     const { userId } = req.params;
 
-    const totalSongs = await Song.count()
-    const totalAlbums = await Album.count()
+    const totalSongs = await Song.count({where: {
+        userId,
+    }})
+    const totalAlbums = await Album.count({where: {
+        userId,
+    }})
 
     const artist = await User.findByPk(userId, {
         attributes: ['id', 'username', 'previewImage']
