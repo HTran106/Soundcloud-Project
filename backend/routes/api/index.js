@@ -4,15 +4,46 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const { setTokenCookie } = require('../../utils/auth.js');
 const { User, Song } = require('../../db/models');
+const { check } = require('express-validator');
+const { handleValidationErrors, handleQueryValidationErrors } = require('../../utils/validation');
 
 router.use(sessionRouter);
-
 router.use('/users', usersRouter);
 
-//Search query route
-router.get('/search', async (req, res) => {
-  let { page, size, title, createdAt } = req.query;
+const validateLogin = [
+  check('credential')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a valid email or username.'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a password.'),
+  handleValidationErrors
+];
 
+const validateQuery = [
+  check('page')
+    .isInt({ min: 0})
+    .withMessage('Page must be greater than or equal to 0'),
+  check('size')
+    .isInt({ min: 0})
+    .withMessage('Size must be greater than or equal to 0'),
+  check('createdAt')
+    .isDate()
+    .optional({nullable: true})
+    .withMessage('CreatedAt is invalid'),
+  check('updatedAt')
+    .isDate()
+    .optional({nullable: true})
+    .withMessage('UpdatedAt is invalid'),
+  handleQueryValidationErrors
+]
+
+
+
+//Search query route
+router.get('/search', validateQuery, async (req, res, next) => {
+  let { page, size, title, createdAt } = req.query;
 
   if (page) {
     if (page > 0 && page <= 10) {
