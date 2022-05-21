@@ -37,7 +37,7 @@ const songValidator = [
 ]
 
 const albumValidator = [
-      check('title')
+    check('title')
       .exists({ checkFalsy: true })
       .withMessage('Album title is required'),
     check('description')
@@ -46,8 +46,16 @@ const albumValidator = [
     handleValidationErrors
 ]
 
+const commentValidator = [
+    check('body')
+      .exists({ checkFalsy: true })
+      .withMessage('Comment body text is required'),
+    handleValidationErrors
+]
+
 module.exports = {
   handleValidationErrors,
   songValidator,
-  albumValidator
+  albumValidator,
+  commentValidator
 };

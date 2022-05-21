@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 const { doesNotExist, requireAuth, restoreUser, unauthorized } = require('../../utils/auth');
 const { User, Song, Album, Comment } = require('../../db/models');
-const { songValidator } = require('../../utils/validation');
+const { songValidator, commentValidator } = require('../../utils/validation');
 
 
 //delete comment
@@ -78,7 +78,7 @@ router.put('/:songId', requireAuth, songValidator, restoreUser, async (req, res,
 
 
 //create comment based on songId
-router.post('/:songId', requireAuth, restoreUser, async (req, res, next) => {
+router.post('/:songId', requireAuth, commentValidator, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { songId } = req.params;
     const { body } = req.body
@@ -118,7 +118,7 @@ router.get('/:songId/comments', async (req, res, next) => {
             }
         })
 
-        res.json(comment)
+        res.json({Comments: comment})
 
     } else {
         doesNotExist(next, 'Song')
