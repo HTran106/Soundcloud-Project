@@ -33,13 +33,12 @@ router.get('/songs', requireAuth, restoreUser, async (req, res) => {
 
 //get all info on current user
 router.get('/info', requireAuth, restoreUser, async (req, res) => {
-    const { user, cookies } = req;
+    const { user } = req;
 
     const info = user.toSafeObject()
 
     res.json({
-      user: info,
-      token: cookies.token
+      user: info
     })
 })
 

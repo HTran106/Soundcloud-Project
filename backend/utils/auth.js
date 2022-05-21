@@ -60,18 +60,18 @@ const requireAuth = [
   function (req, _res, next) {
     if (req.user) return next();
 
-    const err = new Error('Unauthorized');
-    err.title = 'Unauthorized';
-    err.errors = ['Unauthorized'];
+    const err = new Error('Authentication required');
+    err.title = 'Authentication required';
+    err.errors = ['Authentication required'];
     err.status = 401;
     return next(err);
   }
 ];
 
 const unauthorized = next => {
-  const err = new Error('Not Authorized');
-  err.status = 401;
-  err.title = 'Not Authorized'
+  const err = new Error('Forbidden');
+  err.status = 403;
+  err.title = 'Forbidden'
   return next(err)
 }
 

@@ -5,21 +5,11 @@ const usersRouter = require('./users.js');
 const { setTokenCookie } = require('../../utils/auth.js');
 const { User, Song } = require('../../db/models');
 const { check } = require('express-validator');
-const { handleValidationErrors, handleQueryValidationErrors } = require('../../utils/validation');
+const { handleValidationErrors } = require('../../utils/validation');
 
 router.use(sessionRouter);
 router.use('/users', usersRouter);
 
-const validateLogin = [
-  check('credential')
-    .exists({ checkFalsy: true })
-    .notEmpty()
-    .withMessage('Please provide a valid email or username.'),
-  check('password')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a password.'),
-  handleValidationErrors
-];
 
 const validateQuery = [
   check('page')
@@ -38,7 +28,7 @@ const validateQuery = [
     .isDate()
     .optional({nullable: true})
     .withMessage('UpdatedAt is invalid'),
-  handleQueryValidationErrors
+  handleValidationErrors
 ]
 
 
