@@ -24,9 +24,11 @@ const validateLogin = [
 const validateQuery = [
   check('page')
     .isInt({ min: 0})
+    .optional({nullable: true})
     .withMessage('Page must be greater than or equal to 0'),
   check('size')
     .isInt({ min: 0})
+    .optional({nullable: true})
     .withMessage('Size must be greater than or equal to 0'),
   check('createdAt')
     .isDate()
@@ -45,26 +47,12 @@ const validateQuery = [
 router.get('/search', validateQuery, async (req, res, next) => {
   let { page, size, title, createdAt } = req.query;
 
-  if (page) {
-    if (page > 0 && page <= 10) {
-      page = parseInt(page)
-    } else {
-      page = 0
-    }
-  } else {
-    page = 0
-  }
+  page = parseInt(page);
+  size = parseInt(size);
 
+  page > 10 ? page = 0 : page = page
+  size > 20 ? size = 20 : size = size
 
-  if (size) {
-    if (size > 0 && size <= 20) {
-      size = parseInt(size)
-    } else {
-      size = 20
-    }
-  } else {
-    size = 20
-  }
 
   let where = {}
   if (title) where.title = title
