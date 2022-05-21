@@ -28,7 +28,7 @@ router.get('/songs', requireAuth, restoreUser, async (req, res) => {
       userId: user.id
     }
   })
-  res.json(songs)
+  res.json({Songs: songs})
 })
 
 //get all info on current user
