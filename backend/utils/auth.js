@@ -76,9 +76,9 @@ const unauthorized = next => {
 }
 
 const doesNotExist = (next, modelString) => {
-  const err = new Error (`${modelString} does not exist`)
+  const err = new Error (`${modelString} couldn't be found`)
   err.status = 404
-  err.title = `${modelString} does not exist`
+  err.title = `${modelString} couldn't be found`
   return next(err)
 }
 
