@@ -73,7 +73,7 @@ router.get('/:userId', async (req, res, next) => {
     const totalAlbums = await Album.count()
 
     const artist = await User.findByPk(userId, {
-        attributes: ['id', 'username', ], //still need to add previewImage //////have to merge other 2 routes to dev first
+        attributes: ['id', 'username', 'previewImage']
     })
 
     if (artist) {
