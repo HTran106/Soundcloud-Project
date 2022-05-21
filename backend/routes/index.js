@@ -6,7 +6,9 @@ const albumsRouter = require('./albums')
 
 
 const artistRouter = require('./artists')
+const playlistRouter = require('./playlists')
 
+router.use('/playlists', playlistRouter)
 router.use(apiRouter);
 router.use('/my', myRouter)
 router.use('/albums', albumsRouter)

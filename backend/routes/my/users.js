@@ -3,7 +3,7 @@ const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song, Album } = require('../../db/models');
+const { User, Song, Album, Playlist } = require('../../db/models');
 const { jwtConfig } = require('../../config');
 
 
@@ -75,6 +75,17 @@ router.get('/info', requireAuth, restoreUser, async (req, res) => {
     })
 })
 
+//Get playlist created by current user
+router.get('/playlists', requireAuth, restoreUser, async (req, res) => {
+  const { user } = req;
 
+  const playlist = await Playlist.findAll({
+    where: {
+      userId: user.id
+    }
+  })
+
+  res.json(playlist)
+})
 
 module.exports = router
