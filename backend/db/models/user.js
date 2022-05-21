@@ -104,6 +104,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         unique: true
       },
+      previewImage: DataTypes.STRING,
       hashedPassword: {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
@@ -111,7 +112,6 @@ module.exports = (sequelize, DataTypes) => {
           len: [60, 60]
         }
       },
-      previewImage: DataTypes.STRING
   }, {
     defaultScope: {
       attributes: {
