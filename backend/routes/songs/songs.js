@@ -24,7 +24,7 @@ router.delete('/:songId/:commentId', requireAuth, restoreUser, async (req, res, 
 
 
 //edit comment
-router.put('/:songId/:commentId', requireAuth, restoreUser, async (req, res, next) => {
+router.put('/:songId/:commentId', requireAuth, commentValidator, restoreUser, async (req, res, next) => {
     const { commentId } = req.params;
     const { user } = req
     const { body } = req.body
