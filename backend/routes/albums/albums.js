@@ -1,10 +1,8 @@
 const express = require('express')
 const router = express.Router();
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
-const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
+const { unauthorized, requireAuth, restoreUser, doesNotExist } = require('../../utils/auth');
 const { User, Song, Album } = require('../../db/models');
-const { jwtConfig } = require('../../config');
+
 
 
 //Delete album by albumId
@@ -19,14 +17,10 @@ router.delete('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
             await album.destroy();
             res.json({msg: 'Album has been deleted'})
         } else {
-            const err = new Error('Not authorized');
-            err.status = 401;
-            return next(err)
+            unauthorized(next)
         }
     } else {
-        const error = new Error('Album does not exist');
-        error.status = 404;
-        return next(error)
+        doesNotExist(next, 'Album')
     }
 
 })
@@ -64,14 +58,10 @@ router.put('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
             })
             res.json(album)
         } else {
-            const error = new Error('Not authorized')
-            error.status = 401
-            return next(error)
+           unauthorized(next)
         }
     } else {
-        const error = new Error('Album does not exist')
-        error.status = 404
-        return next(error)
+        doesNotExist(next, 'Album')
     }
 
 })
@@ -97,10 +87,7 @@ router.get('/:albumId', async (req, res, next) => {
     if (album) {
         res.json(album)
     } else {
-        const error = new Error('Album does not exist');
-        error.status = 404
-        error.title = 'Album does not exist'
-        return next(error)
+        doesNotExist(next, 'Album')
     }
 })
 
@@ -124,15 +111,10 @@ router.post('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
             })
             res.json(newSong)
         } else {
-            const error = new Error('Not authorized')
-            error.status = 401
-            return next(error)
+            unauthorized(next)
         }
     } else {
-        const error = new Error('Album does not exist')
-        error.status = 404;
-        error.title = "Album does not exist"
-        return next(error)
+        doesNotExist(next, 'Album')
     }
 
 })

@@ -1,10 +1,8 @@
 const express = require('express')
 const router = express.Router();
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
-const { setTokenCookie, requireAuth, restoreUser, unauthorized, doesNotExist } = require('../../utils/auth');
-const { User, Song, Album, Playlist, PlaylistSong } = require('../../db/models');
-const { jwtConfig } = require('../../config');
+const { requireAuth, restoreUser, unauthorized, doesNotExist } = require('../../utils/auth');
+const { Song, Playlist, PlaylistSong } = require('../../db/models');
+
 
 
 

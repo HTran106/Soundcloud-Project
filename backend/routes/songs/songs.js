@@ -1,10 +1,8 @@
 const express = require('express')
 const router = express.Router();
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
-const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
+const { doesNotExist, requireAuth, restoreUser, unauthorized } = require('../../utils/auth');
 const { User, Song, Album, Comment } = require('../../db/models');
-const { jwtConfig } = require('../../config');
+
 
 
 //delete comment
@@ -20,10 +18,7 @@ router.delete('/:songId/:commentId', requireAuth, restoreUser, async (req, res, 
             res.json({msg: 'Comment deleted'})
         }
     } else {
-        const err = new Error('Comment does not exist')
-        err.status = 404;
-        err.title = 'Comment does not exist'
-        return next(err)
+        doesNotExist(next, 'Comment')
     }
 })
 
@@ -43,16 +38,10 @@ router.put('/:songId/:commentId', requireAuth, restoreUser, async (req, res, nex
             })
             res.json(comment)
         } else {
-            const err = new Error('Not authorized')
-            err.status = 401
-            err.title = 'Not authorized'
-            return next(err)
+            unauthorized(next)
         }
     } else {
-        const err = new Error('Comment does not exist')
-        err.status = 404;
-        err.title = 'Comment does not exist'
-        return next(err)
+        doesNotExist(next, 'Comment')
     }
 
 })
@@ -79,16 +68,10 @@ router.put('/:songId', requireAuth, restoreUser, async (req, res, next) => {
             })
             res.json(song)
         } else {
-            const err = new Error('Not authorized')
-            err.status = 401
-            err.title = 'Not authorized'
-            return next(err)
+            unauthorized(next)
         }
     } else {
-        const err = new Error('Song does not exist')
-        err.status = 400
-        err.title = 'Song does not exist'
-        return next(err)
+        doesNotExist(next, 'Song')
     }
 })
 
@@ -112,10 +95,7 @@ router.post('/:songId', requireAuth, restoreUser, async (req, res, next) => {
         res.json(comment)
 
     } else {
-        const err = new Error('Song does not exist');
-        err.status = 404;
-        err.title = "Song does not exist";
-        return next(err)
+        doesNotExist(next, 'Song')
     }
 
 
@@ -141,10 +121,7 @@ router.get('/:songId/comments', async (req, res, next) => {
         res.json(comment)
 
     } else {
-        const err = new Error('Song does not exist');
-        err.status = 404;
-        err.title = 'Song does not exist'
-        return next(err)
+        doesNotExist(next, 'Song')
     }
 })
 
@@ -161,16 +138,10 @@ router.delete('/:songId', requireAuth, restoreUser, async (req, res, next) => {
             await song.destroy();
             res.json({msg: 'Successfully deleted'})
         } else {
-            const err = new Error('Not authorized');
-            err.status = 401;
-            err.title = 'Not authorized'
-            return next(err)
+            unauthorized(next)
         }
     } else {
-        const err = new Error('Song does not exist')
-        err.status = 404;
-        err.title = 'Song does not exist'
-        return next(err)
+        doesNotExist(next, 'Song')
     }
 })
 
@@ -196,9 +167,7 @@ router.get('/:songId', async (req, res, next) => {
     if (song) {
         res.json(song)
     } else {
-        const error = new Error('Song does not exist');
-        error.status = 404;
-        return next(error)
+        doesNotExist(next, 'Song')
     }
 })
 
