@@ -4,36 +4,55 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const { setTokenCookie } = require('../../utils/auth.js');
 const { User, Song } = require('../../db/models');
+const { check } = require('express-validator');
+const { handleValidationErrors, handleQueryValidationErrors } = require('../../utils/validation');
 
 router.use(sessionRouter);
-
 router.use('/users', usersRouter);
 
+const validateLogin = [
+  check('credential')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a valid email or username.'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a password.'),
+  handleValidationErrors
+];
+
+const validateQuery = [
+  check('page')
+    .isInt({ min: 0})
+    .optional({nullable: true})
+    .withMessage('Page must be greater than or equal to 0'),
+  check('size')
+    .isInt({ min: 0})
+    .optional({nullable: true})
+    .withMessage('Size must be greater than or equal to 0'),
+  check('createdAt')
+    .isDate()
+    .optional({nullable: true})
+    .withMessage('CreatedAt is invalid'),
+  check('updatedAt')
+    .isDate()
+    .optional({nullable: true})
+    .withMessage('UpdatedAt is invalid'),
+  handleQueryValidationErrors
+]
+
+
+
 //Search query route
-router.get('/search', async (req, res) => {
+router.get('/search', validateQuery, async (req, res, next) => {
   let { page, size, title, createdAt } = req.query;
 
+  page = parseInt(page);
+  size = parseInt(size);
 
-  if (page) {
-    if (page > 0 && page <= 10) {
-      page = parseInt(page)
-    } else {
-      page = 0
-    }
-  } else {
-    page = 0
-  }
+  page > 10 ? page = 0 : page = page
+  size > 20 ? size = 20 : size = size
 
-
-  if (size) {
-    if (size > 0 && size <= 20) {
-      size = parseInt(size)
-    } else {
-      size = 20
-    }
-  } else {
-    size = 20
-  }
 
   let where = {}
   if (title) where.title = title
