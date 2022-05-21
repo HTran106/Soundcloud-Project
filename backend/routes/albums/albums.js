@@ -53,7 +53,7 @@ router.put('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
     const { albumId } = req.params;
     const { title, description, previewImage } = req.body
 
-    const album = await Album.findByPk(albumId)
+    let album = await Album.findByPk(albumId)
 
     if (album) {
         if (album.userId === user.id) {

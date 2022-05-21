@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const apiRouter = require('./api');
 const myRouter = require('./my');
-const albumsRouter = require('./albums')
+const albumsRouter = require('./albums');
+const songsRouter = require('./songs')
 
 
 const artistRouter = require('./artists')
@@ -10,8 +11,9 @@ const playlistRouter = require('./playlists')
 
 router.use('/playlists', playlistRouter)
 router.use(apiRouter);
-router.use('/my', myRouter)
-router.use('/albums', albumsRouter)
+router.use('/my', myRouter);
+router.use('/albums', albumsRouter);
+router.use('/songs', songsRouter)
 
 
 
