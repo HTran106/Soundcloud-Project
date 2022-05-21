@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 const { doesNotExist, requireAuth, restoreUser, unauthorized } = require('../../utils/auth');
 const { User, Song, Album, Comment } = require('../../db/models');
-
+const { songValidator } = require('../../utils/validation');
 
 
 //delete comment
@@ -48,7 +48,7 @@ router.put('/:songId/:commentId', requireAuth, restoreUser, async (req, res, nex
 
 
 //Edit a song
-router.put('/:songId', requireAuth, restoreUser, async (req, res, next) => {
+router.put('/:songId', requireAuth, songValidator, restoreUser, async (req, res, next) => {
     const { songId } = req.params;
     const { user } = req;
     const { albumId, title, description, url, previewImage } = req.body;
@@ -136,7 +136,7 @@ router.delete('/:songId', requireAuth, restoreUser, async (req, res, next) => {
     if (song) {
         if (song.userId === user.id) {
             await song.destroy();
-            res.json({msg: 'Successfully deleted'})
+            res.json({msg: 'Successfully deleted', statusCode: res.statusCode})
         } else {
             unauthorized(next)
         }
