@@ -53,9 +53,17 @@ const commentValidator = [
     handleValidationErrors
 ]
 
+const playlistValidator = [
+    check('name')
+      .exists({ checkFalsy: true })
+      .withMessage('Playlist name is required'),
+      handleValidationErrors
+]
+
 module.exports = {
   handleValidationErrors,
   songValidator,
   albumValidator,
-  commentValidator
+  commentValidator,
+  playlistValidator
 };

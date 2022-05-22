@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router();
 const { doesNotExist } = require('../../utils/auth');
-const { User, Song, Album, Playlist, Sequelize } = require('../../db/models');
+const { User, Song, Album, Playlist } = require('../../db/models');
+
 
 
 

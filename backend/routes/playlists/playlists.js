@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 const { requireAuth, restoreUser, unauthorized, doesNotExist } = require('../../utils/auth');
 const { Song, Playlist, PlaylistSong } = require('../../db/models');
+const { playlistValidator } = require('../../utils/validation');
 
 
 
@@ -27,7 +28,7 @@ router.delete('/:playlistId', requireAuth, restoreUser, async (req, res, next) =
 
 
 //Create a playlist
-router.post('/', requireAuth, restoreUser, async (req, res, next) => {
+router.post('/', requireAuth, playlistValidator, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { name, previewImage } = req.body;
 
@@ -36,6 +37,7 @@ router.post('/', requireAuth, restoreUser, async (req, res, next) => {
         name,
         previewImage,
     })
+    res.status(201)
     res.json(newPlaylist)
 })
 
