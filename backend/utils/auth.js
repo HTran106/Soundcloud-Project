@@ -68,5 +68,19 @@ const requireAuth = [
   }
 ];
 
+const unauthorized = next => {
+  const err = new Error('Not Authorized');
+  err.status = 401;
+  err.title = 'Not Authorized'
+  return next(err)
+}
 
-module.exports = { setTokenCookie, restoreUser, requireAuth };
+const doesNotExist = (next, modelString) => {
+  const err = new Error (`${modelString} does not exist`)
+  err.status = 404
+  err.title = `${modelString} does not exist`
+  return next(err)
+}
+
+
+module.exports = { setTokenCookie, restoreUser, requireAuth, unauthorized, doesNotExist };

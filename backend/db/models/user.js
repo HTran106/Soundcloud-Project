@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     toSafeObject() {
-      const { id, username, email } = this;
-      return { id, username, email };
+      const { id, firstName, lastName, username, email } = this;
+      return { id, firstName, lastName, username, email };
     }
 
     validatePassword(password) {
@@ -40,10 +40,13 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
 
-    static async signup({ username, email, password }) {
+    static async signup({ firstName, lastName, username, email, password }) {
       const hashedPassword = bcrypt.hashSync(password);
+
       const user = await User.create({
         username,
+        firstName,
+        lastName,
         email,
         hashedPassword
       });
@@ -52,6 +55,10 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       // define association here
+      User.hasMany(models.Album, { foreignKey: 'userId'})
+      User.hasMany(models.Song, { foreignKey: 'userId'})
+      User.hasMany(models.Playlist, { foreignKey: 'userId'})
+      User.hasMany(models.Comment, { foreignKey: 'userId'})
     }
   }
   User.init({
@@ -63,13 +70,19 @@ module.exports = (sequelize, DataTypes) => {
     },
     firstName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isAlpha: true
+      }
     },
     lastName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        isAlpha: true
+      }
     },
-    userName: {
+    username: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -85,16 +98,20 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [3, 256]
-        }
+          len: [3, 256],
+          isEmail: true,
+
+        },
+        unique: true
       },
+      previewImage: DataTypes.STRING,
       hashedPassword: {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
         validate: {
           len: [60, 60]
         }
-      }
+      },
   }, {
     defaultScope: {
       attributes: {

@@ -17,11 +17,8 @@ const validateLogin = [
   handleValidationErrors
 ];
 
-
-router.post(
-  '/',
-  validateLogin,
-  async (req, res, next) => {
+//login
+router.post('/login', validateLogin, async (req, res, next) => {
     const { credential, password } = req.body;
 
     const user = await User.login({ credential, password });
@@ -34,22 +31,24 @@ router.post(
       return next(err);
     }
 
-    await setTokenCookie(res, user);
+    const token = setTokenCookie(res, user);
 
     return res.json({
-      user
+      user: user.toSafeObject(),
+      token
     });
   }
 );
 
-router.delete('/', (_req, res) => {
+//logout
+router.delete('/logout', (_req, res) => {
     res.clearCookie('token');
     return res.json({ message: 'success' });
   }
 );
 
 // Restore session user
-router.get('/', restoreUser, (req, res) => {
+router.get('/restore', restoreUser, (req, res) => {
     const { user } = req;
     if (user) {
       return res.json({

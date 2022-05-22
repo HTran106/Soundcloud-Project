@@ -62,6 +62,7 @@ app.use((err, _req, _res, next) => {
   if (err instanceof ValidationError) {
     err.errors = err.errors.map((e) => e.message);
     err.title = 'Validation error';
+    err.status = 400;
   }
   next(err);
 });
@@ -73,6 +74,7 @@ app.use((err, _req, res, _next) => {
   console.error(err);
   res.json({
     title: err.title || 'Server Error',
+    statusCode: res.statusCode,
     message: err.message,
     errors: err.errors,
     stack: isProduction ? null : err.stack
