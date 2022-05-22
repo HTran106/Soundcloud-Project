@@ -1,19 +1,19 @@
 const express = require('express')
 const router = express.Router();
 const { doesNotExist } = require('../../utils/auth');
-const { User, Song, Album, Playlist } = require('../../db/models');
+const { User, Song, Album, Playlist, Sequelize } = require('../../db/models');
 
 
 
 //Get all playlists of an artist based on ID
-router.get('/:userId/playlists', async (req, res) => {
+router.get('/:userId/playlists', async (req, res, next) => {
     const { userId } = req.params;
 
     const artist = await User.findByPk(userId)
 
     if (artist) {
         const playlists = await Playlist.findAll({where: { userId, }})
-        res.json(playlists)
+        res.json({ Playlists: playlists})
     } else {
         doesNotExist(next, 'Artist')
     }
@@ -28,7 +28,7 @@ router.get('/:userId/albums', async (req, res, next) => {
 
     if (artist) {
         const albums = await Album.findAll({where: { userId, }})
-        res.json(albums)
+        res.json({ Albums: albums })
     } else {
         doesNotExist(next, 'Artist')
     }
@@ -47,7 +47,7 @@ router.get('/:userId/songs', async (req, res, next) => {
             where: {userId,}
         })
 
-        res.json(allSongs)
+        res.json({ Songs: allSongs})
     } else {
         doesNotExist(next, 'Artist')
     }
@@ -66,11 +66,17 @@ router.get('/:userId', async (req, res, next) => {
     }})
 
     const artist = await User.findByPk(userId, {
-        attributes: ['id', 'username', 'previewImage']
+        attributes: ['id', 'username', 'previewImage'],
     })
 
     if (artist) {
-        res.json({artist, totalSongs, totalAlbums,})
+        res.json({
+            id: artist.id,
+            username: artist.username,
+            totalSongs,
+            totalAlbums,
+            previewImage: artist.previewImage
+        })
     } else {
         doesNotExist(next, 'Artist')
     }
