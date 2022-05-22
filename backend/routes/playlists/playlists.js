@@ -17,7 +17,7 @@ router.delete('/:playlistId', requireAuth, restoreUser, async (req, res, next) =
     if (playlist) {
         if (playlist.userId === user.id) {
             await playlist.destroy();
-            res.json({ msg: 'Playlist deleted' })
+            res.json({ msg: 'Successfully deleted', statusCode: res.statusCode })
         } else {
             unauthorized(next)
         }

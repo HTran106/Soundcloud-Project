@@ -52,7 +52,7 @@ router.get('/playlists', requireAuth, restoreUser, async (req, res) => {
     }
   })
 
-  res.json(playlist)
+  res.json({ Playlists: playlist })
 })
 
 module.exports = router

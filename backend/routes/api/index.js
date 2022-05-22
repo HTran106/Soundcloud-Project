@@ -56,7 +56,7 @@ router.get('/search', validateQuery, async (req, res, next) => {
 
 
   res.json({
-    songs,
+    Songs: songs,
     page,
     size,
   })
