@@ -97,19 +97,20 @@ router.get('/:playlistId', async (req, res, next) => {
 })
 
 //Edit a playlist
-router.put('/:playlistId', requireAuth, restoreUser, async (req, res, next) => {
+router.put('/:playlistId', requireAuth, playlistValidator, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { playlistId } = req.params
-    const { name, previewImage } = req.body
+    const { name, imageUrl } = req.body
 
     const playlist = await Playlist.findByPk(playlistId)
 
     if (playlist) {
         if (playlist.userId === user.id) {
-            await playlist.update({
+            const updatedPlaylist = await playlist.update({
                 name,
-                previewImage
+                previewImage: imageUrl
             })
+            res.json(updatedPlaylist)
         } else {
             unauthorized(next)
         }
