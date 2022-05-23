@@ -175,7 +175,7 @@ router.get('/:songId', async (req, res, next) => {
 router.get('/', async (req, res) => {
     const songs = await Song.findAll()
 
-    res.json(songs)
+    res.json({Songs: songs})
 })
 
 
