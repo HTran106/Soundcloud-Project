@@ -30,12 +30,12 @@ router.delete('/:playlistId', requireAuth, restoreUser, async (req, res, next) =
 //Create a playlist
 router.post('/', requireAuth, playlistValidator, restoreUser, async (req, res, next) => {
     const { user } = req;
-    const { name, previewImage } = req.body;
+    const { name, imageUrl } = req.body;
 
     const newPlaylist = await Playlist.create({
         userId: user.id,
         name,
-        previewImage,
+        previewImage: imageUrl
     })
     res.status(201)
     res.json(newPlaylist)
