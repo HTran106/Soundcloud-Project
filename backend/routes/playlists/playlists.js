@@ -50,13 +50,14 @@ router.post('/:playlistId/songs', requireAuth, restoreUser, async (req, res, nex
     const playlist = await Playlist.findByPk(playlistId)
     const song = await Song.findByPk(songId)
 
+    if (!playlist) {
+        doesNotExist(next, 'Playlist')
+    }
+
     if (!song) {
         doesNotExist(next, 'Song')
     }
 
-    if (!playlist) {
-        doesNotExist(next, 'Playlist')
-    }
 
 
     if (playlist.userId === user.id) {
@@ -89,10 +90,10 @@ router.get('/:playlistId', async (req, res, next) => {
         }
     })
 
-    if (playlist) {
-        res.json(playlist)
-    } else {
+    if (!playlist) {
         doesNotExist(next, 'Playlist')
+    } else {
+        res.json(playlist)
     }
 })
 
