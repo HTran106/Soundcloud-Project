@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true
     },
     description: {
+      allowNull: false,
       type: DataTypes.STRING
     },
     createdAt: {

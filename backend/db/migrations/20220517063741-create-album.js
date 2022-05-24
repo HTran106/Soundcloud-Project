@@ -21,6 +21,7 @@ module.exports = {
         unique: true
       },
       description: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       previewImage: {

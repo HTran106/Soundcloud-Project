@@ -1,5 +1,7 @@
 // backend/utils/validation.js
-const { validationResult } = require('express-validator');
+const { check, validationResult } = require('express-validator');
+
+
 
 // middleware for formatting errors from express-validator middleware
 // (to customize, see express-validator's documentation)
@@ -8,26 +10,8 @@ const handleValidationErrors = (req, _res, next) => {
 
   if (!validationErrors.isEmpty()) {
     const errors = validationErrors
-      .array()
-      .map((error) => `${error.msg}`);
-
-
-    const err = Error('Bad request.');
-    err.errors = errors;
-    err.status = 400;
-    err.title = 'Bad request.';
-    next(err);
-  }
-  next();
-};
-
-const handleQueryValidationErrors = (req, _res, next) => {
-  const validationErrors = validationResult(req);
-
-  if (!validationErrors.isEmpty()) {
-    const errors = validationErrors
-      .array()
-      .map((error) => `${error.msg}`);
+    .array()
+    .map((error) => `${error.msg}`);
 
 
     const err = Error('Validation error');
@@ -39,7 +23,47 @@ const handleQueryValidationErrors = (req, _res, next) => {
   next();
 };
 
+const songValidator = [
+    check('url')
+      .exists({ checkFalsy: true })
+      .withMessage('Audio is required'),
+    check('title')
+      .exists({ checkFalsy: true })
+      .withMessage('Song title is required'),
+    check('description')
+      .exists({ checkFalsy: true })
+      .withMessage('Description is required'),
+    handleValidationErrors
+]
+
+const albumValidator = [
+    check('title')
+      .exists({ checkFalsy: true })
+      .withMessage('Album title is required'),
+    check('description')
+      .exists({ checkFalsy: true })
+      .withMessage('Description is required'),
+    handleValidationErrors
+]
+
+const commentValidator = [
+    check('body')
+      .exists({ checkFalsy: true })
+      .withMessage('Comment body text is required'),
+    handleValidationErrors
+]
+
+const playlistValidator = [
+    check('name')
+      .exists({ checkFalsy: true })
+      .withMessage('Playlist name is required'),
+      handleValidationErrors
+]
+
 module.exports = {
   handleValidationErrors,
-  handleQueryValidationErrors
+  songValidator,
+  albumValidator,
+  commentValidator,
+  playlistValidator
 };

@@ -1,8 +1,9 @@
 const express = require('express')
+const { check } = require('express-validator')
 const router = express.Router();
 const { unauthorized, requireAuth, restoreUser, doesNotExist } = require('../../utils/auth');
 const { User, Song, Album } = require('../../db/models');
-
+const { songValidator, albumValidator } = require('../../utils/validation');
 
 
 //Delete album by albumId
@@ -15,7 +16,7 @@ router.delete('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
     if (album) {
         if (album.userId === user.id) {
             await album.destroy();
-            res.json({msg: 'Album has been deleted'})
+            res.json({msg: 'Successfully deleted', statusCode: res.statusCode})
         } else {
             unauthorized(next)
         }
@@ -27,25 +28,25 @@ router.delete('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
 
 
 //create new album
-router.post('/', requireAuth, restoreUser, async (req, res) => {
+router.post('/', requireAuth, albumValidator, restoreUser, async (req, res) => {
     const { user } = req
-    const { title, description, previewImage } = req.body
+    const { title, description, imageUrl } = req.body
 
     const newAlbum = await Album.create({
         userId: user.id,
         title,
         description,
-        previewImage,
+        previewImage: imageUrl
     })
-
+    res.status(201)
     res.json(newAlbum)
 })
 
 //update album by albumId
-router.put('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
+router.put('/:albumId', requireAuth, albumValidator, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { albumId } = req.params;
-    const { title, description, previewImage } = req.body
+    const { title, description, imageUrl } = req.body
 
     let album = await Album.findByPk(albumId)
 
@@ -54,7 +55,7 @@ router.put('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
             await album.update({
                 title,
                 description,
-                previewImage,
+                previewImage: imageUrl
             })
             res.json(album)
         } else {
@@ -92,10 +93,10 @@ router.get('/:albumId', async (req, res, next) => {
 })
 
 //Add song to album by albumID
-router.post('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
+router.post('/:albumId', requireAuth, songValidator, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { albumId } = req.params
-    const { title, description, url, previewImage } = req.body
+    const { title, description, url, imageUrl } = req.body
 
     const album = await Album.findByPk(albumId)
 
@@ -107,8 +108,9 @@ router.post('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
                 title,
                 description,
                 url,
-                previewImage
+                previewImage: imageUrl
             })
+            res.status(201)
             res.json(newSong)
         } else {
             unauthorized(next)
@@ -123,7 +125,7 @@ router.post('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
 router.get('/', async (req, res) => {
     const allAlbums = await Album.findAll()
 
-    res.json(allAlbums)
+    res.json({Albums: allAlbums})
 })
 
 

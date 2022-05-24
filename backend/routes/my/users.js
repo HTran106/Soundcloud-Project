@@ -16,7 +16,7 @@ router.get('/albums', requireAuth, restoreUser, async (req, res) => {
     }
   })
 
-  res.json(albums)
+  res.json({Albums: albums})
 })
 
 //Get all Songs created by current User
@@ -28,18 +28,17 @@ router.get('/songs', requireAuth, restoreUser, async (req, res) => {
       userId: user.id
     }
   })
-  res.json(songs)
+  res.json({Songs: songs})
 })
 
 //get all info on current user
 router.get('/info', requireAuth, restoreUser, async (req, res) => {
-    const { user, cookies } = req;
+    const { user } = req;
 
     const info = user.toSafeObject()
 
     res.json({
-      user: info,
-      token: cookies.token
+      user: info
     })
 })
 
@@ -53,7 +52,7 @@ router.get('/playlists', requireAuth, restoreUser, async (req, res) => {
     }
   })
 
-  res.json(playlist)
+  res.json({ Playlists: playlist })
 })
 
 module.exports = router
