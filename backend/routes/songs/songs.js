@@ -110,6 +110,9 @@ router.get('/:songId/comments', async (req, res, next) => {
     page = parseInt(page);
     size = parseInt(size);
 
+    page > 10 ? page = 1 : page = page
+    size > 20 ? size = 20 : size = size
+
     const song = await Song.findByPk(songId)
 
     if (song) {
@@ -190,11 +193,14 @@ router.get('/', validatePagination ,async (req, res) => {
     page = parseInt(page);
     size = parseInt(size);
 
+    page > 10 ? page = 1 : page = page
+    size > 20 ? size = 20 : size = size
+
     const songs = await Song.findAll({...pagination(page, size)})
 
     res.json({
         Songs: songs,
-        page,
+        page:
         size,
     })
 })

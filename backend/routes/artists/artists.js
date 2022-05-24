@@ -33,6 +33,9 @@ router.get('/:userId/albums', validatePagination, async (req, res, next) => {
     page = parseInt(page);
     size = parseInt(size);
 
+    page > 10 ? page = 1 : page = page
+    size > 20 ? size = 20 : size = size
+
     const artist = await User.findByPk(userId)
 
     if (artist) {
@@ -52,11 +55,14 @@ router.get('/:userId/songs', validatePagination, async (req, res, next) => {
     const { userId } = req.params;
     let { page, size } = req.query
 
-        if (!size) size = 20
-        if (!page) page = 1
+    if (!size) size = 20
+    if (!page) page = 1
 
-        page = parseInt(page);
-        size = parseInt(size);
+    page = parseInt(page);
+    size = parseInt(size);
+
+    page > 10 ? page = 1 : page = page
+    size > 20 ? size = 20 : size = size
 
 
     const artist = await User.findByPk(userId)

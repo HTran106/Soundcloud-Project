@@ -131,6 +131,9 @@ router.get('/', validatePagination ,async (req, res) => {
     page = parseInt(page);
     size = parseInt(size);
 
+    page > 10 ? page = 1 : page = page
+    size > 20 ? size = 20 : size = size
+
     const allAlbums = await Album.findAll({...pagination(page, size)})
 
     res.json({

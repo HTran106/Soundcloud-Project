@@ -54,6 +54,8 @@ router.get('/playlists', requireAuth, validatePagination, restoreUser, async (re
   page = parseInt(page);
   size = parseInt(size);
 
+  page > 10 ? page = 1 : page = page
+  size > 20 ? size = 20 : size = size
 
   const playlist = await Playlist.findAll({
     where: {
