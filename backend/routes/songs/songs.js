@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 const { doesNotExist, requireAuth, restoreUser, unauthorized } = require('../../utils/auth');
 const { User, Song, Album, Comment } = require('../../db/models');
-const { songValidator, commentValidator } = require('../../utils/validation');
+const { songValidator, commentValidator, validatePagination, pagination } = require('../../utils/validation');
 
 
 //delete comment
@@ -172,10 +172,22 @@ router.get('/:songId', async (req, res, next) => {
 })
 
 //Get all songs
-router.get('/', async (req, res) => {
-    const songs = await Song.findAll()
+router.get('/', validatePagination ,async (req, res) => {
+    let { page, size } = req.query
 
-    res.json({Songs: songs})
+    if (!size) size = 20
+    if (!page) page = 0
+
+    page = parseInt(page);
+    size = parseInt(size);
+
+    const songs = await Song.findAll({...pagination(page, size)})
+
+    res.json({
+        Songs: songs,
+        page,
+        size,
+    })
 })
 
 
