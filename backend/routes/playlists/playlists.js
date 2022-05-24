@@ -122,7 +122,7 @@ router.put('/:playlistId', requireAuth, playlistValidator, restoreUser, async (r
 
 
 //Get all playlists
-router.get('/', requireAuth, validatePagination, async (req, res, next) => {
+router.get('/', validatePagination, async (req, res, next) => {
     let { page, size } = req.query
 
     if (!size) size = 20
