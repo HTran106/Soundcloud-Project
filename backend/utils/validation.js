@@ -50,11 +50,11 @@ const validatePagination = [
   check('page')
     .isInt({ min: 0})
     .optional({nullable: true})
-    .withMessage('Invalid page parameter'),
+    .withMessage('Invalid page parameter, must be a number and greater than 0'),
   check('size')
     .isInt({min: 0})
     .optional({nullable: true})
-    .withMessage('Invalid size parameter'),
+    .withMessage('Invalid size parameter, must be a number and greater than 0'),
     handleValidationErrors
 ]
 

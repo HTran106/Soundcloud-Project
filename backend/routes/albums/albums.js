@@ -125,20 +125,27 @@ router.post('/:albumId', requireAuth, songValidator, restoreUser, async (req, re
 router.get('/', validatePagination ,async (req, res) => {
     let { page, size } = req.query
 
+    if (!size) size = 20
+    if (!page) page = 0
+
+
     page = parseInt(page);
     size = parseInt(size);
 
     page > 10 ? page = 0 : page = page
     size > 20 ? size = 20 : size = size
-
-    const pagination = {}
+    const pagination = {};
     pagination.limit = size
     pagination.offset = size * (page - 1)
 
 
     const allAlbums = await Album.findAll({...pagination})
 
-    res.json({Albums: allAlbums})
+    res.json({
+        Albums: allAlbums,
+        page,
+        size,
+    })
 })
 
 
