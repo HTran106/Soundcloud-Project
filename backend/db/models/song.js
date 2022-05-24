@@ -11,10 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      const playlistsSongMap = {
+        foreignKey: 'songId',
+        otherKey: 'playlistId',
+        through: 'PlaylistSong'
+      }
       Song.hasMany(models.Comment, { foreignKey: 'songId' })
       Song.belongsTo(models.Album, { foreignKey: 'albumId' })
       Song.belongsTo(models.User, { foreignKey: 'userId', as: 'Artist' })
-      Song.belongsToMany(models.Playlist, { through: models.PlaylistSong })
+      Song.belongsToMany(models.Playlist, playlistsSongMap)
     }
   }
   Song.init({
