@@ -50,9 +50,7 @@ router.get('/:userId/songs', async (req, res, next) => {
         })
 
         res.json({
-            Songs: allSongs,
-            page,
-            size,
+            Songs: allSongs
         })
     } else {
         doesNotExist(next, 'Artist')

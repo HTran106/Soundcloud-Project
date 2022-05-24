@@ -116,9 +116,7 @@ router.get('/:songId/comments', async (req, res, next) => {
         })
 
         res.json({
-            Comments: comment,
-            page,
-            size
+            Comments: comment
         })
 
     } else {
