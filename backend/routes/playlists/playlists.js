@@ -125,16 +125,20 @@ router.put('/:playlistId', requireAuth, playlistValidator, restoreUser, async (r
 router.get('/', requireAuth, validatePagination, async (req, res, next) => {
     let { page, size } = req.query
 
+    if (!size) size = 20
+    if (!page) page = 0
+
+
     page = parseInt(page);
     size = parseInt(size);
 
     page > 10 ? page = 0 : page = page
     size > 20 ? size = 20 : size = size
+    const pagination = {};
+    pagination.limit = size
+    pagination.offset = size * (page - 1)
 
-    const allPlaylist = await Playlist.findAll({
-        limit: size,
-        offset: size * (page - 1)
-    })
+    const allPlaylist = await Playlist.findAll({...pagination})
 
     res.json({
         Playlists: allPlaylist,
