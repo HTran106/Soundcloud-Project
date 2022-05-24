@@ -123,23 +123,10 @@ router.post('/:albumId', requireAuth, songValidator, restoreUser, async (req, re
 
 //Get all Albums
 router.get('/', async (req, res) => {
-    let { page, size } = req.query
-
-    if (!size) size = 20
-    if (!page) page = 1
-
-    page = parseInt(page);
-    size = parseInt(size);
-
-    page > 10 ? page = 1 : page = page
-    size > 20 ? size = 20 : size = size
-
-    const allAlbums = await Album.findAll({...pagination(page, size)})
+    const allAlbums = await Album.findAll()
 
     res.json({
-        Albums: allAlbums,
-        page,
-        size,
+        Albums: allAlbums
     })
 })
 
