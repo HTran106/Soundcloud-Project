@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 const { requireAuth, restoreUser, unauthorized, doesNotExist } = require('../../utils/auth');
 const { Song, Playlist, PlaylistSong } = require('../../db/models');
-const { playlistValidator } = require('../../utils/validation');
+const { playlistValidator, validatePagination } = require('../../utils/validation');
 
 
 
@@ -120,6 +120,28 @@ router.put('/:playlistId', requireAuth, playlistValidator, restoreUser, async (r
     }
 })
 
+
+//Get all playlists
+router.get('/', requireAuth, validatePagination, async (req, res, next) => {
+    let { page, size } = req.query
+
+    page = parseInt(page);
+    size = parseInt(size);
+
+    page > 10 ? page = 0 : page = page
+    size > 20 ? size = 20 : size = size
+
+    const allPlaylist = await Playlist.findAll({
+        limit: size,
+        offset: size * (page - 1)
+    })
+
+    res.json({
+        Playlists: allPlaylist,
+        page,
+        size
+    })
+})
 
 
 module.exports = router

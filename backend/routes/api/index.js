@@ -4,37 +4,15 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const { setTokenCookie } = require('../../utils/auth.js');
 const { User, Song } = require('../../db/models');
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
+const { validateSearchQuery } = require('../../utils/validation');
 
 router.use(sessionRouter);
 router.use('/users', usersRouter);
 
 
-const validateQuery = [
-  check('page')
-    .isInt({ min: 0})
-    .optional({nullable: true})
-    .withMessage('Page must be greater than or equal to 0'),
-  check('size')
-    .isInt({ min: 0})
-    .optional({nullable: true})
-    .withMessage('Size must be greater than or equal to 0'),
-  check('createdAt')
-    .isDate()
-    .optional({nullable: true})
-    .withMessage('CreatedAt is invalid'),
-  check('updatedAt')
-    .isDate()
-    .optional({nullable: true})
-    .withMessage('UpdatedAt is invalid'),
-  handleValidationErrors
-]
-
-
 
 //Search query route
-router.get('/search', validateQuery, async (req, res, next) => {
+router.get('/search', validateSearchQuery, async (req, res, next) => {
   let { page, size, title, createdAt } = req.query;
 
   page = parseInt(page);

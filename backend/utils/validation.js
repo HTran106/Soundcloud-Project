@@ -26,6 +26,38 @@ const handleValidationErrors = (req, _res, next) => {
   next();
 };
 
+const validateSearchQuery = [
+  check('page')
+    .isInt({ min: 0})
+    .optional({nullable: true})
+    .withMessage('Page must be greater than or equal to 0'),
+  check('size')
+    .isInt({ min: 0})
+    .optional({nullable: true})
+    .withMessage('Size must be greater than or equal to 0'),
+  check('createdAt')
+    .isDate()
+    .optional({nullable: true})
+    .withMessage('CreatedAt is invalid'),
+  check('updatedAt')
+    .isDate()
+    .optional({nullable: true})
+    .withMessage('UpdatedAt is invalid'),
+  handleValidationErrors
+]
+
+const validatePagination = [
+  check('page')
+    .isInt({ min: 0})
+    .optional({nullable: true})
+    .withMessage('Invalid page parameter'),
+  check('size')
+    .isInt({min: 0})
+    .optional({nullable: true})
+    .withMessage('Invalid size parameter'),
+    handleValidationErrors
+]
+
 const songValidator = [
     check('url')
       .exists({ checkFalsy: true })
@@ -63,10 +95,14 @@ const playlistValidator = [
       handleValidationErrors
 ]
 
+
+
 module.exports = {
   handleValidationErrors,
   songValidator,
   albumValidator,
   commentValidator,
-  playlistValidator
+  playlistValidator,
+  validateSearchQuery,
+  validatePagination
 };
