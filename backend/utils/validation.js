@@ -50,11 +50,11 @@ const validatePagination = [
   check('page')
     .isInt({ min: 0})
     .optional({nullable: true})
-    .withMessage('Invalid page parameter'),
+    .withMessage('Invalid page parameter, must be a number and greater than 0'),
   check('size')
     .isInt({min: 0})
     .optional({nullable: true})
-    .withMessage('Invalid size parameter'),
+    .withMessage('Invalid size parameter, must be a number and greater than 0'),
     handleValidationErrors
 ]
 
@@ -95,6 +95,19 @@ const playlistValidator = [
       handleValidationErrors
 ]
 
+const pagination = (page, size) => {
+    page = parseInt(page);
+    size = parseInt(size);
+
+    page > 10 ? page = 0 : page = page
+    size > 20 ? size = 20 : size = size
+
+    const pagination = {};
+    pagination.limit = size
+    pagination.offset = size * (page - 1)
+
+    return pagination
+}
 
 
 module.exports = {
@@ -104,5 +117,6 @@ module.exports = {
   commentValidator,
   playlistValidator,
   validateSearchQuery,
-  validatePagination
+  validatePagination,
+  pagination,
 };

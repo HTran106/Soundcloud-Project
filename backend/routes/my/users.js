@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 const { requireAuth, restoreUser } = require('../../utils/auth');
 const { Song, Album, Playlist } = require('../../db/models');
+const { pagination, validatePagination } = require('../../utils/validation');
 
 
 
@@ -43,16 +44,28 @@ router.get('/info', requireAuth, restoreUser, async (req, res) => {
 })
 
 //Get playlist created by current user
-router.get('/playlists', requireAuth, restoreUser, async (req, res) => {
+router.get('/playlists', requireAuth, validatePagination, restoreUser, async (req, res) => {
   const { user } = req;
+  let { page, size } = req.query
+
+  if (!size) size = 20
+  if (!page) page = 0
+
+  page = parseInt(page);
+  size = parseInt(size);
 
   const playlist = await Playlist.findAll({
     where: {
       userId: user.id
-    }
+    },
+    ...pagination(page, size)
   })
 
-  res.json({ Playlists: playlist })
+  res.json({
+    Playlists: playlist,
+    page,
+    size,
+  })
 })
 
 module.exports = router

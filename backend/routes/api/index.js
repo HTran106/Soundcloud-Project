@@ -4,7 +4,7 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const { setTokenCookie } = require('../../utils/auth.js');
 const { User, Song } = require('../../db/models');
-const { validateSearchQuery } = require('../../utils/validation');
+const { validateSearchQuery, pagination } = require('../../utils/validation');
 
 router.use(sessionRouter);
 router.use('/users', usersRouter);
@@ -15,12 +15,11 @@ router.use('/users', usersRouter);
 router.get('/search', validateSearchQuery, async (req, res, next) => {
   let { page, size, title, createdAt } = req.query;
 
+  if (!size) size = 20
+  if (!page) page = 0
+
   page = parseInt(page);
   size = parseInt(size);
-
-  page > 10 ? page = 0 : page = page
-  size > 20 ? size = 20 : size = size
-
 
   let where = {}
   if (title) where.title = title
@@ -28,8 +27,7 @@ router.get('/search', validateSearchQuery, async (req, res, next) => {
 
   let songs = await Song.findAll({
     where: {...where},
-    limit: size,
-    offset: size * (page - 1)
+    ...pagination(page, size)
   })
 
 

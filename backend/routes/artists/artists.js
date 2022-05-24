@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const { doesNotExist } = require('../../utils/auth');
+const { validatePagination, pagination } = require('../../utils/validation')
 const { User, Song, Album, Playlist } = require('../../db/models');
 
 
@@ -22,33 +23,62 @@ router.get('/:userId/playlists', async (req, res, next) => {
 
 
 //Get all albums of an artist based on the artist ID
-router.get('/:userId/albums', async (req, res, next) => {
+router.get('/:userId/albums', validatePagination, async (req, res, next) => {
     const { userId } = req.params;
+    let { page, size } = req.query
+
+    if (!size) size = 20
+    if (!page) page = 0
+
+    page = parseInt(page);
+    size = parseInt(size);
 
     const artist = await User.findByPk(userId)
 
     if (artist) {
-        const albums = await Album.findAll({where: { userId, }})
-        res.json({ Albums: albums })
+        const albums = await Album.findAll({where: { userId, }, ...pagination(page, size)})
+        res.json({
+            Albums: albums,
+            page,
+            size,
+        })
     } else {
         doesNotExist(next, 'Artist')
     }
 })
 
 //Get all Songs of an artist based on ID
-router.get('/:userId/songs', async (req, res, next) => {
+router.get('/:userId/songs', validatePagination, async (req, res, next) => {
     const { userId } = req.params;
+    let { page, size } = req.query
+
+        if (!size) size = 20
+        if (!page) page = 0
+
+        page = parseInt(page);
+        size = parseInt(size);
+
+        page > 10 ? page = 0 : page = page
+        size > 20 ? size = 20 : size = size
+
+        const pagination = {};
+        pagination.limit = size
+        pagination.offset = size * (page - 1)
 
 
     const artist = await User.findByPk(userId)
 
-
     if (artist) {
         const allSongs = await Song.findAll({
-            where: {userId,}
+            where: {userId,},
+            ...pagination
         })
 
-        res.json({ Songs: allSongs})
+        res.json({
+            Songs: allSongs,
+            page,
+            size,
+        })
     } else {
         doesNotExist(next, 'Artist')
     }

@@ -3,7 +3,7 @@ const { check } = require('express-validator')
 const router = express.Router();
 const { unauthorized, requireAuth, restoreUser, doesNotExist } = require('../../utils/auth');
 const { User, Song, Album } = require('../../db/models');
-const { songValidator, albumValidator } = require('../../utils/validation');
+const { songValidator, albumValidator, validatePagination, pagination } = require('../../utils/validation');
 
 
 //Delete album by albumId
@@ -122,10 +122,22 @@ router.post('/:albumId', requireAuth, songValidator, restoreUser, async (req, re
 })
 
 //Get all Albums
-router.get('/', async (req, res) => {
-    const allAlbums = await Album.findAll()
+router.get('/', validatePagination ,async (req, res) => {
+    let { page, size } = req.query
 
-    res.json({Albums: allAlbums})
+    if (!size) size = 20
+    if (!page) page = 0
+
+    page = parseInt(page);
+    size = parseInt(size);
+
+    const allAlbums = await Album.findAll({...pagination(page, size)})
+
+    res.json({
+        Albums: allAlbums,
+        page,
+        size,
+    })
 })
 
 
