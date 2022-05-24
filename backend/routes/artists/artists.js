@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const { doesNotExist } = require('../../utils/auth');
-const { validatePagination } = require('../../utils/validation')
+const { validatePagination, pagination } = require('../../utils/validation')
 const { User, Song, Album, Playlist } = require('../../db/models');
 
 
@@ -30,21 +30,13 @@ router.get('/:userId/albums', validatePagination, async (req, res, next) => {
     if (!size) size = 20
     if (!page) page = 0
 
-
     page = parseInt(page);
     size = parseInt(size);
-
-    page > 10 ? page = 0 : page = page
-    size > 20 ? size = 20 : size = size
-
-    const pagination = {};
-    pagination.limit = size
-    pagination.offset = size * (page - 1)
 
     const artist = await User.findByPk(userId)
 
     if (artist) {
-        const albums = await Album.findAll({where: { userId, }, ...pagination})
+        const albums = await Album.findAll({where: { userId, }, ...pagination(page, size)})
         res.json({
             Albums: albums,
             page,
