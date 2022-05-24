@@ -21,13 +21,22 @@ router.get('/search', validateSearchQuery, async (req, res, next) => {
   page = parseInt(page);
   size = parseInt(size);
 
+  page > 10 ? page = 0 : page = page
+  size > 20 ? size = 20 : size = size
+
+  let pagination = {}
+  if (page >= 1 && size) {
+    pagination.limit = size
+    pagination.offset = size * (page - 1)
+  }
+
   let where = {}
   if (title) where.title = title
   if (createdAt) where.createdAt = createdAt
 
   let songs = await Song.findAll({
     where: {...where},
-    ...pagination(page, size)
+    ...pagination
   })
 
 
