@@ -102,16 +102,6 @@ router.post('/:songId', requireAuth, commentValidator, restoreUser, async (req, 
 //Get all comments by songId
 router.get('/:songId/comments', async (req, res, next) => {
     const { songId } = req.params;
-    let { page, size } = req.query
-
-    if (!size) size = 20
-    if (!page) page = 1
-
-    page = parseInt(page);
-    size = parseInt(size);
-
-    page > 10 ? page = 1 : page = page
-    size > 20 ? size = 20 : size = size
 
     const song = await Song.findByPk(songId)
 
@@ -122,8 +112,7 @@ router.get('/:songId/comments', async (req, res, next) => {
             include: {
                 model: User,
                 attributes: ['id', 'username']
-            },
-            ...pagination(page, size)
+            }
         })
 
         res.json({
@@ -184,24 +173,11 @@ router.get('/:songId', async (req, res, next) => {
 })
 
 //Get all songs
-router.get('/', validatePagination ,async (req, res) => {
-    let { page, size } = req.query
-
-    if (!size) size = 20
-    if (!page) page = 1
-
-    page = parseInt(page);
-    size = parseInt(size);
-
-    page > 10 ? page = 1 : page = page
-    size > 20 ? size = 20 : size = size
-
-    const songs = await Song.findAll({...pagination(page, size)})
+router.get('/', async (req, res) => {
+    const songs = await Song.findAll()
 
     res.json({
         Songs: songs,
-        page:
-        size,
     })
 })
 

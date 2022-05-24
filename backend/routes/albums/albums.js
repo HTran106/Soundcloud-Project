@@ -122,7 +122,7 @@ router.post('/:albumId', requireAuth, songValidator, restoreUser, async (req, re
 })
 
 //Get all Albums
-router.get('/', validatePagination ,async (req, res) => {
+router.get('/', async (req, res) => {
     let { page, size } = req.query
 
     if (!size) size = 20

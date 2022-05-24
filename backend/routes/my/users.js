@@ -44,30 +44,17 @@ router.get('/info', requireAuth, restoreUser, async (req, res) => {
 })
 
 //Get playlist created by current user
-router.get('/playlists', requireAuth, validatePagination, restoreUser, async (req, res) => {
+router.get('/playlists', requireAuth, restoreUser, async (req, res) => {
   const { user } = req;
-  let { page, size } = req.query
-
-  if (!size) size = 20
-  if (!page) page = 1
-
-  page = parseInt(page);
-  size = parseInt(size);
-
-  page > 10 ? page = 1 : page = page
-  size > 20 ? size = 20 : size = size
 
   const playlist = await Playlist.findAll({
     where: {
       userId: user.id
-    },
-    ...pagination(page, size)
+    }
   })
 
   res.json({
-    Playlists: playlist,
-    page,
-    size,
+    Playlists: playlist
   })
 })
 
