@@ -42,7 +42,7 @@ const validateSignup = [
 
 
 
-//Sign up a user 
+//Sign up a user //////added test for amazon s3 to add image to previewImage
 router.post('/signup', singleMulterUpload("image") ,validateSignup, async (req, res, next) => {
 
   const { email, firstName, lastName, password, username } = req.body;
