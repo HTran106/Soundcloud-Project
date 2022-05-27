@@ -5,6 +5,7 @@ const usersRouter = require('./users.js');
 const { setTokenCookie } = require('../../utils/auth.js');
 const { User, Song } = require('../../db/models');
 const { validateSearchQuery, pagination } = require('../../utils/validation');
+const { Op } = require('sequelize')
 
 router.use(sessionRouter);
 router.use('/users', usersRouter);
@@ -25,7 +26,7 @@ router.get('/search', validateSearchQuery, async (req, res, next) => {
   size > 20 ? size = 20 : size = size
 
   let where = {}
-  if (title) where.title = title
+  if (title) where.title = { [Op.like]: '%' + title + '%' }
   if (createdAt) where.createdAt = createdAt
 
   let songs = await Song.findAll({
