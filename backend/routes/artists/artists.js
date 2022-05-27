@@ -8,6 +8,7 @@ const { User, Song, Album, Playlist, sequelize } = require('../../db/models');
 
 
 
+
 //Get all playlists of an artist based on ID
 router.get('/:userId/playlists', validatePagination ,async (req, res, next) => {
     const { userId } = req.params;
@@ -108,29 +109,22 @@ router.get('/:userId/songs', validatePagination ,async (req, res, next) => {
 router.get('/:userId', async (req, res, next) => {
     const { userId } = req.params;
 
+    const totalSongs = await Song.count({where: {userId,}})
+    const totalAlbums = await Album.count({where: {userId,}})
+
     const artist = await User.findByPk(userId, {
-        include: [
-            {
-                model: Song,
-                attributes: []
-            },
-            {
-                model: Album,
-                attributes: []
-            }
-        ],
-        attributes: [
-            ['id', 'id'],
-            ['username', 'username'],
-            [sequelize.fn('COUNT', sequelize.col('Songs.id')), 'totalSongs'],
-            [sequelize.fn('COUNT', sequelize.col('Albums.id')), 'totalAlbums'],
-            ['previewImage', 'previewImage']
-        ],
-        group: ['User.id']
+        attributes: ['id', 'username', 'previewImage']
     })
 
+
     if (artist) {
-        res.json(artist)
+        res.json({
+            id: artist.id,
+            username: artist.username,
+            totalSongs,
+            totalAlbums,
+            previewImage: artist.previewImage
+        })
     } else {
         doesNotExist(next, 'Artist')
     }

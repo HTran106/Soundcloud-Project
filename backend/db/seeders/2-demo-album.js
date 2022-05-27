@@ -20,14 +20,33 @@ module.exports = {
         title: 'Pop Album',
         description: 'Best Pop music',
         previewImage: 'www.albumPreviewImageTEST.com'
-      }
+      },
+      {
+        userId: 1,
+        title: 'Album 4',
+        description: 'Best Pop music',
+        previewImage: 'www.albumPreviewImageTEST.com'
+      },
+      {
+        userId: 2,
+        title: 'Album 5',
+        description: 'Best Pop music',
+        previewImage: 'www.albumPreviewImageTEST.com'
+      },
+      {
+        userId: 2,
+        title: 'Album 6',
+        description: 'Best Pop music',
+        previewImage: 'www.albumPreviewImageTEST.com'
+      },
+
     ], {});
   },
 
   async down (queryInterface, Sequelize) {
     const Op = Sequelize.Op;
     await queryInterface.bulkDelete('Albums', {
-      title: { [Op.in]: ['Wonderland', 'Hip-hop Album', 'Pop Album']}
+      title: { [Op.in]: ['Wonderland', 'Hip-hop Album', 'Pop Album', 'Album 4', 'Album 5', 'Album 6']}
     })
   }
 };
