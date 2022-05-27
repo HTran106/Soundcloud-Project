@@ -3,6 +3,7 @@ const router = express.Router();
 const { doesNotExist } = require('../../utils/auth');
 const { validatePagination, pagination } = require('../../utils/validation')
 const { User, Song, Album, Playlist } = require('../../db/models');
+const sequelize = require('sequelize')
 
 
 
@@ -124,7 +125,8 @@ router.get('/:userId', async (req, res, next) => {
             [sequelize.fn('COUNT', sequelize.col('Songs.id')), 'totalSongs'],
             [sequelize.fn('COUNT', sequelize.col('Albums.id')), 'totalAlbums'],
             ['previewImage', 'previewImage']
-        ]
+        ],
+        group: ['User.id']
     })
 
     if (artist) {

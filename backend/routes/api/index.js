@@ -8,6 +8,7 @@ const { validateSearchQuery, pagination } = require('../../utils/validation');
 const { environment } = require('../../config');
 const isProduction = environment === 'production';
 
+
 router.use(sessionRouter);
 router.use('/users', usersRouter);
 
