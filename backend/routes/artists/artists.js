@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 const { doesNotExist } = require('../../utils/auth');
 const { validatePagination, pagination } = require('../../utils/validation')
-const { User, Song, Album, Playlist } = require('../../db/models');
+const { User, Song, Album, Playlist, sequelize } = require('../../db/models');
 
 
 
