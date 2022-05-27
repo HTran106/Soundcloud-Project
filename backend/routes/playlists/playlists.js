@@ -137,7 +137,9 @@ router.get('/', validatePagination ,async (req, res, next) => {
     const allPlaylist = await Playlist.findAll({...pagination(page, size)})
 
     res.json({
-        Playlists: allPlaylist
+        Playlists: allPlaylist,
+        page,
+        size,
     })
 })
 
