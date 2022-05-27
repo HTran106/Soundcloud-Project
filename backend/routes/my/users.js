@@ -8,7 +8,7 @@ const { pagination, validatePagination } = require('../../utils/validation');
 
 
 //Get all Albums created by the Current User
-router.get('/albums', requireAuth, restoreUser, async (req, res) => {
+router.get('/albums', validatePagination ,requireAuth, restoreUser, async (req, res) => {
   const { user } = req;
   let { page, size } = req.query;
 
@@ -36,7 +36,7 @@ router.get('/albums', requireAuth, restoreUser, async (req, res) => {
 })
 
 //Get all Songs created by current User
-router.get('/songs', requireAuth, restoreUser, async (req, res) => {
+router.get('/songs',validatePagination ,requireAuth, restoreUser, async (req, res) => {
   const { user } = req;
   let { page, size } = req.query;
 
@@ -74,17 +74,30 @@ router.get('/info', requireAuth, restoreUser, async (req, res) => {
 })
 
 //Get playlist created by current user
-router.get('/playlists', requireAuth, restoreUser, async (req, res) => {
+router.get('/playlists', validatePagination ,requireAuth, restoreUser, async (req, res) => {
   const { user } = req;
+  let { page, size } = req.query;
+
+  if (!size) size = 20
+  if (!page) page = 0
+
+  page = parseInt(page);
+  size = parseInt(size);
+
+  page > 10 ? page = 0 : page = page
+  size > 20 ? size = 20 : size = size
 
   const playlist = await Playlist.findAll({
     where: {
-      userId: user.id
+      userId: user.id,
+      ...pagination(page, size)
     }
   })
 
   res.json({
-    Playlists: playlist
+    Playlists: playlist,
+    page,
+    size
   })
 })
 
