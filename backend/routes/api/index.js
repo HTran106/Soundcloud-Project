@@ -9,6 +9,7 @@ const { Op } = require('sequelize')
 const { environment } = require('../../config');
 const isProduction = environment === 'production';
 
+
 router.use(sessionRouter);
 router.use('/users', usersRouter);
 
