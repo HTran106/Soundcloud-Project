@@ -123,6 +123,8 @@ router.post('/:albumId', requireAuth, songValidator, restoreUser, async (req, re
 
 //Get all Albums
 router.get('/', async (req, res) => {
+    const { page, size } = req.body;
+
     const allAlbums = await Album.findAll()
 
     res.json({
