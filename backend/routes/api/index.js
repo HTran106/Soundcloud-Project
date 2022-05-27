@@ -26,7 +26,7 @@ router.get('/search', validateSearchQuery, async (req, res, next) => {
   size > 20 ? size = 20 : size = size
 
   let where = {}
-  if (title) where.title = { [Op.like]: '%' + title + '%' }
+  if (title) where.title = { [Op.like]: `%${title}%` }
   if (createdAt) where.createdAt = createdAt
 
   let songs = await Song.findAll({
