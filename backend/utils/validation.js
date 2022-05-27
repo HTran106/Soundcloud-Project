@@ -96,16 +96,14 @@ const playlistValidator = [
 ]
 
 const pagination = (page, size) => {
-    page = parseInt(page);
-    size = parseInt(size);
-
-    page > 10 ? page = 0 : page = page
-    size > 20 ? size = 20 : size = size
-
-    const pagination = {};
-    pagination.limit = size
-    pagination.offset = size * (page - 1)
-
+    let pagination = {}
+    
+    if (page > 0) {
+      pagination.limit = size
+      pagination.offset = size * (page - 1)
+    } else {
+      pagination.limit = size
+    }
     return pagination
 }
 
