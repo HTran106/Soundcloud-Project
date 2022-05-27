@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/HTran106/Soundcloud-Project/issues"
   },
-  "homepage": "https://github.com/HTran106/Soundcloud-Project#readme"
+  "homepage": "https://github.com/HTran106/Soundcloud-Project#readme",
+  "dependencies": {
+    "multer": "^1.4.4"
+  }
 }
