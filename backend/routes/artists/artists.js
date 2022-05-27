@@ -107,25 +107,28 @@ router.get('/:userId/songs', validatePagination ,async (req, res, next) => {
 router.get('/:userId', async (req, res, next) => {
     const { userId } = req.params;
 
-    const totalSongs = await Song.count({where: {
-        userId,
-    }})
-    const totalAlbums = await Album.count({where: {
-        userId,
-    }})
-
     const artist = await User.findByPk(userId, {
-        attributes: ['id', 'username', 'previewImage'],
+        include: [
+            {
+                model: Song,
+                attributes: []
+            },
+            {
+                model: Album,
+                attributes: []
+            }
+        ],
+        attributes: [
+            ['id', 'id'],
+            ['username', 'username'],
+            [sequelize.fn('COUNT', sequelize.col('Songs.id')), 'totalSongs'],
+            [sequelize.fn('COUNT', sequelize.col('Albums.id')), 'totalAlbums'],
+            ['previewImage', 'previewImage']
+        ]
     })
 
     if (artist) {
-        res.json({
-            id: artist.id,
-            username: artist.username,
-            totalSongs,
-            totalAlbums,
-            previewImage: artist.previewImage
-        })
+        res.json(artist)
     } else {
         doesNotExist(next, 'Artist')
     }
