@@ -50,13 +50,6 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {/* {isLoaded && (
-        <Switch>
-          <Route path="/users/signup">
-            <SignupFormPage />
-          </Route>
-        </Switch>
-      )} */}
     </>
   );
 }
