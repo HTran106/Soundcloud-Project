@@ -26,12 +26,12 @@ if (process.env.NODE_ENV === 'production') {
     );
   });
 
-  if (process.env.NODE_ENV !== 'production') {
-  router.get('/api/csrf/restore', (req, res) => {
-    res.cookie('XSRF-TOKEN', req.csrfToken());
-    return res.status(201).json({});
-  });
-}
+//   if (process.env.NODE_ENV !== 'production') {
+//   router.get('/api/csrf/restore', (req, res) => {
+//     res.cookie('XSRF-TOKEN', req.csrfToken());
+//     return res.status(201).json({});
+//   });
+// }
 
   // Serve the static assets in the frontend's build folder
   router.use(express.static(path.resolve("../frontend/build")));
@@ -45,13 +45,20 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-router.get("/api/csrf/restore", (req, res) => {
-  const csrfToken = req.csrfToken();
-  res.cookie("XSRF-TOKEN", csrfToken);
-  res.status(200).json({
-    'XSRF-Token': csrfToken
+if (process.env.NODE_ENV !== 'production') {
+  router.get('/api/csrf/restore', (req, res) => {
+    res.cookie('XSRF-TOKEN', req.csrfToken());
+    return res.status(201).json({});
   });
-});
+}
+
+// router.get("/api/csrf/restore", (req, res) => {
+//   const csrfToken = req.csrfToken();
+//   res.cookie("XSRF-TOKEN", csrfToken);
+//   res.status(200).json({
+//     'XSRF-Token': csrfToken
+//   });
+// });
 
 
 
