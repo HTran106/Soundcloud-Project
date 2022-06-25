@@ -44,7 +44,7 @@ function SignupForm() {
       <form onSubmit={handleSubmit}>
         <ul>
 
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          {errors.map((error, idx) => <li className="errors-list" key={idx}>{error}</li>)}
             {/* hasSubmitted && errors.map((error, i) => <li key={i}>{error}</li>) */}
 
         </ul>

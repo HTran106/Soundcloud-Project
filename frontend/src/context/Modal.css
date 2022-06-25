@@ -22,10 +22,8 @@
 }
 
 #modal-content {
-    display: inline-block;
+    display: flexbox;
     width: 400px;
-    height: 515px;
-    margin: 76px 0 30px;
     padding: 16px;
     border: 1px solid lightgrey;
     border-radius: 4px;
