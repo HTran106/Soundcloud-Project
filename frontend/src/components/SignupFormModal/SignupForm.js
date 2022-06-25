@@ -33,65 +33,54 @@ function SignupForm() {
 
   return (
     <div className="form-container">
+      <h1>Create your SoundCloud account</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <label>
-          First Name
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            placeholder="First name"
             required
           />
-        </label>
-        <label>
-          Last Name
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            placeholder="Last name"
             required
           />
-        </label>
-        <label>
-          Email
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
             required
           />
-        </label>
-        <label>
-          Username
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
             required
           />
-        </label>
-        <label>
-          Password
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder='Password'
             required
           />
-        </label>
-        <label>
-          Confirm Password
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="Confirm Password"
             required
           />
-        </label>
-        <button className="signup-button" type="submit">Sign Up</button>
+        <button className="signup-button" type="submit">Sign up</button>
       </form>
     </div>
   );
