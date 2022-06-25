@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
@@ -14,21 +14,29 @@ function SignupForm() {
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
+  const history = useHistory()
+
 
   if (sessionUser) return <Redirect to="/" />;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    setErrors([]);
     e.preventDefault();
-    if (password.length < 6) return setErrors(["Password must be longer than 6 characters"])
+    if (password.length < 6) setErrors([...errors, "Password must be longer than 6 characters"])
     if (password === confirmPassword) {
-      setErrors([]);
-      return dispatch(sessionActions.signup({ firstName, lastName, email, username, password }))
+      await dispatch(sessionActions.signup({ firstName, lastName, email, username, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
         });
+    } else {
+      setErrors([...errors, 'Confirm Password field must be the same as the Password field']);
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+
+  if (errors.length === 0) {
+    history.push('/')
+  }
+
   };
 
   return (
