@@ -21,12 +21,13 @@ function SignupForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setErrors([]);
 
     if (password !== confirmPassword) setErrors(['Confirm Password field must be the same as the Password field'])
 
     if (!errors.length) {
-      const result =  await dispatch(
+      const result = await dispatch(
         sessionActions.signup({ firstName, lastName, email, username, password })
       )
 
@@ -43,10 +44,7 @@ function SignupForm() {
       <h1>Create your SoundCloud account</h1>
       <form onSubmit={handleSubmit}>
         <ul>
-
-          {errors.map((error, idx) => <li className="errors-list" key={idx}>{error}</li>)}
-            {/* hasSubmitted && errors.map((error, i) => <li key={i}>{error}</li>) */}
-
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
           <input
             type="text"
@@ -79,14 +77,14 @@ function SignupForm() {
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             placeholder='Password'
             required
           />
           <input
             type="password"
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={e => setConfirmPassword(e.target.value)}
             placeholder="Confirm Password"
             required
           />
