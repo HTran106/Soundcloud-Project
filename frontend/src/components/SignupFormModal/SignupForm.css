@@ -1,5 +1,6 @@
 .signup-button {
     background-color: #ff5501;
+    font-weight: 100;
     border-color: #ff5501;
     color: #fff;
     height: 30px;
@@ -11,10 +12,17 @@
     font-size: 14px;
     line-height: 20px;
     white-space: nowrap;
-    font-family: sans-serif;
     text-align: center;
     vertical-align: middle;
     box-sizing: border-box;
+    font-family: Interstate,
+            Lucida Grande,
+            Lucida Sans Unicode,
+            Lucida Sans,
+            Garuda,
+            Verdana,
+            Tahoma,
+            sans-serif;
 }
 
 .form-container {

@@ -17,19 +17,29 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <LoginFormModal />
-        <SignupFormModal />
+        <div className='login-button'>
+          <LoginFormModal />
+          </div>
+          <div className='create-account-button'>
+          <SignupFormModal />
+        </div>
+        <div className='for-creators-button'>
+          <button>For Creators</button>
+        </div>
       </>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <div className='banner-container'>
+      {isLoaded && sessionLinks}
+    </div>
+    // <ul>
+    //   <li>
+    //     {/* <NavLink exact to="/">Home</NavLink> */}
+    //     {isLoaded && sessionLinks}
+    //   </li>
+    // </ul>
   );
 }
 
