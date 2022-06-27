@@ -7,7 +7,7 @@
 }
 
 .create-account-button {
-    padding: 20px 5px 0px 5px;
+    padding: 20px 0px 0px 5px;
 }
 
 .create-account-button button {
@@ -23,7 +23,6 @@
     font-size: 14px;
     line-height: 20px;
     white-space: nowrap;
-    /* font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif; */
     font-weight: 100;
     text-align: center;
     vertical-align: initial;
@@ -32,11 +31,12 @@
     background-color: #f50;
     color: white;
     border-color: #f50;
-    font: sans-serif;
+    font: Arial;
+    font-family: sans-serif;
 }
 
 .login-button {
-    padding: 20px 0px 15px 5px;
+    padding: 20px 5px 15px 5px;
 }
 
 .login-button button {
@@ -53,7 +53,7 @@
         font-size: 14px;
         line-height: 20px;
         white-space: nowrap;
-        font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+        font-family: sans-serif;
         font-weight: 100;
         text-align: center;
         vertical-align: initial;
@@ -65,20 +65,19 @@
 
 .for-creators-button button {
     color: white;
-    font-family: Interstate,
-        Lucida Grande,
-        Lucida Sans Unicode,
-        Lucida Sans,
-        Garuda,
-        Verdana,
-        Tahoma,
-        sans-serif;
+    font-family: sans-serif;
     font-size: 14px;
     background-color: transparent;
-    box-shadow: 0px;
     border-color: transparent;
+    font-weight: 100;
 }
 
 .for-creators-button {
     padding: 20px 30px 15px 0px;
+}
+
+.banner-container .logo {
+    justify-self: start;;
+    width: 5px;
+    height: 20px;
 }
