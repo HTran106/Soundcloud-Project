@@ -163,10 +163,28 @@
 
 .profile-banner-container {
     display: flex;
-    background-color: rgb(61, 53, 53);
+    background-color: rgb(66, 62, 62);
     height: 43px;
 }
 
 .dropdown-container {
     display: flex;
+}
+
+.home-button-logo {
+    background-color: black;
+}
+
+.home-button {
+    display: flex;
+    font-family: sans-serif;
+    justify-content: space-around;
+    font-size: 14px;
+    font-weight: 100;
+    background-color: transparent;
+    color: white;
+    height: 43px;
+    width: 175px;
+    align-items: center;
+    border-color: black;
 }

@@ -6,6 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
 import SearchBarComponent from '../SearchBar';
+import HomeButton from './HomeButton';
 
 
 function Navigation({ isLoaded }){
@@ -16,6 +17,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <div className="profile-banner-container">
+          <HomeButton />
           <ProfileButton user={sessionUser} />
         </div>
       </>
