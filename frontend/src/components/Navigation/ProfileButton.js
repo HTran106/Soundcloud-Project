@@ -36,25 +36,25 @@ function ProfileButton({ user }) {
       {showMenu && (
         <div className="dropdown">
           <nav>
-            <li className="l1">
+            <li>
               <a href="/my/info">Profile</a>
             </li>
-            <li className="l2">
+            <li>
               <a>Likes</a>
             </li>
-            <li className="l3">
+            <li>
               <a>Stations</a>
             </li>
-            <li className="l4">
+            <li>
               <a>Who to follow</a>
             </li>
-            <li className="l5">
+            <li>
               <a>Try Pro</a>
             </li>
-            <li className="l6">
+            <li>
               <a>Tracks</a>
             </li>
-            <li className="l7">
+            <li>
               <a>Distribute</a>
             </li>
           </nav>

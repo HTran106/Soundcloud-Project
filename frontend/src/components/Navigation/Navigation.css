@@ -286,19 +286,13 @@
     flex-wrap: wrap;
     border: 1px solid lightgray;
     margin-top: 1px;
+    list-style-type: none;
 }
 
 .dropdown li {
     margin-left: 15px;
+    padding: 6px;
 }
-
-/* .dropdown button {
-    margin-left: -10px;
-    font-size: 12px;
-    background-color: transparent;
-    border-color: transparent;
-    font-family: sans-serif;
-} */
 
 .dropdown a {
     color: black;
@@ -307,10 +301,6 @@
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
-}
-
-.dropdown li {
-    padding: 6px;
 }
 
 .notification-button {
