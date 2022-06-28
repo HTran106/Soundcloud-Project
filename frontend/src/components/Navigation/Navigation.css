@@ -268,7 +268,7 @@
     background-color: transparent;
     font-family: sans-serif;
     color: #ccc;
-    width: 110px;
+    width: 135px;
     height: 43px;
     font-size: 14px;
     font-weight: 100;
@@ -279,4 +279,15 @@
 .profile-button span {
     margin-left: 5px;
     color: white;
+}
+
+.dropdown {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid lightgray;
+    margin-top: 1px;
+}
+
+.dropdown ul {
+    margin-left: -10px;
 }

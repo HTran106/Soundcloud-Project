@@ -52,7 +52,7 @@ function LoginForm() {
       </form>
       <form onSubmit={loginGuestUser}>
         <p className='or'>----------------or----------------</p>
-        <button className='login-button' type='submit'>Login as Guest</button>
+        <button className='login-guest-button' type='submit'>Login as Guest</button>
       </form>
     </>
   );
