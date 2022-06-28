@@ -220,7 +220,7 @@
 
 .mini-search-bar {
     display: flex;
-    width: 250px;
+    width: 600px;
     margin-top: 10px;
     margin-left: -5px;
     margin-right: -7px;
@@ -228,7 +228,7 @@
 }
 
 .mini-search-bar input{
-    width: 220px;
+    width: 600px;
     height: 30px;
     border-color: transparent;
 }
