@@ -50,8 +50,12 @@ function App() {
 
   return (
     <div className="page">
-      <Navigation isLoaded={isLoaded} />
-      <SearchBarComponent />
+      <Switch>
+        <Route exact path="/">
+          <Navigation isLoaded={isLoaded} />
+          <SearchBarComponent />
+        </Route>
+      </Switch>
     </div>
   );
 }

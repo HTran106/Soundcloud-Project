@@ -1,3 +1,29 @@
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
 .search-bar {
     background-color: #f2f2f2;
+    font-size: 16px;
+    color: #666;
+    font-family: sans-serif;
+    width: 600px;
+}
+
+#search-p {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.upload-own-button {
+    background-color: #f50;
+    color: white;
+    border: #f50;
+    border-radius: 5px;
+    font-family: sans-serif;
+    width: 170px;
+    height: 45px;
+    font-size: 16px;
 }
