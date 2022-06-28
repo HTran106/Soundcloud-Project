@@ -49,7 +49,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="page">
       <Navigation isLoaded={isLoaded} />
       <SearchBarComponent />
     </div>
