@@ -165,6 +165,7 @@
     display: flex;
     background-color: rgb(66, 62, 62);
     height: 43px;
+    justify-content: center;
 }
 
 .dropdown-container {
