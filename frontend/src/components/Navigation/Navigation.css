@@ -238,7 +238,7 @@
 }
 
 .upgrade-button {
-    border: 1px solid black;
+    border: transparent;
     background-color: transparent;
     font-family: sans-serif;
     color: #f50;
@@ -249,4 +249,34 @@
 
 .upgrade-button:hover {
     color: rgb(242, 133, 78);
+}
+
+.dropdown-container {
+    display: flex;
+    width: 200px;
+}
+.username-button {
+    display: flex;
+    width: 100px;
+}
+
+.avatar {
+    background-image: linear-gradient(135deg, #846170, #e6846e);
+}
+
+.profile-button {
+    background-color: transparent;
+    font-family: sans-serif;
+    color: #ccc;
+    width: 110px;
+    height: 43px;
+    font-size: 14px;
+    font-weight: 100;
+    border-color: transparent;
+    margin-top: -1px;
+}
+
+.profile-button span {
+    margin-left: 5px;
+    color: white;
 }

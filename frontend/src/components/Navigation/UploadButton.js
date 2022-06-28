@@ -1,6 +1,6 @@
 const UploadButton = () => {
     return (
-        <button className="library-button">Upload</button>
+        <button className="stream-button">Upload</button>
     )
 }
 

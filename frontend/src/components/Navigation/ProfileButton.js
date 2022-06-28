@@ -29,9 +29,10 @@ function ProfileButton({ user }) {
   };
 
   return (
-    <div className="dropdown-container">
-      <button onClick={openMenu} className="profile-circle">
+    <div>
+      <button onClick={openMenu} className="profile-button">
         {user.username}
+        <span>↓</span>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
