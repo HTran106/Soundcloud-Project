@@ -188,3 +188,17 @@
     align-items: center;
     border-color: black;
 }
+
+.stream-button {
+    background-color: transparent;
+    border-color: transparent;
+    font-family: sans-serif;
+    color: #ccc;
+    width: 100px;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.stream-button:hover {
+    color: rgb(247, 241, 241)
+}

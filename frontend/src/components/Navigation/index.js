@@ -7,6 +7,7 @@ import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
 import SearchBarComponent from '../SearchBar';
 import HomeButton from './HomeButton';
+import StreamButton from './StreamButton';
 
 
 function Navigation({ isLoaded }){
@@ -18,6 +19,7 @@ function Navigation({ isLoaded }){
       <>
         <div className="profile-banner-container">
           <HomeButton />
+          <StreamButton />
           <ProfileButton user={sessionUser} />
         </div>
       </>
