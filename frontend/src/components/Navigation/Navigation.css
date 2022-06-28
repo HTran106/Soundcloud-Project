@@ -159,5 +159,184 @@
     font-weight: 100;
     font-family: sans-serif;
     font-size: 16px;
+}
 
+.profile-banner-container {
+    display: flex;
+    background-color: rgb(66, 62, 62);
+    height: 43px;
+    justify-content: center;
+}
+
+.dropdown-container {
+    display: flex;
+}
+
+.home-button-logo {
+    background-color: black;
+}
+
+.home-button {
+    display: flex;
+    font-family: sans-serif;
+    justify-content: space-around;
+    font-size: 14px;
+    font-weight: 100;
+    background-color: transparent;
+    color: white;
+    height: 43px;
+    width: 175px;
+    align-items: center;
+    border-color: black;
+}
+
+.stream-button {
+    background-color: transparent;
+    border-color: transparent;
+    font-family: sans-serif;
+    color: #ccc;
+    width: 100px;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.stream-button:hover {
+    color: rgb(247, 241, 241)
+}
+
+.library-button {
+    background-color: transparent;
+    border: 1px solid black;
+    font-family: sans-serif;
+    color: #ccc;
+    width: 100px;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.library-button:hover {
+    color: rgb(247, 241, 241)
+}
+
+.mini-search-bar {
+    display: flex;
+    width: 600px;
+    margin-top: 10px;
+    margin-left: -5px;
+    margin-right: -7px;
+
+}
+
+.mini-search-bar input{
+    width: 600px;
+    height: 30px;
+    border-color: transparent;
+}
+
+.mini-search-bar button {
+    margin-top: -5px;
+}
+
+.upgrade-button {
+    border: transparent;
+    background-color: transparent;
+    font-family: sans-serif;
+    color: #f50;
+    width: 100px;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.upgrade-button:hover {
+    color: rgb(242, 133, 78);
+}
+
+.dropdown-container {
+    display: flex;
+    width: 200px;
+}
+.username-button {
+    display: flex;
+    width: 100px;
+}
+
+.avatar {
+    background-image: linear-gradient(135deg, #846170, #e6846e);
+}
+
+.profile-button {
+    background-color: transparent;
+    font-family: sans-serif;
+    color: #ccc;
+    width: 135px;
+    height: 43px;
+    font-size: 14px;
+    font-weight: 100;
+    border-color: transparent;
+    margin-top: -1px;
+}
+
+.profile-button span {
+    margin-left: 5px;
+    color: white;
+}
+
+.dropdown {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid lightgray;
+    margin-top: 1px;
+    list-style-type: none;
+}
+
+.dropdown li {
+    margin-left: 15px;
+    padding: 6px;
+}
+
+.dropdown a {
+    color: black;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.notification-button {
+    background: url(https://a-v2.sndcdn.com/assets/images/activities-66caaa5e.svg) 50% 50% no-repeat;
+    width: 50px;
+    border-color: transparent;
+}
+
+.messages-button {
+    background: url(https://a-v2.sndcdn.com/assets/images/messages-f517d0eb.svg) 50% 50% no-repeat;
+    width: 50px;
+    border-color: transparent;
+}
+
+.more-button {
+    background: url(https://a-v2.sndcdn.com/assets/images/more-0e9e752c.svg) 50% 50% no-repeat;
+    width: 50px;
+    border-color: transparent;
+    margin-top: 3px;
+    height: 37px;
+}
+
+.more-dropdown {
+    margin-left: -10px;
+    border: 1px solid lightgray;
+    margin-top: 2px;
+    font-family: sans-serif;
+    font-size: 12px;
+    margin-left: -100px;
+}
+
+.more-dropdown a {
+    cursor: pointer;
+    margin-left: -20px;
+}
+
+.more-dropdown li {
+    padding: 7px;
 }

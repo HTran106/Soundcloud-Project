@@ -39,7 +39,6 @@ import { Route, Switch } from "react-router-dom";
 import SignupForm from "./components/SignupFormModal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import SearchBarComponent from "./components/SearchBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,7 +52,6 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Navigation isLoaded={isLoaded} />
-          <SearchBarComponent />
         </Route>
       </Switch>
     </div>
