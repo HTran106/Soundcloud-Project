@@ -288,6 +288,65 @@
     margin-top: 1px;
 }
 
-.dropdown ul {
+.dropdown li {
+    margin-left: 15px;
+}
+
+/* .dropdown button {
     margin-left: -10px;
+    font-size: 12px;
+    background-color: transparent;
+    border-color: transparent;
+    font-family: sans-serif;
+} */
+
+.dropdown a {
+    color: black;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.dropdown li {
+    padding: 6px;
+}
+
+.notification-button {
+    background: url(https://a-v2.sndcdn.com/assets/images/activities-66caaa5e.svg) 50% 50% no-repeat;
+    width: 50px;
+    border-color: transparent;
+}
+
+.messages-button {
+    background: url(https://a-v2.sndcdn.com/assets/images/messages-f517d0eb.svg) 50% 50% no-repeat;
+    width: 50px;
+    border-color: transparent;
+}
+
+.more-button {
+    background: url(https://a-v2.sndcdn.com/assets/images/more-0e9e752c.svg) 50% 50% no-repeat;
+    width: 50px;
+    border-color: transparent;
+    margin-top: 3px;
+    height: 37px;
+}
+
+.more-dropdown {
+    margin-left: -10px;
+    border: 1px solid lightgray;
+    margin-top: 2px;
+    font-family: sans-serif;
+    font-size: 12px;
+    margin-left: -100px;
+}
+
+.more-dropdown a {
+    cursor: pointer;
+    margin-left: -20px;
+}
+
+.more-dropdown li {
+    padding: 7px;
 }

@@ -12,6 +12,9 @@ import LibraryButton from './LibraryButton';
 import SearchBar from './SearchBar';
 import UpgradeButton from './UpgradeButton';
 import UploadButton from './UploadButton';
+import NotificationButton from './NotificationButton';
+import MessagesButton from './MessagesButton';
+import MoreMenu from './MoreMenu';
 
 
 function Navigation({ isLoaded }){
@@ -29,6 +32,9 @@ function Navigation({ isLoaded }){
           <UpgradeButton />
           <UploadButton />
           <ProfileButton user={sessionUser} />
+          <NotificationButton />
+          <MessagesButton />
+          <MoreMenu />
         </div>
       </>
     );
