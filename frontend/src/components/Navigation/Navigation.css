@@ -121,6 +121,7 @@
     font-family: sans-serif;
     font-size: 36px;
     font-weight: 100;
+    margin-bottom: 20px;
 }
 
 .growing {
@@ -131,6 +132,7 @@
     flex-wrap: wrap;
     text-align: center;
     margin-top: -10px;
+    margin-bottom: 20px;
     font-weight: 100;
 }
 
