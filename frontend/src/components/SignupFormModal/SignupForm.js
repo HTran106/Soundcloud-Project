@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
@@ -14,84 +14,81 @@ function SignupForm() {
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
+  const [hasSubmitted, setHasSubmitted] = useState(false)
+  const history = useHistory()
 
   if (sessionUser) return <Redirect to="/" />;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password.length < 6) return setErrors(["Password must be longer than 6 characters"])
-    if (password === confirmPassword) {
-      setErrors([]);
-      return dispatch(sessionActions.signup({ firstName, lastName, email, username, password }))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+
+    setErrors([]);
+
+    if (password !== confirmPassword) setErrors(['Confirm Password field must be the same as the Password field'])
+
+    if (!errors.length) {
+      const result = await dispatch(
+        sessionActions.signup({ firstName, lastName, email, username, password })
+      )
+
+      if(result.id){
+        history.push('/')
+      } else {
+        setErrors(result)
+      }
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
   return (
     <div className="form-container">
+      <h1>Create your SoundCloud account</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <label>
-          First Name
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            placeholder="First name"
             required
           />
-        </label>
-        <label>
-          Last Name
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            placeholder="Last name"
             required
           />
-        </label>
-        <label>
-          Email
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
             required
           />
-        </label>
-        <label>
-          Username
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
             required
           />
-        </label>
-        <label>
-          Password
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
+            placeholder='Password'
             required
           />
-        </label>
-        <label>
-          Confirm Password
           <input
             type="password"
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={e => setConfirmPassword(e.target.value)}
+            placeholder="Confirm Password"
             required
           />
-        </label>
-        <button className="signup-button" type="submit">Sign Up</button>
+        <button className="signup-button" type="submit">Sign up</button>
       </form>
     </div>
   );
