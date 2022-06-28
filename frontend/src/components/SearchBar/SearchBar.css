@@ -29,6 +29,7 @@
     width: 170px;
     height: 46px;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .search-bar::placeholder {
