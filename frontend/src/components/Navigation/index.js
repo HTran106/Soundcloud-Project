@@ -11,6 +11,7 @@ import StreamButton from './StreamButton';
 import LibraryButton from './LibraryButton';
 import SearchBar from './SearchBar';
 import UpgradeButton from './UpgradeButton';
+import UploadButton from './UploadButton';
 
 
 function Navigation({ isLoaded }){
@@ -26,6 +27,7 @@ function Navigation({ isLoaded }){
           <LibraryButton />
           <SearchBar />
           <UpgradeButton />
+          <UploadButton />
           <ProfileButton user={sessionUser} />
         </div>
       </>
