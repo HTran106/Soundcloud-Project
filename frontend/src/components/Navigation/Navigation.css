@@ -159,5 +159,14 @@
     font-weight: 100;
     font-family: sans-serif;
     font-size: 16px;
+}
 
+.profile-banner-container {
+    display: flex;
+    background-color: rgb(61, 53, 53);
+    height: 43px;
+}
+
+.dropdown-container {
+    display: flex;
 }
