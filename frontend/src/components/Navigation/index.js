@@ -8,6 +8,8 @@ import SignupFormModal from '../SignupFormModal';
 import SearchBarComponent from '../SearchBar';
 import HomeButton from './HomeButton';
 import StreamButton from './StreamButton';
+import LibraryButton from './LibraryButton';
+import SearchBar from './SearchBar';
 
 
 function Navigation({ isLoaded }){
@@ -20,6 +22,8 @@ function Navigation({ isLoaded }){
         <div className="profile-banner-container">
           <HomeButton />
           <StreamButton />
+          <LibraryButton />
+          <SearchBar />
           <ProfileButton user={sessionUser} />
         </div>
       </>

@@ -202,3 +202,36 @@
 .stream-button:hover {
     color: rgb(247, 241, 241)
 }
+
+.library-button {
+    background-color: transparent;
+    border: 1px solid black;
+    font-family: sans-serif;
+    color: #ccc;
+    width: 100px;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.library-button:hover {
+    color: rgb(247, 241, 241)
+}
+
+.mini-search-bar {
+    display: flex;
+    width: 250px;
+    margin-top: 10px;
+    margin-left: -5px;
+    margin-right: -7px;
+
+}
+
+.mini-search-bar input{
+    width: 220px;
+    height: 30px;
+    border-color: transparent;
+}
+
+.mini-search-bar button {
+    margin-top: -5px;
+}
