@@ -1,16 +1,19 @@
 .banner-container {
-    margin: auto;
-    display: flex;
-    width: 90%;
-    height: 450px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
     background-image: url(https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_c-318d7eed.jpg);
-    background-size: auto;
+    background-size: cover;
+    height: 450px;
 }
 
 .buttons-container {
     display: flex;
+    flex-direction: row;
     justify-content: flex-end;
+    align-items: flex-start;
     width: 100%;
+    height: auto;
+    ;
 }
 
 .create-account-button {
@@ -86,16 +89,10 @@
 }
 
 .logo {
-    justify-self: start;;
-    width: 5px;
-    height: 20px;
-}
-
-.logo {
     display: flex;
     flex-direction: row;
     margin: 20px 25px;
-    justify-self: start;
+    align-items: flex-start;
     width: 5px;
     height: 20px;
 }
@@ -103,4 +100,62 @@
 .logo h4 {
     color: white;
     margin-top: 2px;
+}
+
+.logo-container {
+    display: flex;
+    width: auto;
+    height: auto;
+    justify-content: space-around;
+}
+
+.banner-words {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.discover {
+    font-family: sans-serif;
+    font-size: 36px;
+    font-weight: 100;
+}
+
+.growing {
+    display: flex;
+    font-family: sans-serif;
+    font-size: 18px;
+    width: 40%;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: -10px;
+    font-weight: 100;
+}
+
+.learn-more {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    font-family: sans-serif;
+    font-weight: 100;
+    width: 150px;
+    height: 46px;
+    margin-right: 25px;
+    font-size: 16px;
+}
+
+.trial {
+    background-color: #f50;
+    border: 1px solid #f50;
+    border-radius: 5px;
+    color: white;
+    width: 200px;
+    height: 46px;
+    font-weight: 100;
+    font-family: sans-serif;
+    font-size: 16px;
+
 }
