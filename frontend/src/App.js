@@ -36,7 +36,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupForm from "./components/SignupFormModal";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -49,9 +48,11 @@ function App() {
 
   return (
     <div className="page">
+      <Navigation isLoaded={isLoaded} />
       <Switch>
-        <Route exact path="/">
-          <Navigation isLoaded={isLoaded} />
+        <Route path='/songs'>
+        </Route>
+        <Route path="/">
         </Route>
       </Switch>
     </div>

@@ -7,14 +7,11 @@ import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
 import SearchBarComponent from '../SearchBar';
 import HomeButton from './HomeButton';
-import StreamButton from './StreamButton';
-import LibraryButton from './LibraryButton';
+import SongsButton from './SongsButton';
+import AlbumsButton from './AlbumsButton';
 import SearchBar from './SearchBar';
-import UpgradeButton from './UpgradeButton';
-import UploadButton from './UploadButton';
-import NotificationButton from './NotificationButton';
-import MessagesButton from './MessagesButton';
-import MoreMenu from './MoreMenu';
+import PlaylistsButton from './PlaylistsButton';
+
 
 
 function Navigation({ isLoaded }){
@@ -26,15 +23,11 @@ function Navigation({ isLoaded }){
       <>
         <div className="profile-banner-container">
           <HomeButton />
-          <StreamButton />
-          <LibraryButton />
+          <SongsButton />
+          <AlbumsButton />
           <SearchBar />
-          <UpgradeButton />
-          <UploadButton />
+          <PlaylistsButton />
           <ProfileButton user={sessionUser} />
-          <NotificationButton />
-          <MessagesButton />
-          <MoreMenu />
         </div>
       </>
     );
