@@ -1,4 +1,4 @@
-import { Redirect, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const SongsButton = () => {
     const history = useHistory()
@@ -7,9 +7,6 @@ const SongsButton = () => {
         e.preventDefault()
         console.log('i got here')
         history.push('/songs')
-        // return (
-        //     <Redirect to='/songs' />
-        // )
     }
 
     return (
