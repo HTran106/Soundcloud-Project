@@ -38,6 +38,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import SongsComponent from "./components/SongsComponent";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       <Switch>
         <Route path='/songs'>
+          <SongsComponent />
         </Route>
         <Route path="/">
         </Route>

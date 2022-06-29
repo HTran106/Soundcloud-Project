@@ -1,6 +1,7 @@
+
 const SongsComponent = () => {
     return (
-
+        <h1>Songs Component</h1>
     )
 }
 
