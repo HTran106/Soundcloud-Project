@@ -54,10 +54,6 @@ function Navigation({ isLoaded }){
           <div className='banner-words'>
             <p className='discover'>Discover more with SoundCloud Go+</p>
             <p className='growing'>SoundCloud Go+ lets you listen offline, ad-free, with over 150 million tracks - and growing.</p>
-            <div>
-              <button className='learn-more'>Learn more</button>
-              <button className='trial'>Try it free for 30 days</button>
-            </div>
           </div>
         </div>
         <SearchBarComponent />
