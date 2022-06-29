@@ -29,7 +29,6 @@ router.get('/search', validateSearchQuery, async (req, res, next) => {
   size > 20 ? size = 20 : size = size
 
   let where = {}
-
   if (isProduction) {
     if (title) where.title = { [Op.iLike]: `%${title}%` }
     if (createdAt) where.createdAt = createdAt
@@ -38,10 +37,6 @@ router.get('/search', validateSearchQuery, async (req, res, next) => {
     if (createdAt) where.createdAt = createdAt
   }
 
-  let songs = await Song.findAll({
-    where: {...where},
-    ...pagination(page, size)
-  })
 
 
   res.json({
