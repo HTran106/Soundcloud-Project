@@ -1,6 +1,6 @@
 const PlaylistsButton = () => {
     return (
-        <button className="songs-button">Playlists</button>
+        <button className="albums-button">Playlists</button>
     )
 }
 
