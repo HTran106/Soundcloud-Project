@@ -20,6 +20,11 @@ function LoginForm() {
     );
   };
 
+  const loginGuestUser = e => {
+    e.preventDefault()
+    return dispatch(sessionActions.loginGuest())
+  }
+
   return (
     <>
       <h1>Login to your SoundCloud account</h1>
@@ -44,6 +49,10 @@ function LoginForm() {
             placeholder="Password"
           />
         <button className="login-button" type="submit">Login</button>
+      </form>
+      <form onSubmit={loginGuestUser}>
+        <p className='or'>----------------or----------------</p>
+        <button className='login-guest-button' type='submit'>Login as Guest</button>
       </form>
     </>
   );

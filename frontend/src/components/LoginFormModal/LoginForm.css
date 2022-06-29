@@ -10,3 +10,20 @@
     border: 1px solid lightgray;
     border-radius: 5px;
 }
+
+.or {
+    font-size: 20px;
+}
+
+.login-guest-button {
+    display: inline-block;
+    text-align: center;
+    background-color: lightgray;
+    color: black;
+    width: 410px;
+    height: 48px;
+    margin-left: -6px;
+    font-size: 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
