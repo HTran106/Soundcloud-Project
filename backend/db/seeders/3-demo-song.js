@@ -6,10 +6,10 @@ module.exports = {
       {
         albumId: 1,
         userId: 1,
-        title: 'Wonderful World',
-        description: "It's a wonderful world",
-        url: 'www.songURLtesting.com',
-        previewImage: 'www.songIMGtesting.com'
+        title: "Til All That's Left is Ash",
+        description: "Country",
+        url: "s3://soundcloud-files-hdt/ES_'Til All That's Left Is Ash - Ludlow.jpeg",
+        previewImage: "s3://soundcloud-files-hdt/ES_'Til All That's Left Is Ash - Ludlow.mp3"
       },
       {
         albumId: 2,
