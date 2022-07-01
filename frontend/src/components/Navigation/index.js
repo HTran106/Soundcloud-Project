@@ -10,6 +10,8 @@ import SongsButton from './SongsButton';
 import AlbumsButton from './AlbumsButton';
 import SearchBar from './SearchBar';
 import PlaylistsButton from './PlaylistsButton';
+import MySongsButton from './MySongsButton';
+import MyAlbumsButton from './MyAlbumsButton';
 
 
 
@@ -25,7 +27,8 @@ function Navigation({ isLoaded }){
           <SongsButton />
           <AlbumsButton />
           <SearchBar />
-          <PlaylistsButton />
+          <MyAlbumsButton />
+          <MySongsButton />
           <ProfileButton user={sessionUser} />
         </div>
       </>

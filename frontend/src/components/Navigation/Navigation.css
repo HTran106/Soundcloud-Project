@@ -265,6 +265,10 @@
     margin-top: -1px;
 }
 
+.profile-button:hover {
+    color: rgb(247, 241, 241);
+}
+
 .profile-button span {
     margin-left: 5px;
     color: white;
