@@ -74,9 +74,9 @@ function Root() {
   return (
     <Provider store={store}>
       <ModalProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
       </ModalProvider>
     </Provider>
   );
