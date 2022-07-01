@@ -145,7 +145,7 @@ module.exports = {
         title: 'Like the Ocean',
         description: "Hopeful, Dreamy",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Like+the+Ocean+-+The+Big+Let+Down.mp3',
-        previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Like+the+Ocean+-+The+Big+Let+Down.mp3'
+        previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Like+the+Ocean+BIG-+The+Big+Let+Down.jpeg'
       },
       {
         albumId: 2,
