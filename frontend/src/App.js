@@ -62,8 +62,8 @@ function App() {
       <Switch>
         {
           songs.map(song => (
-            <Route key={song.id} path={`/songs/${song.id}`}>
-              <SongDetailsComponent />
+            <Route key={song.id} path={`/songs/:songId`}>
+              <SongDetailsComponent songs={songs}/>
             </Route>
           ))
         }

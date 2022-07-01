@@ -1,0 +1,8 @@
+.song-details-container {
+    display: grid;
+    grid-template-rows: 70% 30%;
+    height: 750px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
