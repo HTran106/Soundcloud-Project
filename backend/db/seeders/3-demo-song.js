@@ -8,7 +8,7 @@ module.exports = {
         userId: 1,
         title: "Til All That's Left is Ash",
         description: "Country",
-        url: "s3://soundcloud-files-hdt/ES_'Til All That's Left Is Ash - Ludlow.jpeg",
+        url: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_'Til+All+That's+Left+Is+Ash+-+Ludlow.mp3",
         previewImage: "s3://soundcloud-files-hdt/ES_'Til All That's Left Is Ash - Ludlow.mp3"
       },
       {
@@ -16,7 +16,7 @@ module.exports = {
         userId: 2,
         title: 'Hip-hop Song',
         description: "Nice rap song",
-        url: 'www.songURLtesting.com',
+        url: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_As+Lovely+as+You+-+Wanderer's+Trove.mp3",
         previewImage: 'www.songIMGtesting.com'
       },
       {
