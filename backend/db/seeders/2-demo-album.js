@@ -5,19 +5,19 @@ module.exports = {
     await queryInterface.bulkInsert('Albums', [
       {
         userId: 1,
-        title: 'Wonderland',
+        title: 'Happy',
         description: 'Wonderful world album',
         previewImage: 'www.albumPreviewImageTEST.com'
       },
       {
         userId: 2,
-        title: 'Hip-hop Album',
+        title: 'Hopeful',
         description: 'Top 10 Hip-hop Songs',
         previewImage: 'www.albumPreviewImageTEST.com'
       },
       {
         userId: 3,
-        title: 'Pop Album',
+        title: 'Epic',
         description: 'Best Pop music',
         previewImage: 'www.albumPreviewImageTEST.com'
       },

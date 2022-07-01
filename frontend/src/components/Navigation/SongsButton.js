@@ -5,7 +5,6 @@ const SongsButton = () => {
 
     const handleOnClick = e => {
         e.preventDefault()
-        console.log('i got here')
         history.push('/songs')
     }
 

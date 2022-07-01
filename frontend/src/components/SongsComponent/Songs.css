@@ -1,0 +1,22 @@
+/* .songs-component-container {
+    display: grid;
+    width: 100%;
+    height: 800px;
+    background-image: url("https://wallpapercave.com/wp/wc1785700.jpg");
+    background-size: cover;
+    background-position-y: 20%;
+} */
+
+.songs-component-container h2 {
+    font-family: sans-serif;
+    font-weight: 100;
+    margin-bottom: 5px;
+}
+
+.songs-component-container h4 {
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 14px;
+    margin-top: 5px;
+    color: rgb(174, 173, 173);
+}

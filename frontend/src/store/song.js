@@ -41,7 +41,7 @@ const songsReducer = (state={}, action) => {
             return setSongState
         case ALL_SONGS:
             let setAllSongs = {...state}
-            setAllSongs = action.payload
+            setAllSongs = action.payload.Songs
             return setAllSongs
         default:
             return state;

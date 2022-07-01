@@ -7,46 +7,166 @@ module.exports = {
         albumId: 1,
         userId: 1,
         title: "Til All That's Left is Ash",
-        description: "Country",
+        description: "Hopeful, Laid Back",
         url: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_'Til+All+That's+Left+Is+Ash+-+Ludlow.mp3",
-        previewImage: "s3://soundcloud-files-hdt/ES_'Til All That's Left Is Ash - Ludlow.mp3"
+        previewImage: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_'Til+All+That's+Left+Is+Ash+BIG+-+Ludlow.jpeg"
       },
       {
         albumId: 2,
         userId: 2,
-        title: 'Hip-hop Song',
-        description: "Nice rap song",
-        url: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_As+Lovely+as+You+-+Wanderer's+Trove.mp3",
-        previewImage: 'www.songIMGtesting.com'
+        title: 'As a Gift',
+        description: "Dreamy, Peaceful",
+        url: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_As+a+Gift+-+Francis+Wells.mp3",
+        previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_As+a+Gift+BIG-+Francis+Wells.jpeg'
       },
       {
         albumId: 3,
         userId: 3,
-        title: 'Pop Song',
+        title: 'As Lovely as You',
         description: "Cute pop song",
+        url: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_As+Lovely+as+You+-+Wanderer's+Trove.mp3",
+        previewImage: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_As+Lovely+as+You+BIG-+Wanderer's+Trove.jpeg"
+      },
+      {
+        albumId: 2,
+        userId: 1,
+        title: 'Body Bounce',
+        description: "Hopeful, Laid Back",
+        url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Body+Bounce+-+Ballpoint.mp3',
+        previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Body+Bounce+BIG+-+Ballpoint.jpeg'
+      },
+      {
+        albumId: 2,
+        userId: 1,
+        title: 'Champagne Toast',
+        description: "Happy, Laid Back",
         url: 'www.songURLtesting.com',
         previewImage: 'www.songIMGtesting.com'
       },
       {
         albumId: 2,
         userId: 1,
-        title: 'Song 4',
-        description: "Nice rap song",
+        title: 'Cold Blooded',
+        description: "Hopeful, Busy & Frantic",
         url: 'www.songURLtesting.com',
         previewImage: 'www.songIMGtesting.com'
       },
       {
         albumId: 2,
-        userId: 1,
-        title: 'Song 5',
-        description: "Nice rap song",
+        userId: 2,
+        title: 'Crazy like That',
+        description: "Dreamy, Laid Back",
         url: 'www.songURLtesting.com',
         previewImage: 'www.songIMGtesting.com'
       },
       {
         albumId: 2,
-        userId: 1,
-        title: 'Song 6',
+        userId: 2,
+        title: 'Eu Quero Ver o Oceano',
+        description: "Smooth, Glamorous",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'For What Is Right',
+        description: "Epic, Dreamy",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Future Is Now',
+        description: "Epic, Hopeful",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Get Out of My Way',
+        description: "Happy, Hopeful",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Havana',
+        description: "Happy, Restless",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Higher Self',
+        description: "Hopeful, Laid Back",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: "I've Found My Way",
+        description: "Happy, Hopeful",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Sole Splende',
+        description: "Happy, Laid Back",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Intimacy',
+        description: "Hopeful, Laid Back",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Island In The Sky',
+        description: "Happy, Dreamy",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Like the Ocean',
+        description: "Hopeful, Dreamy",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Maharajah',
+        description: "Happy Glamorous",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: "Maybe We'll Meet Again",
+        description: "Hopeful, Laid Back",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Song 8',
         description: "Nice rap song",
         url: 'www.songURLtesting.com',
         previewImage: 'www.songIMGtesting.com'
@@ -54,7 +174,39 @@ module.exports = {
       {
         albumId: 2,
         userId: 2,
-        title: 'Song 7',
+        title: 'Song 8',
+        description: "Nice rap song",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Song 8',
+        description: "Nice rap song",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Song 8',
+        description: "Nice rap song",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Song 8',
+        description: "Nice rap song",
+        url: 'www.songURLtesting.com',
+        previewImage: 'www.songIMGtesting.com'
+      },
+      {
+        albumId: 2,
+        userId: 2,
+        title: 'Song 8',
         description: "Nice rap song",
         url: 'www.songURLtesting.com',
         previewImage: 'www.songIMGtesting.com'
