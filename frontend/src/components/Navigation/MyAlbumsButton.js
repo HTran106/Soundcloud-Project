@@ -9,7 +9,7 @@ const MyAlbumsButton = () => {
     }
 
     return (
-            <button onClick={handleOnClick} className="albums-button">My Albums</button>
+            <button className='my-albums-button' onClick={handleOnClick}>My Albums</button>
     )
 }
 

@@ -23,7 +23,7 @@ module.exports = {
         albumId: 3,
         userId: 3,
         title: 'As Lovely as You',
-        description: "Lovely",
+        description: "An uplifting pop-rock track with multiple guitars, drums, bass and subtle piano melodies and a very slight country feel. Inspiring / Heartening / Motivational.",
         url: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_As+Lovely+as+You+-+Wanderer's+Trove.mp3",
         previewImage: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_As+Lovely+as+You+BIG-+Wanderer's+Trove.jpeg"
       },
