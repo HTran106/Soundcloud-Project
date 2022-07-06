@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
+import EditFormModal from "../EditModal"
+import EditForm from "../LoginFormModal/LoginForm"
 
 const MySongsComponent = () => {
     const songs = Object.values(useSelector(state => state.songs))
@@ -24,6 +26,7 @@ const MySongsComponent = () => {
                                     <img src={song.previewImage} alt='previewImage'></img>
                                 </button>
                                 <li key={song.id}>{song.title}</li>
+                                <EditFormModal song={song} />
                             </div>
                         ))}
                     </ul>
