@@ -48,6 +48,7 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const songs = Object.values(useSelector(state => state.songs))
+  const sessionUser = useSelector(state => state.session.user)
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -57,10 +58,15 @@ function App() {
       dispatch(songsActions.fetchAllSongs())
   }, [dispatch])
 
+
+
   return (
     <div className="page">
       <Navigation isLoaded={isLoaded} />
       <Switch>
+        <Route path='/my/songs'>
+
+        </Route>
         <Route path='/songs/:songId'>
           <SongDetailsComponent songs={songs} />
         </Route>
@@ -68,7 +74,6 @@ function App() {
           <SongsComponent />
         </Route>
         <Route path="/">
-          <HomePageComponent />
         </Route>
       </Switch>
     </div>

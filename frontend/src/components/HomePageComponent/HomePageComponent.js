@@ -11,14 +11,19 @@ import * as userActions from '../../store/users'
 const HomePageComponent = () => {
     const dispatch = useDispatch()
     const history = useHistory()
+    // const sessionUser = useSelector(state => state.session.user)
+
     const songs = Object.values(useSelector(state => state.songs))
     const top5 = songs.filter((song, i) => i < 5)
     const newAndHot = songs.filter((song, i) => i >= 5 && i <10)
+
+
 
     useEffect(() => {
         dispatch(songsActions.fetchAllSongs())
         dispatch(userActions.fetchAllUsers())
     }, [dispatch])
+
 
     return (
         <div className="songs-container">

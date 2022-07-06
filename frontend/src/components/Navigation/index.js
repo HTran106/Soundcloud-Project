@@ -12,6 +12,7 @@ import SearchBar from './SearchBar';
 // import PlaylistsButton from './PlaylistsButton';
 import MySongsButton from './MySongsButton';
 import MyAlbumsButton from './MyAlbumsButton';
+import HomePageComponent from '../HomePageComponent/HomePageComponent';
 
 
 
@@ -30,6 +31,7 @@ function Navigation({ isLoaded }){
           <MyAlbumsButton />
           <MySongsButton />
           <ProfileButton user={sessionUser} />
+          {/* <HomePageComponent /> */}
         </div>
       </>
     );
