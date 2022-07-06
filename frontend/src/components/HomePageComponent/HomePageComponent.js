@@ -1,12 +1,14 @@
+import './HomePageComponent.css'
+
 import * as songsActions from '../../store/song'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import './Songs.css'
+// import './Songs.css'
 import { useHistory } from 'react-router-dom'
 import * as userActions from '../../store/users'
 
 
-const SongsComponent = () => {
+const HomePageComponent = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const songs = Object.values(useSelector(state => state.songs))
@@ -21,7 +23,7 @@ const SongsComponent = () => {
     return (
         <div className="songs-container">
             <div className='song-sections'>
-                <h2>Charts: Top 5</h2>
+                <h2>Top 5 Songs</h2>
                 <h4>The most played tracks on SoundCloud this week</h4>
                     <ul className="songs-list">
                         {top5.map(song => (
@@ -77,4 +79,4 @@ const SongsComponent = () => {
     )
 }
 
-export default SongsComponent
+export default HomePageComponent
