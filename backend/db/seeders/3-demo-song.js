@@ -6,8 +6,8 @@ module.exports = {
       {
         albumId: 1,
         userId: 1,
-        title: "Til All That's Left is Ash",
-        description: "Hopeful, Laid Back",
+        title: "Ashes",
+        description: "Quirky and humorous, yet hard hitting Hip Hop piece, with cheeky samples, big beats and cool cuts.",
         url: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_'Til+All+That's+Left+Is+Ash+-+Ludlow.mp3",
         previewImage: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_'Til+All+That's+Left+Is+Ash+BIG+-+Ludlow.jpeg"
       },
@@ -15,7 +15,7 @@ module.exports = {
         albumId: 2,
         userId: 2,
         title: 'As a Gift',
-        description: "Dreamy, Peaceful",
+        description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
         url: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_As+a+Gift+-+Francis+Wells.mp3",
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_As+a+Gift+BIG-+Francis+Wells.jpeg'
       },
@@ -31,7 +31,7 @@ module.exports = {
         albumId: 4,
         userId: 4,
         title: 'Body Bounce',
-        description: "Hopeful, Laid Back",
+        description: "An uplifting pop-rock track with multiple guitars, drums, bass and subtle piano melodies and a very slight country feel. Inspiring / Heartening / Motivational.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Body+Bounce+-+Ballpoint.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Body+Bounce+BIG+-+Ballpoint.jpeg'
       },
@@ -39,7 +39,7 @@ module.exports = {
         albumId: 5,
         userId: 5,
         title: 'Champagne Toast',
-        description: "Happy, Laid Back",
+        description: "Quirky and humorous, yet hard hitting Hip Hop piece, with cheeky samples, big beats and cool cuts.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Champagne+Toast+-+Nbhd+Nick.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Champagne+Toast+BIG+-+Nbhd+Nick.jpeg'
       },
@@ -47,7 +47,7 @@ module.exports = {
         albumId: 1,
         userId: 1,
         title: 'Cold Blooded',
-        description: "Hopeful, Busy & Frantic",
+        description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_cold+blooded+-+dasloe.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_cold+blooded+BIG-+dasloe.jpeg'
       },
@@ -55,7 +55,7 @@ module.exports = {
         albumId: 2,
         userId: 2,
         title: 'Crazy like That',
-        description: "Dreamy, Laid Back",
+        description: "Quirky and humorous, yet hard hitting Hip Hop piece, with cheeky samples, big beats and cool cuts.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Crazy+like+That+-+Lofive.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Crazy+like+That+BIG-+Lofive.jpeg'
       },
@@ -63,15 +63,15 @@ module.exports = {
         albumId: 3,
         userId: 3,
         title: 'Eu Quero Ver o Oceano',
-        description: "Smooth, Glamorous",
-        url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Eu+Quero+Ver+o+Oceano+BIG-+John+Runefelt.jpeg',
+        description: "An uplifting pop-rock track with multiple guitars, drums, bass and subtle piano melodies and a very slight country feel. Inspiring / Heartening / Motivational.",
+        url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Eu+Quero+Ver+o+Oceano+-+John+Runefelt.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Eu+Quero+Ver+o+Oceano+BIG-+John+Runefelt.jpeg'
       },
       {
         albumId: 4,
         userId: 4,
         title: 'For What Is Right',
-        description: "Epic, Dreamy",
+        description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_For+What+Is+Right+-+Trevor+Kowalski.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_For+What+Is+Right+BIG+-+Trevor+Kowalski.jpeg'
       },
@@ -79,7 +79,7 @@ module.exports = {
         albumId: 5,
         userId: 5,
         title: 'Future Is Now',
-        description: "Epic, Hopeful",
+        description: "Quirky and humorous, yet hard hitting Hip Hop piece, with cheeky samples, big beats and cool cuts.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Future+Is+Now+-+FLYIN.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Future+Is+Now+BIG-+FLYIN.jpeg'
       },
@@ -87,7 +87,7 @@ module.exports = {
         albumId: 1,
         userId: 1,
         title: 'Get Out of My Way',
-        description: "Happy, Hopeful",
+        description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Get+Out+of+My+Way+-+Tape+Machines.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Get+Out+of+My+Way+BIG+-+Tape+Machines.jpeg'
       },
@@ -95,7 +95,7 @@ module.exports = {
         albumId: 2,
         userId: 2,
         title: 'Havana',
-        description: "Happy, Restless",
+        description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Havana+-+BLUE+STEEL.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Havana+BIG-+BLUE+STEEL.jpeg'
       },
@@ -103,7 +103,7 @@ module.exports = {
         albumId: 3,
         userId: 3,
         title: 'Higher Self',
-        description: "Hopeful, Laid Back",
+        description: "An uplifting pop-rock track with multiple guitars, drums, bass and subtle piano melodies and a very slight country feel. Inspiring / Heartening / Motivational.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Higher+Self+-+Xavy+Rusan.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Higher+Self+BIG-+Xavy+Rusan.jpeg'
       },
@@ -111,7 +111,7 @@ module.exports = {
         albumId: 4,
         userId: 4,
         title: "I've Found My Way",
-        description: "Happy, Hopeful",
+        description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
         url: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_I've+Found+My+Way+-+Hallman.mp3",
         previewImage: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_I've+Found+My+Way+BIG-+Hallman.jpeg"
       },
@@ -119,7 +119,7 @@ module.exports = {
         albumId: 5,
         userId: 5,
         title: 'Sole Splende',
-        description: "Happy, Laid Back",
+        description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Il+Sole+Splende+-+Sum+Wave.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Il+Sole+Splende+BIG+-+Sum+Wave.jpeg'
       },
@@ -127,7 +127,7 @@ module.exports = {
         albumId: 1,
         userId: 1,
         title: 'Intimacy',
-        description: "Hopeful, Laid Back",
+        description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Intimacy+-+Alex+Kehm.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Intimacy+BIG-+Alex+Kehm.jpeg'
       },
@@ -135,7 +135,7 @@ module.exports = {
         albumId: 2,
         userId: 2,
         title: 'Island In The Sky',
-        description: "Happy, Dreamy",
+        description: "An uplifting pop-rock track with multiple guitars, drums, bass and subtle piano melodies and a very slight country feel. Inspiring / Heartening / Motivational.",
         url: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Island+in+the+Sky+-+Giants'+Nest.mp3",
         previewImage: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Island+in+the+Sky+BIG-+Giants'+Nest.jpeg"
       },
@@ -143,7 +143,7 @@ module.exports = {
         albumId: 2,
         userId: 3,
         title: 'Like the Ocean',
-        description: "Hopeful, Dreamy",
+        description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Like+the+Ocean+-+The+Big+Let+Down.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Like+the+Ocean+BIG-+The+Big+Let+Down.jpeg'
       },
@@ -151,15 +151,15 @@ module.exports = {
         albumId: 2,
         userId: 4,
         title: 'Maharajah',
-        description: "Happy Glamorous",
+        description: "Quirky and humorous, yet hard hitting Hip Hop piece, with cheeky samples, big beats and cool cuts.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Maharajah+-+Ava+Low.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Maharajah+BIG-+Ava+Low.jpeg'
       },
       {
         albumId: 2,
         userId: 5,
-        title: "Maybe We'll Meet Again",
-        description: "Hopeful, Laid Back",
+        title: "Meet Again",
+        description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
         url: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Maybe+We'll+Meet+Again+-+baegel.mp3",
         previewImage: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Maybe+We'll+Meet+Again+BIG-+baegel.jpeg"
       },
@@ -167,7 +167,7 @@ module.exports = {
         albumId: 2,
         userId: 1,
         title: 'Not Blue',
-        description: "Hopeful, Sentimental",
+        description: "An uplifting pop-rock track with multiple guitars, drums, bass and subtle piano melodies and a very slight country feel. Inspiring / Heartening / Motivational.",
         url: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Not+Blue+-+Kylie+Dailey.mp3',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Not+blue+BIG-+Kylie+Dailey.jpeg'
       },

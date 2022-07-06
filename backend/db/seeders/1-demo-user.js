@@ -14,8 +14,8 @@ module.exports = {
       },
       {
         email: 'user1@user.io',
-        firstName: 'Snoop',
-        lastName: 'Dogg',
+        firstName: 'Demo',
+        lastName: 'Artist',
         username: 'FakeUser1',
         hashedPassword: bcrypt.hashSync('password2'),
         previewImage: 'USER2.COM'
@@ -50,7 +50,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     const Op = Sequelize.Op;
     await queryInterface.bulkDelete('Users', {
-      username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2'] }
+      id: { [Op.in]: [1, 2, 3, 4, 5] }
     }, {});
   }
 };
