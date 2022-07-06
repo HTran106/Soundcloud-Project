@@ -3,8 +3,9 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import './EditForm.css'
 import { useHistory } from 'react-router-dom'
+import * as songActions from '../../store/song'
 
-function EditForm() {
+function EditForm({song}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -13,27 +14,40 @@ function EditForm() {
   const [errors, setErrors] = useState([]);
   const history = useHistory()
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     setErrors([]);
-//     return dispatch(sessionActions.login({ credential, password })).catch(
-//       async (res) => {
-//         const data = await res.json();
-//         if (data && data.errors) setErrors(data.errors);
-//       }
-//     );
-//   };
 
-  const loginGuestUser = e => {
-    e.preventDefault()
-    dispatch(sessionActions.loginGuest())
-    history.push('/')
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setErrors([]);
+  //   return dispatch(sessionActions.login({ credential, password })).catch(
+  //     async (res) => {
+  //       const data = await res.json();
+  //       if (data && data.errors) setErrors(data.errors);
+  //     }
+  //   );
+  // };
+  const handleSubmit = e => {
+    e.preventDefault();
+    setErrors([]);
+
+    return dispatch(songActions.updateSong({
+      title,
+      description,
+      url,
+      previewImage
+    })).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    )
   }
+
+
 
   return (
     <>
       <h1>Edit Song</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>

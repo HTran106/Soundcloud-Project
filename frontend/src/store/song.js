@@ -2,6 +2,13 @@ import { csrfFetch } from "./csrf"
 
 const SINGLE_SONG = 'songs/getSingleSong'
 const ALL_SONGS = 'songs/getAllSongs'
+const REMOVE_SONG = 'songs/removeSong'
+const EDIT_SONG = 'songs/editSong'
+
+export const editSong = song => ({
+    type: EDIT_SONG,
+    payload: song
+})
 
 export const getSingleSong = (song) => ({
     type: SINGLE_SONG,
@@ -11,6 +18,11 @@ export const getSingleSong = (song) => ({
 export const getAllSongs = (songs) => ({
     type: ALL_SONGS,
     payload: songs
+})
+
+export const removeSong = (songId) => ({
+    type: REMOVE_SONG,
+    payload: songId
 })
 
 export const fetchSingleSong = songId => async dispatch => {
@@ -33,6 +45,31 @@ export const fetchAllSongs = () => async dispatch => {
     }
 }
 
+export const deleteSong = song => async dispatch => {
+    const res = await csrfFetch(`/songs/${song.id}`, {
+        method: 'DELETE'
+    })
+
+    if (res.ok) {
+        const parsedRes = await res.json()
+        dispatch(removeSong(parsedRes.id))
+    }
+}
+
+export const updateSong = song => async dispatch => {
+    const res = await csrfFetch(`/songs/${song.id}`, {
+        method: 'PUT',
+        headers: "application/json",
+        body: JSON.stringify(song)
+    })
+
+    if (res.ok) {
+        const parsedRes = await res.json()
+        dispatch(editSong(parsedRes))
+        return res
+    }
+}
+
 const songsReducer = (state={}, action) => {
     switch (action.type) {
         case SINGLE_SONG:
@@ -43,6 +80,12 @@ const songsReducer = (state={}, action) => {
             let setAllSongs = {...state}
             setAllSongs = action.payload.Songs
             return setAllSongs
+        case REMOVE_SONG:
+            return {}
+        case EDIT_SONG:
+            return {
+                [action.payload.id]: action.payload
+            }
         default:
             return state;
     }
