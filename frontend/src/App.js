@@ -34,23 +34,41 @@
 // export default App;
 
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import SongsComponent from "./components/SongsComponent";
+import * as songsActions from './store/song'
+import SongDetailsComponent from "./components/SongDetailsComponent";
+
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const songs = Object.values(useSelector(state => state.songs))
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  useEffect(() => {
+      dispatch(songsActions.fetchAllSongs())
+  }, [dispatch])
 
   return (
     <div className="page">
       <Navigation isLoaded={isLoaded} />
       <Switch>
+        {
+          songs.map(song => (
+            <Route key={song.id} path={`/songs/:songId`}>
+              <SongDetailsComponent songs={songs}/>
+            </Route>
+          ))
+        }
         <Route path='/songs'>
+          <SongsComponent />
         </Route>
         <Route path="/">
         </Route>

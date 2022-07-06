@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import './LoginForm.css'
+import { useHistory } from 'react-router-dom'
 
 function LoginForm() {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +24,8 @@ function LoginForm() {
 
   const loginGuestUser = e => {
     e.preventDefault()
-    return dispatch(sessionActions.loginGuest())
+    dispatch(sessionActions.loginGuest())
+    history.push('/')
   }
 
   return (

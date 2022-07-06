@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/HTran106/Soundcloud-Project#readme",
   "dependencies": {
-    "multer": "^1.4.4"
+    "multer": "^1.4.4",
+    "react-h5-audio-player": "^3.8.4",
+    "react-player": "^2.10.1"
   }
 }

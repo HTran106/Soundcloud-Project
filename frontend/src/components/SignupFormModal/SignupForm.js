@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -14,7 +14,6 @@ function SignupForm() {
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
-  const [hasSubmitted, setHasSubmitted] = useState(false)
   const history = useHistory()
 
   if (sessionUser) return <Redirect to="/" />;

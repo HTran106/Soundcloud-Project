@@ -265,6 +265,10 @@
     margin-top: -1px;
 }
 
+.profile-button:hover {
+    color: rgb(247, 241, 241);
+}
+
 .profile-button span {
     margin-left: 5px;
     color: white;
@@ -276,6 +280,7 @@
     border: 1px solid lightgray;
     margin-top: 1px;
     list-style-type: none;
+    background-color: white;
 }
 
 .dropdown li {
@@ -290,4 +295,15 @@
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
+}
+
+.my-albums-button {
+    background-color: transparent;
+    border: 1px solid black;
+    font-family: sans-serif;
+    color: #ccc;
+    width: 100px;
+    font-size: 14px;
+    font-weight: 100;
+    border-bottom: none;
 }

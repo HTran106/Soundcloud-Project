@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { NavLink, Redirect, useHistory } from 'react-router-dom'
 import * as sessionActions from '../../store/session';
+import { useHistory } from 'react-router-dom'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ function ProfileButton({ user }) {
               <a href="/my/info">Profile</a>
             </li>
             <li>
-              <a onClick={logout}>Sign out</a>
+              <a href="/" onClick={logout}>Sign out</a>
             </li>
           </nav>
         </div>

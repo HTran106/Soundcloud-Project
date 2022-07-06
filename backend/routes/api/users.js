@@ -74,9 +74,13 @@ router.post('/signup', singleMulterUpload("image") ,validateSignup, async (req, 
       user,
       token,
     });
-
   }
 );
+
+router.get('/', async (req, res) => {
+  const allUsers = await User.findAll()
+  res.json(allUsers)
+})
 
 
 module.exports = router;

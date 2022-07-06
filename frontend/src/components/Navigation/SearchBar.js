@@ -3,7 +3,7 @@ const SearchBar = () => {
         <form className="mini-search-bar">
             <input type='search' placeholder="Search"/>
             <button type='submit' className='search-button'>
-                <img src='https://www.kindacode.com/wp-content/uploads/2020/12/search.png'></img>
+                <img src='https://www.kindacode.com/wp-content/uploads/2020/12/search.png' alt='mag-glass'></img>
             </button>
         </form>
     )
