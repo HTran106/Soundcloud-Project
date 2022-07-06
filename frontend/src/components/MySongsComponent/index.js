@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import EditFormModal from "../EditModal"
-import EditForm from "../LoginFormModal/LoginForm"
+import './MySongsComponent.css'
 
-const MySongsComponent = () => {
-    const songs = Object.values(useSelector(state => state.songs))
-    // const sessionUser = useSelector(state => state.sessionUser)
+const MySongsComponent = ({songs}) => {
+    // const songs = Object.values(useSelector(state => state.songs))
+    const sessionUser = useSelector(state => state.session.user)
 
     const history = useHistory()
-    const mySongs = songs.find(song => song.userId)
+    const mySongs = songs.filter(song => song.userId === sessionUser.id)
 
     // console.log(sessionUser)
 
@@ -17,7 +17,7 @@ const MySongsComponent = () => {
                 <h2>All Songs</h2>
                 <h4>All available songs</h4>
                     <ul className="all-songs-list">
-                        {songs.map(song => (
+                        {mySongs.map(song => (
                             <div key={`${song.id}`}className='all-song-selections'>
                                 <button className='all-song-details-button' onClick={e => {
                                     e.preventDefault()
@@ -26,7 +26,10 @@ const MySongsComponent = () => {
                                     <img src={song.previewImage} alt='previewImage'></img>
                                 </button>
                                 <li key={song.id}>{song.title}</li>
-                                <EditFormModal song={song} />
+                                <div className="edit-buttons">
+                                    <EditFormModal song={song} />
+                                    <button>Delete</button>
+                                </div>
                             </div>
                         ))}
                     </ul>

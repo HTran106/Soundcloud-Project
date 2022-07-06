@@ -6,21 +6,23 @@ import { useHistory } from 'react-router-dom'
 
 function EditForm() {
   const dispatch = useDispatch();
-  const [credential, setCredential] = useState("");
-  const [password, setPassword] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [url, setUrl] = useState("")
+  const [previewImage, setPreviewImage] = useState("")
   const [errors, setErrors] = useState([]);
   const history = useHistory()
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrors([]);
-    return dispatch(sessionActions.login({ credential, password })).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
-    );
-  };
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     setErrors([]);
+//     return dispatch(sessionActions.login({ credential, password })).catch(
+//       async (res) => {
+//         const data = await res.json();
+//         if (data && data.errors) setErrors(data.errors);
+//       }
+//     );
+//   };
 
   const loginGuestUser = e => {
     e.preventDefault()
@@ -30,8 +32,8 @@ function EditForm() {
 
   return (
     <>
-      <h1>Login to your SoundCloud account</h1>
-      <form onSubmit={handleSubmit}>
+      <h1>Edit Song</h1>
+      <form>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
@@ -39,24 +41,38 @@ function EditForm() {
         </ul>
           <input
             type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             required
-            placeholder="Username or Email"
+            placeholder="Title"
           />
           <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            type="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             required
-            placeholder="Password"
+            placeholder="Description"
           />
-        <button className="login-button" type="submit">Login</button>
+          <input
+            type="url"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            required
+            placeholder="Song Url"
+          />
+          <input
+            type="url"
+            value={previewImage}
+            onChange={(e) => setPreviewImage(e.target.value)}
+            required
+            placeholder="Preview Image Url"
+          />
+        <button className="login-button" type="submit">Submit</button>
       </form>
-      <form onSubmit={loginGuestUser}>
+      {/* <form onSubmit={loginGuestUser}>
         <p className='or'>----------------or----------------</p>
         <button className='login-guest-button' type='submit'>Login as Guest</button>
-      </form>
+      </form> */}
     </>
   );
 }

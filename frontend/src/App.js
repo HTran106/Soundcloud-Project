@@ -63,15 +63,15 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       <Switch>
         <Route path='/my/songs'>
-          <MySongsComponent />
+          <MySongsComponent songs={songs}/>
         </Route>
         <Route path='/songs/:songId'>
           <SongDetailsComponent songs={songs} />
         </Route>
-        <Route path='/songs'>
+        <Route exact path='/songs'>
           <SongsComponent />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <HomePageComponent />
         </Route>
       </Switch>
