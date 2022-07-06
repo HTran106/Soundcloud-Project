@@ -56,10 +56,12 @@ export const deleteSong = song => async dispatch => {
     }
 }
 
-export const updateSong = song => async dispatch => {
-    const res = await csrfFetch(`/songs/${song.id}`, {
-        method: 'PUT',
-        headers: "application/json",
+export const updateSong = (song, songId) => async dispatch => {
+    const res = await csrfFetch(`/songs/${songId}`, {
+        method: "PUT",
+        headers: {
+            "CONTENT-TYPE": "application/json"
+        },
         body: JSON.stringify(song)
     })
 

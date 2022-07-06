@@ -14,33 +14,41 @@ function EditForm({song}) {
   const [errors, setErrors] = useState([]);
   const history = useHistory()
 
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setErrors([]);
-  //   return dispatch(sessionActions.login({ credential, password })).catch(
-  //     async (res) => {
-  //       const data = await res.json();
-  //       if (data && data.errors) setErrors(data.errors);
-  //     }
-  //   );
-  // };
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
 
     return dispatch(songActions.updateSong({
+      // albumId: song.albumId,
       title,
       description,
       url,
-      previewImage
-    })).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
-    )
-  }
+      imageUrl: previewImage
+    }, song.id))
+    // .then(() => history.push('/my/songs'))
+    // .catch(
+    //   async (res) => {
+    //     const data = await res.json();
+    //     if (data && data.errors) setErrors(data.errors);
+    //   }
+    // );
+  };
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   setErrors([]);
+
+  //   return dispatch(songActions.updateSong({
+  //     title,
+  //     description,
+  //     url,
+  //     previewImage
+  //   })).catch(
+  //     async (res) => {
+  //       const data = await res.json();
+  //       if (data && data.errors) setErrors(data.errors);
+  //     }
+  //   )
+  // }
 
 
 

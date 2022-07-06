@@ -74,6 +74,9 @@ function App() {
         <Route exact path="/">
           <HomePageComponent />
         </Route>
+        <Route>
+          Page not found
+        </Route>
       </Switch>
     </div>
   );
