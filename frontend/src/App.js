@@ -42,6 +42,7 @@ import SongsComponent from "./components/SongsComponent";
 import * as songsActions from './store/song'
 import SongDetailsComponent from "./components/SongDetailsComponent";
 import HomePageComponent from "./components/HomePageComponent/HomePageComponent";
+import MySongsComponent from "./components/MySongsComponent/MySongsComponent";
 
 
 function App() {
@@ -61,6 +62,9 @@ function App() {
     <div className="page">
       <Navigation isLoaded={isLoaded} />
       <Switch>
+        {/* <Route path='/my/songs'>
+          <MySongsComponent />
+        </Route> */}
         <Route path='/songs/:songId'>
           <SongDetailsComponent songs={songs} />
         </Route>
