@@ -85,9 +85,9 @@ const songsReducer = (state={}, action) => {
         case REMOVE_SONG:
             return {}
         case EDIT_SONG:
-            return {
-                [action.payload.id]: action.payload
-            }
+            const updatedSongState = {...state}
+            updatedSongState[action.payload.id] = action.payload
+            return updatedSongState;
         default:
             return state;
     }
