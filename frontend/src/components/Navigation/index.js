@@ -50,9 +50,9 @@ function Navigation({ isLoaded }){
               <div className='create-account-button'>
                 <SignupFormModal />
               </div>
-              <div className='for-creators-button'>
+              {/* <div className='for-creators-button'>
                 <button>For Creators</button>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className='banner-words'>

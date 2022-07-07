@@ -34,11 +34,10 @@ function ProfileButton({ user }) {
 
   return (
     <div>
-      <button onClick={openMenu} className="profile-button">
-        {user.username}
-        <span>↓</span>
+      <button onClick={logout} className="profile-button">
+        Sign Out
       </button>
-      {showMenu && (
+      {/* {showMenu && (
         <div className="dropdown">
           <nav>
             <li>
@@ -49,7 +48,7 @@ function ProfileButton({ user }) {
             </li>
           </nav>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
