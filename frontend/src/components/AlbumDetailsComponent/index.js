@@ -49,12 +49,10 @@ const AlbumDetailsComponent = () => {
                             <div key={song.id} className='single-song-container'>
                                 <div className='single-song-box'>
                                     <li key={song.id}>{i + 1}. {song.title}</li>
-                                    <button onClick={e => {
+                                    <button className='fa-regular fa-circle-play fa-xl' onClick={e => {
                                         e.preventDefault()
                                         setCurrSongUrl(song.url)
-                                    }}>
-                                        play
-                                    </button>
+                                    }}></button>
                                 </div>
                             </div>
                         ))}

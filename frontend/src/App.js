@@ -76,7 +76,7 @@ function App() {
         <Route path='/songs'>
           <SongsComponent />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
         </Route>
       </Switch>
     </div>
