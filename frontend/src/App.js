@@ -56,6 +56,7 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(songsActions.fetchAllSongs())
+    dispatch(albumActions.fetchAllAlbums())
   }, [dispatch]);
 
   return (

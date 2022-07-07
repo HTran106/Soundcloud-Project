@@ -6,32 +6,35 @@ import { useDispatch, useSelector } from 'react-redux'
 // import './Songs.css'
 import { useHistory } from 'react-router-dom'
 import * as userActions from '../../store/users'
+import * as albumActions from '../../store/albums'
 
 
 const HomePageComponent = () => {
     const dispatch = useDispatch()
     const history = useHistory()
+    const albums = Object.values(useSelector(state => state.albums))
     // const sessionUser = useSelector(state => state.session.user)
 
     const songs = Object.values(useSelector(state => state.songs))
-    const top5 = songs.filter((song, i) => i < 5)
-    const newAndHot = songs.filter((song, i) => i >= 5 && i <10)
+    const trending = songs?.filter((song, i) => i >= 10 && i < 15)
+    const newAndHot = albums?.filter((song, i) => i % 2 !== 0)
 
 
 
     useEffect(() => {
         dispatch(songsActions.fetchAllSongs())
         dispatch(userActions.fetchAllUsers())
+        dispatch(albumActions.fetchAllAlbums())
     }, [dispatch])
 
 
     return (
         <div className="songs-container">
             <div className='song-sections'>
-                <h2>Top 5 Songs</h2>
-                <h4>The most played tracks on SoundCloud this week</h4>
+                <h2>Top Trending Songs</h2>
+                <h4>Songs that will light the fire in you</h4>
                     <ul className="songs-list">
-                        {top5.map(song => (
+                        {trending?.map(song => (
                             <div key={`${song.id}`} className='song-selections'>
                                 <button className='song-details-button' onClick={e => {
                                     e.preventDefault()
@@ -40,16 +43,16 @@ const HomePageComponent = () => {
                                     <img src={song.previewImage} alt='previewImage'></img>
                                 </button>
                                 <li key={song.id}>{song.title}</li>
-                                <p>Top 5</p>
+                                <p>🔥 🔥 🔥</p>
                             </div>
                         ))}
                     </ul>
             </div>
             <div className='song-sections'>
-                <h2>Charts: New & Hot</h2>
-                <h4>Up-and-coming tracks on SoundCloud</h4>
+                <h2>Top Trending Albums</h2>
+                <h4>Newest and Hottest Albums</h4>
                     <ul className="songs-list">
-                        {newAndHot.map(song => (
+                        {newAndHot?.map(song => (
                             <div key={`${song.id}`} className='song-selections'>
                                 <button className='song-details-button' onClick={e => {
                                     e.preventDefault()
@@ -58,7 +61,7 @@ const HomePageComponent = () => {
                                     <img src={song.previewImage} alt='previewImage'></img>
                                 </button>
                                 <li key={song.id}>{song.title}</li>
-                                <p>New & Hot</p>
+                                <p>Listen to me NOW</p>
                             </div>
                         ))}
                     </ul>

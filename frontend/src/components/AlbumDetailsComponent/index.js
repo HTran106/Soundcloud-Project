@@ -20,9 +20,9 @@ const AlbumDetailsComponent = () => {
     const [currSongUrl, setCurrSongUrl] = useState("")
 
     useEffect(() => {
-        dispatch(userActions.fetchAllUsers())
-        dispatch(albumActions.fetchAllAlbums())
-        dispatch(songActions.fetchAllSongs())
+        dispatch(userActions?.fetchAllUsers())
+        dispatch(albumActions?.fetchAllAlbums())
+        dispatch(songActions?.fetchAllSongs())
     }, [dispatch])
 
     const album = albums?.find(album => album.id === +albumId)
@@ -39,14 +39,15 @@ const AlbumDetailsComponent = () => {
                 </div>
                 <div className="audio-player">
                     <AudioPlayer
-                    src={currSongUrl || songs[0]?.url}
+                    autoPlay
+                    src={currSongUrl || albumSongs[0]?.url}
                     style={{backgroundColor: "rgba(147, 147, 147, 0.4)", opacity:"90%"}}
                     />
                 </div>
             </div>
             <div className='album-songs-container'>
                 <div className='songs-list-container'>
-                        {albumSongs.map((song, i) => (
+                        {albumSongs?.map((song, i) => (
                             <div key={song.id} className='single-song-container'>
                                 <div className='single-song-box'>
                                     <li key={song.id}>{i + 1}. {song.title}</li>
