@@ -29,11 +29,11 @@ export const fetchAllSongs = () => async dispatch => {
     if (res.ok) {
         const parsedRes = await res.json()
         dispatch(getAllSongs(parsedRes))
-        return res;
+        return parsedRes;
     }
 }
 
-const songsReducer = (state={}, action) => {
+const songsReducer = (state = {}, action) => {
     switch (action.type) {
         case SINGLE_SONG:
             let setSongState = {...state}

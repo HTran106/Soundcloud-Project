@@ -33,7 +33,7 @@ export const fetchAllAlbums = () => async dispatch => {
     }
 }
 
-const albumsReducer = (state={}, action) => {
+const albumsReducer = (state = {}, action) => {
     switch (action.type) {
         case SINGLE_ALBUM:
             let setAlbumState = {...state}

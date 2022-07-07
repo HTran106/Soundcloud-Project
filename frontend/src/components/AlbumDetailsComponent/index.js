@@ -13,13 +13,12 @@ const AlbumDetailsComponent = () => {
     const randomBackground = backgroundImageData[Math.floor(Math.random() * backgroundImageData.length)];
     const { albumId } = useParams()
     const dispatch = useDispatch()
-    const albums = useSelector(state => state.albums)
+    const albums = Object.values(useSelector(state => state.albums))
     const users = useSelector(state => state.users)
-    const songs = useSelector(state => state.songs)
+    const songs = Object.values(useSelector(state => state.songs))
     const albumSongs = songs?.filter(song => song.albumId === +albumId)
     const [currSongUrl, setCurrSongUrl] = useState("")
 
-    console.log(albumSongs)
 
     useEffect(() => {
         dispatch(userActions.fetchAllUsers())
@@ -28,17 +27,17 @@ const AlbumDetailsComponent = () => {
     }, [dispatch])
 
     const album = albums?.find(album => album.id === +albumId)
-    const artist = users?.find(user => album.userId === user.id)
+    const artist = users?.find(user => album?.userId === user.id)
 
-    const playSong = e => {
-        e.preventDefault()
-        document.getElementById('player').play()
-    }
+    // const playSong = e => {
+    //     e.preventDefault()
+    //     document.getElementById('player').play()
+    // }
 
-    const pauseSong = e => {
-        e.preventDefault()
-        document.getElementById('player').pause()
-    }
+    // const pauseSong = e => {
+    //     e.preventDefault()
+    //     document.getElementById('player').pause()
+    // }
 
 
     return (
@@ -58,7 +57,7 @@ const AlbumDetailsComponent = () => {
                 <div className='songs-list-container'>
                     <ol className='album-song-list'>
                         {albumSongs.map(song => (
-                            <>
+                            <div key={song.id}>
                                 <button onClick={e => {
                                     e.preventDefault()
                                     setCurrSongUrl(song.url)
@@ -69,7 +68,7 @@ const AlbumDetailsComponent = () => {
                                     <button onClick={playSong}>Play</button>
                                     <button onClick={pauseSong}>Pause</button>
                                 </div> */}
-                            </>
+                            </div>
                         ))}
                     </ol>
                 </div>
