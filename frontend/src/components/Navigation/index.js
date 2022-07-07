@@ -31,7 +31,6 @@ function Navigation({ isLoaded }){
           <MyAlbumsButton />
           <MySongsButton />
           <ProfileButton user={sessionUser} />
-          {/* <HomePageComponent /> */}
         </div>
       </>
     );

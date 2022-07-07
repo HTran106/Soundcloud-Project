@@ -77,6 +77,7 @@ function App() {
           <SongsComponent />
         </Route>
         <Route exact path="/">
+          {sessionUser && <HomePageComponent />}
         </Route>
       </Switch>
     </div>

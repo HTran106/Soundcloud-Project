@@ -43,6 +43,7 @@
 
 .artist {
     display: flex;
+    width: 300px;
     justify-content: center;
 }
 
