@@ -41,8 +41,8 @@ const AlbumsComponent = () => {
                     </ul>
             </div>
             <div className='album-sections'>
-                <h2>New & Hot Albums</h2>
-                <h4>Up-and-coming tracks on SoundCloud</h4>
+                <h2>Hottest Albums</h2>
+                <h4>Albums with the most listeners</h4>
                     <ul className="albums-list">
                         {newAndHot?.map(album => (
                             <div key={`${album.id}`} className='album-selections'>
@@ -59,8 +59,8 @@ const AlbumsComponent = () => {
                     </ul>
             </div>
             <div className='all-album-sections'>
-                <h2>All albums</h2>
-                <h4>All available albums</h4>
+                <h2>All Albums</h2>
+                <h4>All available Albums</h4>
                     <ul className="all-albums-list">
                         {albums?.map(album => (
                             <div key={`${album.id}`}className='all-album-selections'>

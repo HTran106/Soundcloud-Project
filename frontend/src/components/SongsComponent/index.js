@@ -58,7 +58,7 @@ const SongsComponent = () => {
             </div>
             <div className='all-song-sections'>
                 <h2>All Songs</h2>
-                <h4>All available songs</h4>
+                <h4>All available Songs</h4>
                     <ul className="all-songs-list">
                         {songs.map(song => (
                             <div key={`${song.id}`}className='all-song-selections'>
