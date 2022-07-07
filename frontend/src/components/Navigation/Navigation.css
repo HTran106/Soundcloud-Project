@@ -167,9 +167,8 @@
     background-color: rgb(66, 62, 62);
     height: 43px;
     justify-content: center;
-    margin-left: -80px;
-    width: max-content;
-    padding-right: 5px;
+    width: 100vw;
+    padding-right: 80px;
 }
 
 .dropdown-container {
@@ -270,6 +269,7 @@
     margin-top: -1px;
     border-left-color: black;
     margin-top: 1px;
+    border-right-color: black;
 }
 
 .profile-button:hover {
