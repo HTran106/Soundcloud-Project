@@ -2,9 +2,12 @@ import './AlbumDetailsComponent.css'
 import { backgroundImageData } from '../SongDetailsComponent/backgroundImageData'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as albumActions from '../../store/albums'
 import * as userActions from '../../store/users'
+import * as songActions from '../../store/song'
+import Player from './Player';
+
 
 const AlbumDetailsComponent = () => {
     const randomBackground = backgroundImageData[Math.floor(Math.random() * backgroundImageData.length)];
@@ -12,14 +15,22 @@ const AlbumDetailsComponent = () => {
     const dispatch = useDispatch()
     const albums = useSelector(state => state.albums)
     const users = useSelector(state => state.users)
+    const songs = useSelector(state => state.songs)
+    const albumSongs = songs?.filter(song => song.albumId === +albumId)
+    const [playing, setPlaying] = useState(false)
+
+    console.log(albumSongs)
 
     useEffect(() => {
         dispatch(userActions.fetchAllUsers())
         dispatch(albumActions.fetchAllAlbums())
+        dispatch(songActions.fetchAllSongs())
     }, [dispatch])
 
     const album = albums?.find(album => album.id === +albumId)
     const artist = users?.find(user => album.userId === user.id)
+
+
 
 
     return (
@@ -31,10 +42,18 @@ const AlbumDetailsComponent = () => {
                     <p className='title'>{album?.title}</p>
                     <p className='description'>{album?.description}</p>
                 </div>
-                <h2 style={{color: "white"}}></h2>
             </div>
-            <div className='album-songs'>
-
+            <div className='album-songs-container'>
+                <div className='songs-list-container'>
+                    <ol className='album-song-list'>
+                        {albumSongs.map(song => (
+                            <>
+                                <Player song={song}/>
+                                <li key={song.id}>{song.title}</li>
+                            </>
+                        ))}
+                    </ol>
+                </div>
             </div>
         </div>
     )
