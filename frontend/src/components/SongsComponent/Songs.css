@@ -41,7 +41,6 @@
     display: flex;
     justify-content: flex-start;
     margin-left: -10px;
-    /* flex-wrap: wrap; */
     list-style-type: none;
 }
 
@@ -87,11 +86,12 @@
 
 .all-songs-list {
     display: flex;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
+    align-items: flex-start;
     margin-left: -10px;
     flex-wrap: wrap;
     list-style-type: none;
-    width: 95%;
+    width: 1560px;
 }
 
 .all-song-selections {

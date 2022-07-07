@@ -167,7 +167,7 @@
     background-color: rgb(66, 62, 62);
     height: 43px;
     justify-content: center;
-    width: auto;
+    width: max-content;
 }
 
 .dropdown-container {
@@ -223,7 +223,7 @@
 
 .mini-search-bar {
     display: flex;
-    width: 850px;
+    width: 680px;
     margin-top: 10px;
     margin-left: -5px;
     margin-right: -7px;

@@ -43,7 +43,9 @@ const SongDetailsComponent = ({songs}) => {
                                 <h2>{currentSong?.title}</h2>
                             </div>
                             <div className="player-buttons">
-                                <AudioPlayer src={currentSong?.url} />
+                                <AudioPlayer
+                                autoPlay
+                                src={currentSong?.url} />
                             </div>
                         </div>
                     </div>
