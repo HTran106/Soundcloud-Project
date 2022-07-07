@@ -7,6 +7,7 @@ import * as albumActions from '../../store/albums'
 import * as userActions from '../../store/users'
 import * as songActions from '../../store/song'
 import AudioPlayer from 'react-h5-audio-player'
+import '../AudioPlayer/styles.css'
 
 
 const AlbumDetailsComponent = () => {

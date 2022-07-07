@@ -2,7 +2,8 @@ import { useParams } from "react-router-dom"
 import './SongDetails.css'
 import { backgroundImageData } from './backgroundImageData'
 import AudioPlayer from 'react-h5-audio-player';
-import 'react-h5-audio-player/lib/styles.css';
+import '../AudioPlayer/styles.css'
+// import 'react-h5-audio-player/lib/styles.css';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllUsers } from "../../store/users";
