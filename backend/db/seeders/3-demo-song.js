@@ -44,7 +44,7 @@ module.exports = {
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Champagne+Toast+BIG+-+Nbhd+Nick.jpeg'
       },
       {
-        albumId: 1,
+        albumId: 6,
         userId: 1,
         title: 'Cold Blooded',
         description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
@@ -52,7 +52,7 @@ module.exports = {
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_cold+blooded+BIG-+dasloe.jpeg'
       },
       {
-        albumId: 2,
+        albumId: 7,
         userId: 2,
         title: 'Crazy like That',
         description: "Quirky and humorous, yet hard hitting Hip Hop piece, with cheeky samples, big beats and cool cuts.",
@@ -60,7 +60,7 @@ module.exports = {
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Crazy+like+That+BIG-+Lofive.jpeg'
       },
       {
-        albumId: 3,
+        albumId: 8,
         userId: 3,
         title: 'Eu Quero Ver o Oceano',
         description: "An uplifting pop-rock track with multiple guitars, drums, bass and subtle piano melodies and a very slight country feel. Inspiring / Heartening / Motivational.",
@@ -68,7 +68,7 @@ module.exports = {
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Eu+Quero+Ver+o+Oceano+BIG-+John+Runefelt.jpeg'
       },
       {
-        albumId: 4,
+        albumId: 9,
         userId: 4,
         title: 'For What Is Right',
         description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
@@ -76,7 +76,7 @@ module.exports = {
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_For+What+Is+Right+BIG+-+Trevor+Kowalski.jpeg'
       },
       {
-        albumId: 5,
+        albumId: 10,
         userId: 5,
         title: 'Future Is Now',
         description: "Quirky and humorous, yet hard hitting Hip Hop piece, with cheeky samples, big beats and cool cuts.",
@@ -124,7 +124,7 @@ module.exports = {
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Il+Sole+Splende+BIG+-+Sum+Wave.jpeg'
       },
       {
-        albumId: 1,
+        albumId: 6,
         userId: 1,
         title: 'Intimacy',
         description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
@@ -132,7 +132,7 @@ module.exports = {
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Intimacy+BIG-+Alex+Kehm.jpeg'
       },
       {
-        albumId: 2,
+        albumId: 7,
         userId: 2,
         title: 'Island In The Sky',
         description: "An uplifting pop-rock track with multiple guitars, drums, bass and subtle piano melodies and a very slight country feel. Inspiring / Heartening / Motivational.",
@@ -140,7 +140,7 @@ module.exports = {
         previewImage: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Island+in+the+Sky+BIG-+Giants'+Nest.jpeg"
       },
       {
-        albumId: 3,
+        albumId: 8,
         userId: 3,
         title: 'Like the Ocean',
         description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
@@ -148,7 +148,7 @@ module.exports = {
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Like+the+Ocean+BIG-+The+Big+Let+Down.jpeg'
       },
       {
-        albumId: 4,
+        albumId: 9,
         userId: 4,
         title: 'Maharajah',
         description: "Quirky and humorous, yet hard hitting Hip Hop piece, with cheeky samples, big beats and cool cuts.",
@@ -156,7 +156,7 @@ module.exports = {
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Maharajah+BIG-+Ava+Low.jpeg'
       },
       {
-        albumId: 5,
+        albumId: 10,
         userId: 5,
         title: "Meet Again",
         description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
