@@ -4,7 +4,7 @@ const AlbumsButton = () => {
     const history = useHistory()
 
     const handleOnClick = e => {
-        e.prevent.default()
+        e.preventDefault()
         history.push('/albums')
     }
 

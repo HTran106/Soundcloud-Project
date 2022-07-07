@@ -30,7 +30,6 @@
     grid-template-rows: repeat(3, 1fr);
     background-color: rgb(43, 43, 43);
     height: 300px;
-
     justify-content: center;
     align-items: center;
 }
