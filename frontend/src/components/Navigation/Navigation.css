@@ -166,6 +166,7 @@
     background-color: rgb(66, 62, 62);
     height: 43px;
     justify-content: center;
+    width: auto;
 }
 
 .dropdown-container {
@@ -229,9 +230,10 @@
 }
 
 .mini-search-bar input{
-    width: 800px;
+    width: 600px;
     height: 30px;
     border-color: transparent;
+
 }
 
 .mini-search-bar button {
@@ -257,12 +259,14 @@
     background-color: transparent;
     font-family: sans-serif;
     color: #ccc;
-    width: 135px;
-    height: 43px;
+    width: 100px;
+    height: 40px;
     font-size: 14px;
     font-weight: 100;
-    border-color: transparent;
+    border: 1px solid transparent;
     margin-top: -1px;
+    border-left-color: black;
+    margin-top: 1px;
 }
 
 .profile-button:hover {
