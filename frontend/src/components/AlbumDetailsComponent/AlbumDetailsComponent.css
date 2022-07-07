@@ -78,8 +78,8 @@
 }
 
 .songs-list-container {
-    display: flex;
-    grid-template-columns: 50% 50%;
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
     width: 100%;
     color: white;
 }
@@ -102,4 +102,25 @@
     display: flex;
     margin-right: 30px;
     padding-top: 100px;
+}
+
+.single-song-box {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+}
+
+.single-song-box li {
+    list-style: none;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.single-song-box button {
+    /* border-radius: 50%; */
+    width: 40px;
+    height: 30px;
+    padding-right: 10px;
+    margin-top: 5px;
+    margin-right: 10px;
 }

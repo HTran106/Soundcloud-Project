@@ -10,7 +10,6 @@ import AudioPlayer from 'react-h5-audio-player'
 
 
 const AlbumDetailsComponent = () => {
-    const randomBackground = backgroundImageData[Math.floor(Math.random() * backgroundImageData.length)];
     const { albumId } = useParams()
     const dispatch = useDispatch()
     const albums = Object.values(useSelector(state => state.albums))
@@ -18,7 +17,6 @@ const AlbumDetailsComponent = () => {
     const songs = Object.values(useSelector(state => state.songs))
     const albumSongs = songs?.filter(song => song.albumId === +albumId)
     const [currSongUrl, setCurrSongUrl] = useState("")
-
 
     useEffect(() => {
         dispatch(userActions.fetchAllUsers())
@@ -28,17 +26,6 @@ const AlbumDetailsComponent = () => {
 
     const album = albums?.find(album => album.id === +albumId)
     const artist = users?.find(user => album?.userId === user.id)
-
-    // const playSong = e => {
-    //     e.preventDefault()
-    //     document.getElementById('player').play()
-    // }
-
-    // const pauseSong = e => {
-    //     e.preventDefault()
-    //     document.getElementById('player').pause()
-    // }
-
 
     return (
         <div style={{backgroundImage: `url(https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/skillet-unleashed.jpeg`}} className='album-details-container'>
@@ -50,27 +37,27 @@ const AlbumDetailsComponent = () => {
                     <p className='description'>{album?.description}</p>
                 </div>
                 <div className="audio-player">
-                    <AudioPlayer src={currSongUrl} style={{backgroundColor: "rgba(147, 147, 147, 0.4)", opacity:"90%"}} />
+                    <AudioPlayer
+                    src={currSongUrl || songs[0]?.url}
+                    style={{backgroundColor: "rgba(147, 147, 147, 0.4)", opacity:"90%"}}
+                    />
                 </div>
             </div>
             <div className='album-songs-container'>
                 <div className='songs-list-container'>
-                    <ol className='album-song-list'>
-                        {albumSongs.map(song => (
-                            <div key={song.id}>
-                                <button onClick={e => {
-                                    e.preventDefault()
-                                    setCurrSongUrl(song.url)
-                                }}>play</button>
-                                <li key={song.id}>{song.title}</li>
-                                {/* <audio id='player' src={song.url}></audio>
-                                <div>
-                                    <button onClick={playSong}>Play</button>
-                                    <button onClick={pauseSong}>Pause</button>
-                                </div> */}
+                        {albumSongs.map((song, i) => (
+                            <div key={song.id} className='single-song-container'>
+                                <div className='single-song-box'>
+                                    <li key={song.id}>{i + 1}. {song.title}</li>
+                                    <button onClick={e => {
+                                        e.preventDefault()
+                                        setCurrSongUrl(song.url)
+                                    }}>
+                                        play
+                                    </button>
+                                </div>
                             </div>
                         ))}
-                    </ol>
                 </div>
             </div>
         </div>
