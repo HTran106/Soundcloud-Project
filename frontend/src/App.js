@@ -42,6 +42,9 @@ import SongsComponent from "./components/SongsComponent";
 import * as songsActions from './store/song'
 import SongDetailsComponent from "./components/SongDetailsComponent";
 import HomePageComponent from "./components/HomePageComponent/HomePageComponent";
+import AlbumsComponent from "./components/AlbumsComponent";
+import AlbumDetailsComponent from "./components/AlbumDetailsComponent";
+import * as albumActions from './store/albums'
 
 
 function App() {
@@ -52,20 +55,20 @@ function App() {
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(songsActions.fetchAllSongs())
   }, [dispatch]);
-
-  useEffect(() => {
-      dispatch(songsActions.fetchAllSongs())
-  }, [dispatch])
-
-
 
   return (
     <div className="page">
       <Navigation isLoaded={isLoaded} />
       <Switch>
+        <Route path='/albums/:albumId'>
+          <AlbumDetailsComponent />
+        </Route>
+        <Route path='/albums'>
+          <AlbumsComponent />
+        </Route>
         <Route path='/my/songs'>
-
         </Route>
         <Route path='/songs/:songId'>
           <SongDetailsComponent songs={songs} />

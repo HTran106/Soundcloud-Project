@@ -7,7 +7,7 @@ module.exports = {
         userId: 1,
         title: 'Happy',
         description: 'Compilation of all songs that make you happy.',
-        previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/album1.jpeg'
+        previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/album15.jpeg'
       },
       {
         userId: 2,
