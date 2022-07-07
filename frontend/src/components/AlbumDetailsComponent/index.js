@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import * as albumActions from '../../store/albums'
 import * as userActions from '../../store/users'
 import * as songActions from '../../store/song'
-import Player from './Player';
+import AudioPlayer from 'react-h5-audio-player'
 
 
 const AlbumDetailsComponent = () => {
@@ -17,7 +17,8 @@ const AlbumDetailsComponent = () => {
     const users = useSelector(state => state.users)
     const songs = useSelector(state => state.songs)
     const albumSongs = songs?.filter(song => song.albumId === +albumId)
-    const [playing, setPlaying] = useState(false)
+    // const [playing, setPlaying] = useState(false)
+    const [currentSong, setCurrentSong] = useState(0)
 
     console.log(albumSongs)
 
@@ -30,7 +31,15 @@ const AlbumDetailsComponent = () => {
     const album = albums?.find(album => album.id === +albumId)
     const artist = users?.find(user => album.userId === user.id)
 
+    const playSong = e => {
+        e.preventDefault()
+        document.getElementById('player').play()
+    }
 
+    const pauseSong = e => {
+        e.preventDefault()
+        document.getElementById('player').pause()
+    }
 
 
     return (
@@ -48,8 +57,22 @@ const AlbumDetailsComponent = () => {
                     <ol className='album-song-list'>
                         {albumSongs.map(song => (
                             <>
-                                <Player song={song}/>
                                 <li key={song.id}>{song.title}</li>
+                                <div className="player">
+                                    <AudioPlayer
+                                        src={song.url}
+                                        showJumpControls={false}
+                                        customVolumeControls={[]}
+                                        customAdditionalControls={[]}
+                                        onPlay={() => console.log('playing')}
+                                        // onEnded={() => setCurrentSong(i => i + 1)}
+                                    />
+                                </div>
+                                {/* <audio id='player' src={song.url}></audio>
+                                <div>
+                                    <button onClick={playSong}>Play</button>
+                                    <button onClick={pauseSong}>Pause</button>
+                                </div> */}
                             </>
                         ))}
                     </ol>
