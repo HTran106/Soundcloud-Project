@@ -21,7 +21,6 @@ const SongDetailsComponent = ({songs}) => {
         artist = users?.find(user => user.id === +currentSong?.userId)
     }
 
-
     useEffect(() => {
         dispatch(fetchAllUsers())
     }, [dispatch])
@@ -29,7 +28,6 @@ const SongDetailsComponent = ({songs}) => {
     const randomBackground = backgroundImageData[Math.floor(Math.random() * backgroundImageData.length)];
 
     return (
-        <>
             <div style={{backgroundImage: `url(${randomBackground})`}} className="song-details-container">
                 <div className="song-details-info">
                     <div className="player-box">
@@ -54,8 +52,6 @@ const SongDetailsComponent = ({songs}) => {
                 <p>{`${currentSong?.description}`}</p>
                 </div>
             </div>
-
-        </>
     )
 }
 
