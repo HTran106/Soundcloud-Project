@@ -17,8 +17,7 @@ const AlbumDetailsComponent = () => {
     const users = useSelector(state => state.users)
     const songs = useSelector(state => state.songs)
     const albumSongs = songs?.filter(song => song.albumId === +albumId)
-    // const [playing, setPlaying] = useState(false)
-    const [currentSong, setCurrentSong] = useState(0)
+    const [currSongUrl, setCurrSongUrl] = useState("")
 
     console.log(albumSongs)
 
@@ -51,23 +50,20 @@ const AlbumDetailsComponent = () => {
                     <p className='title'>{album?.title}</p>
                     <p className='description'>{album?.description}</p>
                 </div>
+                <div className="audio-player">
+                    <AudioPlayer src={currSongUrl} style={{backgroundColor: "rgba(147, 147, 147, 0.4)", opacity:"90%"}} />
+                </div>
             </div>
             <div className='album-songs-container'>
                 <div className='songs-list-container'>
                     <ol className='album-song-list'>
                         {albumSongs.map(song => (
                             <>
+                                <button onClick={e => {
+                                    e.preventDefault()
+                                    setCurrSongUrl(song.url)
+                                }}>play</button>
                                 <li key={song.id}>{song.title}</li>
-                                <div className="player">
-                                    <AudioPlayer
-                                        src={song.url}
-                                        showJumpControls={false}
-                                        customVolumeControls={[]}
-                                        customAdditionalControls={[]}
-                                        onPlay={() => console.log('playing')}
-                                        // onEnded={() => setCurrentSong(i => i + 1)}
-                                    />
-                                </div>
                                 {/* <audio id='player' src={song.url}></audio>
                                 <div>
                                     <button onClick={playSong}>Play</button>

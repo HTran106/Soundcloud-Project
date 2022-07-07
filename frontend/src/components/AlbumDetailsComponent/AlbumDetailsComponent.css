@@ -70,13 +70,16 @@
 }
 
 .album-song-list li {
+    /* display: flex; */
+    /* justify-content: space-around; */
     margin-bottom: 15px;
     color: white;
+    width: 90vw;
 }
 
 .songs-list-container {
-    display: grid;
-    grid-template-columns: 80% 20%;
+    display: flex;
+    grid-template-columns: 50% 50%;
     width: 100%;
     color: white;
 }
@@ -89,4 +92,14 @@
 
 .album-image button {
     border-radius: 50%;
+}
+
+.player {
+    width: 70%;
+}
+
+.audio-player {
+    display: flex;
+    margin-right: 30px;
+    padding-top: 100px;
 }

@@ -140,7 +140,7 @@ module.exports = {
         previewImage: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Island+in+the+Sky+BIG-+Giants'+Nest.jpeg"
       },
       {
-        albumId: 2,
+        albumId: 3,
         userId: 3,
         title: 'Like the Ocean',
         description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
@@ -148,7 +148,7 @@ module.exports = {
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Like+the+Ocean+BIG-+The+Big+Let+Down.jpeg'
       },
       {
-        albumId: 2,
+        albumId: 4,
         userId: 4,
         title: 'Maharajah',
         description: "Quirky and humorous, yet hard hitting Hip Hop piece, with cheeky samples, big beats and cool cuts.",
@@ -156,7 +156,7 @@ module.exports = {
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Maharajah+BIG-+Ava+Low.jpeg'
       },
       {
-        albumId: 2,
+        albumId: 5,
         userId: 5,
         title: "Meet Again",
         description: "Modern and uplifting indie soundtrack piece, with airy wordless vocals and positive strings. Builds strength and power to a rousing finish. World fusion feel.",
@@ -164,7 +164,7 @@ module.exports = {
         previewImage: "https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/ES_Maybe+We'll+Meet+Again+BIG-+baegel.jpeg"
       },
       {
-        albumId: 2,
+        albumId: 1,
         userId: 1,
         title: 'Not Blue',
         description: "An uplifting pop-rock track with multiple guitars, drums, bass and subtle piano melodies and a very slight country feel. Inspiring / Heartening / Motivational.",
