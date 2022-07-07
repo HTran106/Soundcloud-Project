@@ -35,6 +35,8 @@
     grid-template-rows: repeat(3, 1fr);
     width: auto;
     height: 100px;
+    justify-content: center;
+    margin-left: 135px;
 }
 
 .albums-list {

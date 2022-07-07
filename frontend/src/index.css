@@ -5,3 +5,10 @@ button {
 body {
     width: auto;
 }
+
+.page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: -50px
+}

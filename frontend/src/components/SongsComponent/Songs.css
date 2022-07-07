@@ -35,6 +35,7 @@
     grid-template-rows: repeat(3, 1fr);
     width: auto;
     height: 100px;
+    margin-left: 135px;
 }
 
 .songs-list {
