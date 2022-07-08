@@ -9,11 +9,8 @@ const { Op } = require('sequelize')
 const { environment } = require('../../config');
 const isProduction = environment === 'production';
 
-
 router.use(sessionRouter);
 router.use('/users', usersRouter);
-
-
 
 //Search query route
 router.get('/search', validateSearchQuery, async (req, res, next) => {
@@ -29,6 +26,7 @@ router.get('/search', validateSearchQuery, async (req, res, next) => {
   size > 20 ? size = 20 : size = size
 
   let where = {}
+
   if (isProduction) {
     if (title) where.title = { [Op.iLike]: `%${title}%` }
     if (createdAt) where.createdAt = createdAt
@@ -37,7 +35,10 @@ router.get('/search', validateSearchQuery, async (req, res, next) => {
     if (createdAt) where.createdAt = createdAt
   }
 
-
+  const songs = await Song.findAll({
+    where: {...where},
+    ...pagination
+  })
 
   res.json({
     Songs: songs,

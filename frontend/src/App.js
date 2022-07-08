@@ -67,6 +67,7 @@ function App() {
     <div className="page">
       <Navigation isLoaded={isLoaded} />
       <Switch>
+        <Route path='/search'>hello</Route>
         <Route path='/albums/:albumId'>
           <AlbumDetailsComponent albums={albums}/>
         </Route>

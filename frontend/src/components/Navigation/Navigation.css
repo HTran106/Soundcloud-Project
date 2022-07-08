@@ -3,8 +3,8 @@
     grid-template-rows: repeat(3, 1fr);
     background-image: url(https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_c-318d7eed.jpg);
     background-size: cover;
-    height: 450px;
-    width: 100vw;
+    height: 600px;
+    width: 95vw;
     margin-right: 18px;
 }
 
@@ -320,4 +320,64 @@
     font-size: 14px;
     font-weight: 100;
     border-bottom: none;
+}
+
+.about-us {
+    display: block;
+    flex-wrap: wrap;
+    width: 80vw;
+}
+
+.about-us p {
+    font-size: 32px;
+    color: rgb(90, 89, 89);
+}
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.search-bar {
+    background-color: #f2f2f2;
+    font-size: 16px;
+    font-family: sans-serif;
+    width: 600px;
+    border-color: #f2f2f2;
+    height: 46px;
+}
+
+#search-p {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.upload-own-button {
+    background-color: #f50;
+    color: white;
+    border: #f50;
+    border-radius: 5px;
+    font-family: sans-serif;
+    width: 170px;
+    height: 46px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.search-bar::placeholder {
+    color: rgb(162, 158, 158);
+}
+
+.search-button {
+    background: transparent;
+    outline: none;
+    margin-left: -33px;
+    border: none;
+}
+
+.search-button img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    cursor: pointer;
 }

@@ -4,7 +4,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
-import SearchBarComponent from '../SearchBar';
+// import SearchBarComponent from '../SearchBar';
 import HomeButton from './HomeButton';
 import SongsButton from './SongsButton';
 import AlbumsButton from './AlbumsButton';
@@ -12,7 +12,7 @@ import SearchBar from './SearchBar';
 // import PlaylistsButton from './PlaylistsButton';
 import MySongsButton from './MySongsButton';
 import MyAlbumsButton from './MyAlbumsButton';
-import HomePageComponent from '../HomePageComponent/HomePageComponent';
+// import HomePageComponent from '../HomePageComponent/HomePageComponent';
 
 
 
@@ -59,6 +59,18 @@ function Navigation({ isLoaded }){
             <p className='discover'>Discover more with SoundCloud Go+</p>
             <p className='growing'>SoundCloud Go+ lets you listen offline, ad-free, with over 150 million tracks - and growing.</p>
           </div>
+        </div>
+        <h1 style={{fontSize: "48px"}}>About Soundcloud Clone</h1>
+        <div className='about-us'>
+          <p>
+            As the world's largest music and audio platform,
+            SoundCloud-Clone lets people discover and enjoy the greatest selection of music from the most diverse creator community on earth.
+            Since launching in 2008, the platform has become renowned for its unique content and features,
+            including the ability to share music and connect directly with artists, as well as unearth breakthrough tracks,
+            raw demos, podcasts and more. This is made possible by an open platform that directly connects creators and their fans across the globe.
+            Music and audio creators use SoundCloud-Clone to both share and monetise their content with a global audience,
+            as well as receive detailed stats and feedback from the SoundCloud community.
+          </p>
         </div>
         {/* <SearchBarComponent /> */}
       </>
