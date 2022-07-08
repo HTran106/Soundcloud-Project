@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as albumActions from '../../store/albums'
 
-function UploadSongForm({song, closeModal}) {
+function UploadAlbumForm({song, closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -18,9 +18,12 @@ function UploadSongForm({song, closeModal}) {
         title,
         description,
         imageUrl: previewImage
-    }))
+    })).catch(async (res) => {
+      const data = await res.json()
+      if (data && data.errors) setErrors(Object.values(data.errors))
+    });
 
-    closeModal()
+    // closeModal()
 
 }
 
@@ -64,4 +67,4 @@ function UploadSongForm({song, closeModal}) {
   );
 }
 
-export default UploadSongForm;
+export default UploadAlbumForm;
