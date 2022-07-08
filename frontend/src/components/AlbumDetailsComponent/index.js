@@ -14,7 +14,7 @@ const AlbumDetailsComponent = ({albums}) => {
     const { albumId } = useParams()
     const dispatch = useDispatch()
     // const albums = Object.values(useSelector(state => state.albums))
-    const users = useSelector(state => state.users)
+    const users = Object.values(useSelector(state => state.users))
     const songs = Object.values(useSelector(state => state.songs))
     const albumSongs = songs?.filter(song => song.albumId === +albumId)
     const [currSongUrl, setCurrSongUrl] = useState("")
