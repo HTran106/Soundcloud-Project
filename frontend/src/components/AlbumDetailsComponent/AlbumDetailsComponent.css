@@ -31,6 +31,8 @@
 
 .album-image {
     border: 4px solid white;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .artist {
