@@ -45,6 +45,7 @@ import HomePageComponent from "./components/HomePageComponent/HomePageComponent"
 import AlbumsComponent from "./components/AlbumsComponent";
 import AlbumDetailsComponent from "./components/AlbumDetailsComponent";
 import * as albumActions from './store/albums'
+import MySongsComponent from "./components/MySongsComponent";
 
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
           <AlbumsComponent />
         </Route>
         <Route path='/my/songs'>
+          <MySongsComponent songs={songs}/>
         </Route>
         <Route path='/songs/:songId'>
           <SongDetailsComponent songs={songs} />

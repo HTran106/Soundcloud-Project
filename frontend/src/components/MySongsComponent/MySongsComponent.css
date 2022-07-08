@@ -1,0 +1,10 @@
+.edit-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15px;
+}
+
+.edit-buttons button{
+    background-color: white;
+    border: 1px solid lightgray
+}

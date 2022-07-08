@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import './LoginForm.css'
 import { useHistory } from 'react-router-dom'
 
-function LoginForm() {
+function EditForm() {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -61,4 +61,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default EditForm;

@@ -2,6 +2,13 @@ import { csrfFetch } from "./csrf"
 
 const SINGLE_SONG = 'songs/getSingleSong'
 const ALL_SONGS = 'songs/getAllSongs'
+const REMOVE_SONG = 'songs/removeSong'
+const EDIT_SONG = 'songs/editSong'
+
+export const editSong = song => ({
+    type: EDIT_SONG,
+    payload: song
+})
 
 export const getSingleSong = (song) => ({
     type: SINGLE_SONG,
@@ -13,12 +20,17 @@ export const getAllSongs = (songs) => ({
     payload: songs
 })
 
+export const removeSong = (songId) => ({
+    type: REMOVE_SONG,
+    payload: songId
+})
+
 export const fetchSingleSong = songId => async dispatch => {
     const res = await csrfFetch(`/songs/${songId}`)
 
     if (res.ok) {
         const parsedRes = await res.json()
-        dispatch(getSingleSong(parsedRes))
+        await dispatch(getSingleSong(parsedRes))
         return res;
     }
 }
@@ -28,12 +40,40 @@ export const fetchAllSongs = () => async dispatch => {
 
     if (res.ok) {
         const parsedRes = await res.json()
-        dispatch(getAllSongs(parsedRes))
-        return parsedRes;
+        await dispatch(getAllSongs(parsedRes))
+        return res;
     }
 }
 
-const songsReducer = (state = {}, action) => {
+export const deleteSong = song => async dispatch => {
+    const res = await csrfFetch(`/songs/${song.id}`, {
+        method: 'DELETE'
+    })
+
+    if (res.ok) {
+        const parsedRes = await res.json()
+        await dispatch(removeSong(parsedRes))
+        return res;
+    }
+}
+
+export const updateSong = (song, songId) => async dispatch => {
+    const res = await csrfFetch(`/songs/${songId}`, {
+        method: "PUT",
+        headers: {
+            "CONTENT-TYPE": "application/json"
+        },
+        body: JSON.stringify(song)
+    })
+
+    if (res.ok) {
+        const parsedRes = await res.json()
+        await dispatch(editSong(parsedRes))
+        return res
+    }
+}
+
+const songsReducer = (state={}, action) => {
     switch (action.type) {
         case SINGLE_SONG:
             let setSongState = {...state}
@@ -43,6 +83,12 @@ const songsReducer = (state = {}, action) => {
             let setAllSongs = {...state}
             setAllSongs = action.payload.Songs
             return setAllSongs
+        case REMOVE_SONG:
+            return {}
+        case EDIT_SONG:
+            const updatedSongState = {...state}
+            updatedSongState[action.payload.id] = action.payload
+            return updatedSongState;
         default:
             return state;
     }
