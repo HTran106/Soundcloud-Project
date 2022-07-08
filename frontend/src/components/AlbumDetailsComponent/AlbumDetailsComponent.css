@@ -19,24 +19,26 @@
     grid-template-columns: 15% 50% 35%;
     width: 98vw;
     height: 200px;
+    margin-bottom: 5px;
 }
 
 .album-info {
     display: grid;
     grid-template-rows: 25% 50% 25%;
-    width: 100%;
+    width: 100px;
     color: white;
-    margin-left: 25px;
 }
 
 .album-image {
     border: 4px solid white;
-    background-repeat: no-repeat;
-    background-size: cover;
+    width: 200px;
+    height: 200px;
 }
 
 .album-image img {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .artist {
@@ -106,7 +108,7 @@
 
 .audio-player {
     display: flex;
-    padding-right: 35px;
+    width: 94%;
     padding-top: 100px;
 }
 

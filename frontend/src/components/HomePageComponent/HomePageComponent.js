@@ -52,15 +52,15 @@ const HomePageComponent = () => {
                 <h2>Top Trending Albums</h2>
                 <h4>Newest and Hottest Albums</h4>
                     <ul className="songs-list">
-                        {newAndHot?.map(song => (
-                            <div key={`${song.id}`} className='song-selections'>
+                        {newAndHot?.map(album => (
+                            <div key={`${album.id}`} className='song-selections'>
                                 <button className='song-details-button' onClick={e => {
                                     e.preventDefault()
-                                    history.push(`/songs/${song.id}`)
+                                    history.push(`/albums/${album.id}`)
                                     }}>
-                                    <img src={song.previewImage} alt='previewImage'></img>
+                                    <img src={album.previewImage} alt='previewImage'></img>
                                 </button>
-                                <li key={song.id}>{song.title}</li>
+                                <li key={album.id}>{album.title}</li>
                                 <p>Listen to me NOW</p>
                             </div>
                         ))}
@@ -70,7 +70,7 @@ const HomePageComponent = () => {
                 <h2>All Songs</h2>
                 <h4>All available songs</h4>
                     <ul className="all-songs-list">
-                        {songs.map(song => (
+                        {songs?.map(song => (
                             <div key={`${song.id}`}className='all-song-selections'>
                                 <button className='all-song-details-button' onClick={e => {
                                     e.preventDefault()

@@ -28,7 +28,7 @@ const AlbumDetailsComponent = ({albums}) => {
 
     const album = albums?.find(album => album.id === +albumId)
     const artist = users?.find(user => album?.userId === user.id)
-    // style={{backgroundImage: `url(${album?.previewImage}`}}
+
     return (
         <div style={{backgroundImage: `url(https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/skillet-unleashed.jpeg`}} className='album-details-container'>
             <div className='album-info-container'>
