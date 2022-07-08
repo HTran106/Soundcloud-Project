@@ -172,6 +172,7 @@
     padding-right: 80px;
 }
 
+
 .dropdown-container {
     display: flex;
 }
@@ -225,25 +226,23 @@
 
 .mini-search-bar {
     display: flex;
-    width: 680px;
+    width: auto;
     margin-top: 10px;
-    margin-left: -5px;
-    margin-right: -7px;
-
+    /* margin-left: -5px;
+    margin-right: -7px; */
+    padding-left: 10px;
+    padding-right: 5px;
 }
 
 .mini-search-bar input{
-    width: 600px;
+    width: 42vw;
     height: 30px;
     border-color: transparent;
-
 }
 
 .mini-search-bar button {
     margin-top: -5px;
 }
-
-
 
 .dropdown-container {
     display: flex;
