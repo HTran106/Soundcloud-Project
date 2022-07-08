@@ -5,6 +5,7 @@ import './MyAlbumsComponent.css'
 import * as albumActions from '../../store/albums'
 import UploadAlbumModal from "../UploadAlbumModal"
 import UploadSongModal from "../UploadSongModal"
+import { useEffect } from "react"
 
 const MyAlbumsComponent = ({albums}) => {
     const dispatch = useDispatch()
@@ -12,14 +13,18 @@ const MyAlbumsComponent = ({albums}) => {
     const sessionUser = useSelector(state => state.session.user)
     const myAlbums = albums?.filter(album => album.userId === sessionUser?.id)
 
+    useEffect(() => {
+
+    }, [albums])
+
     return (
         <div className="songs-container">
             <div className='all-song-sections'>
                 <div className="my-songs-header">
-                    <h2>Albums created by You!</h2>
+                    <h2>My Albums</h2>
                     <UploadAlbumModal />
                 </div>
-                    <h4>All available albums</h4>
+                    <h4>All Albums uploaded by You!</h4>
                         <ul className="all-songs-list">
                             {myAlbums?.map(album => (
                                 <div key={`${album.id}`}className='all-song-selections'>

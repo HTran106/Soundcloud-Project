@@ -15,8 +15,8 @@ function EditSongForm({song, closeModal}) {
     e.preventDefault()
 
     dispatch(songActions.updateSong({
-        id: song.id,
-        albumId: song.albumId,
+        id: song?.id,
+        albumId: song?.albumId,
         title,
         description,
         url,
