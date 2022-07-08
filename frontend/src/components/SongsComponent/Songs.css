@@ -33,7 +33,7 @@
 .songs-container {
     display: grid;
     grid-template-rows: repeat(3, 1fr);
-    width: auto;
+    width: 100vw;
     height: 100px;
     margin-left: 135px;
 }
