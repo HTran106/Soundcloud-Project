@@ -7,20 +7,20 @@ function EditSongForm({song, closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("")
   const [previewImage, setPreviewImage] = useState("")
+  const [url, setUrl] = useState("")
   const [errors, setErrors] = useState([]);
 
-  console.log(song)
-
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
+
     dispatch(songActions.updateSong({
-      id: song.id,
-      albumId: song.albumId,
-      title,
-      description,
-      imageUrl: previewImage
+        id: song.id,
+        albumId: song.albumId,
+        title,
+        description,
+        url,
+        imageUrl: previewImage
     }))
     closeModal()
   }

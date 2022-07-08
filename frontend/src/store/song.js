@@ -1,4 +1,3 @@
-import { removeAlbum } from "./albums"
 import { csrfFetch } from "./csrf"
 
 const SINGLE_SONG = 'songs/getSingleSong'
@@ -62,7 +61,7 @@ export const updateSong = (song) => async dispatch => {
     const res = await csrfFetch(`/songs/${song.id}`, {
         method: "PUT",
         headers: {
-            "CONTENT-TYPE": "application/json"
+            "Content-Type": "application/json"
         },
         body: JSON.stringify(song)
     })
@@ -70,7 +69,6 @@ export const updateSong = (song) => async dispatch => {
     if (res.ok) {
         const parsedRes = await res.json()
         dispatch(editSong(parsedRes))
-        return res
     }
 }
 
