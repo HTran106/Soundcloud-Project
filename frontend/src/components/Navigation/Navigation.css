@@ -4,6 +4,7 @@
     background-image: url(https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_c-318d7eed.jpg);
     background-size: cover;
     height: 450px;
+    width: 100vw;
 }
 
 .buttons-container {
