@@ -8,3 +8,14 @@
     background-color: white;
     border: 1px solid lightgray
 }
+
+.my-songs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1340px;
+}
+
+.my-songs-header button {
+    margin-bottom: -30px;
+}

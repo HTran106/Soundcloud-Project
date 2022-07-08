@@ -51,14 +51,15 @@ import MySongsComponent from "./components/MySongsComponent";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const songs = Object.values(useSelector(state => state.songs))
-  const sessionUser = useSelector(state => state.session.user)
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(songsActions.fetchAllSongs())
     dispatch(albumActions.fetchAllAlbums())
   }, [dispatch]);
+
+  const songs = Object.values(useSelector(state => state.songs))
+  const sessionUser = useSelector(state => state.session.user)
 
   return (
     <div className="page">
