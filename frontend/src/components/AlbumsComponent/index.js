@@ -21,8 +21,8 @@ const AlbumsComponent = () => {
 
 
     return (
-        <div className="albums-container">
-            <div className='album-sections'>
+        <div className="songs-container">
+            <div className='song-sections'>
                 <h2>Most listened to Albums</h2>
                 <h4>The most played albums on SoundCloud this week</h4>
                     <ul className="albums-list">
@@ -40,7 +40,7 @@ const AlbumsComponent = () => {
                         ))}
                     </ul>
             </div>
-            <div className='album-sections'>
+            <div className='song-sections'>
                 <h2>Hottest Albums</h2>
                 <h4>Albums with the most listeners</h4>
                     <ul className="albums-list">
@@ -58,7 +58,7 @@ const AlbumsComponent = () => {
                         ))}
                     </ul>
             </div>
-            <div className='all-album-sections'>
+            <div className='all-song-sections'>
                 <h2>All Albums</h2>
                 <h4>All available Albums</h4>
                     <ul className="all-albums-list">

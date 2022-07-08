@@ -172,6 +172,11 @@
     padding-right: 80px;
 }
 
+/* .profile-banner-container button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
 
 .dropdown-container {
     display: flex;

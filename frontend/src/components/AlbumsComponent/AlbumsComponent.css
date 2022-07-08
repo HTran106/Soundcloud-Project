@@ -33,10 +33,10 @@
 .albums-container {
     display: grid;
     grid-template-rows: repeat(3, 1fr);
-    min-width: 100vw;
     height: 100px;
     justify-content: center;
     margin-left: 135px;
+    width: 100vw;
 }
 
 .albums-list {
