@@ -46,19 +46,19 @@ module.exports = {
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/album7.jpeg'
       },
       {
-        userId: 1,
+        userId: 2,
         title: 'Glamorous',
         description: 'This album will make you feel like the Kardashians',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/album8.jpeg'
       },
       {
-        userId: 1,
+        userId: 3,
         title: 'Smooth',
         description: 'Smooth like butter.',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/album9.jpeg'
       },
       {
-        userId: 1,
+        userId: 5,
         title: 'Sentimental',
         description: 'Sentimental music for everyone.',
         previewImage: 'https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/album10.jpeg'
