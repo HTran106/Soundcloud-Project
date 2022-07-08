@@ -68,7 +68,7 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       <Switch>
         <Route path='/albums/:albumId'>
-          <AlbumDetailsComponent />
+          <AlbumDetailsComponent albums={albums}/>
         </Route>
         <Route path='/albums'>
           <AlbumsComponent />
