@@ -1,23 +1,30 @@
-import { useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { Redirect, useHistory } from "react-router-dom"
+import { deleteSong } from "../../store/song"
 import EditFormModal from "../EditModal"
 import './MySongsComponent.css'
+import * as songActions from '../../store/song'
 
-const MySongsComponent = ({songs}) => {
-    // const songs = Object.values(useSelector(state => state.songs))
-    const sessionUser = useSelector(state => state.session.user)
-
+const MySongsComponent = () => {
+    const dispatch = useDispatch()
     const history = useHistory()
-    const mySongs = songs.filter(song => song.userId === sessionUser.id)
+    const [submitted, setSubmitted] = useState(false)
 
-    // console.log(sessionUser)
+    useEffect(() => {
+        dispatch(songActions.fetchAllSongs())
+    }, [submitted])
+
+    const songs = Object.values(useSelector(state => state.songs))
+    const sessionUser = useSelector(state => state.session.user)
+    const mySongs = songs?.filter(song => song.userId === sessionUser.id)
 
     return (
         <div className='all-song-sections'>
                 <h2>All Songs</h2>
                 <h4>All available songs</h4>
                     <ul className="all-songs-list">
-                        {mySongs.map(song => (
+                        {mySongs?.map(song => (
                             <div key={`${song.id}`}className='all-song-selections'>
                                 <button className='all-song-details-button' onClick={e => {
                                     e.preventDefault()
@@ -28,7 +35,13 @@ const MySongsComponent = ({songs}) => {
                                 <li key={song.id}>{song.title}</li>
                                 <div className="edit-buttons">
                                     <EditFormModal song={song} />
-                                    <button>Delete</button>
+                                    <button onClick={e => {
+                                        e.preventDefault()
+                                        dispatch(deleteSong(song))
+                                        setSubmitted(!submitted)
+                                    }}>
+                                    Delete
+                                    </button>
                                 </div>
                             </div>
                         ))}

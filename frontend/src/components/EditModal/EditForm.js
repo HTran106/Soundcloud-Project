@@ -14,11 +14,11 @@ function EditForm({song}) {
   const [errors, setErrors] = useState([]);
   const history = useHistory()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
 
-    return dispatch(songActions.updateSong({
+    return await dispatch(songActions.updateSong({
       // albumId: song.albumId,
       title,
       description,

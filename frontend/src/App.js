@@ -52,11 +52,8 @@ function App() {
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(songsActions.fetchAllSongs())
   }, [dispatch]);
-
-  useEffect(() => {
-      dispatch(songsActions.fetchAllSongs())
-  }, [dispatch])
 
   return (
     <div className="page">
