@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Redirect, useHistory } from "react-router-dom"
-// import { deleteAlbum } from "../../store/albums"
 import EditFormModal from "../EditModal"
 import './MyAlbumsComponent.css'
 import * as albumActions from '../../store/albums'
@@ -13,8 +12,8 @@ const MyAlbumsComponent = ({albums}) => {
     const [submitted, setSubmitted] = useState(false)
 
     useEffect(() => {
-        dispatch(albumActions.fetchAllAlbums())
-    }, [submitted, dispatch])
+
+    }, [albums])
 
     const sessionUser = useSelector(state => state.session.user)
     const myAlbums = albums?.filter(album => album.userId === sessionUser?.id)
@@ -42,7 +41,7 @@ const MyAlbumsComponent = ({albums}) => {
                                         <EditFormModal album={album} />
                                         <button onClick={e => {
                                             e.preventDefault()
-                                            // dispatch(deleteAlbum(album))
+                                            dispatch(albumActions.deleteAlbum(album.id))
                                             setSubmitted(!submitted)
                                         }}>
                                         Delete

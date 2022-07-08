@@ -1,5 +1,5 @@
 import * as albumActions from '../../store/albums'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import * as userActions from '../../store/users'
@@ -10,11 +10,12 @@ const AlbumsComponent = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const albums = Object.values(useSelector(state => state.albums))
+    const [toggle, setToggle] = useState(false)
 
     useEffect(() => {
         dispatch(albumActions.fetchAllAlbums())
         dispatch(userActions.fetchAllUsers())
-    }, [dispatch])
+    }, [dispatch, toggle])
 
     const top5 = albums?.filter((album, i) => i < 5)
     const newAndHot = albums?.filter((album, i) => i >= 5 && i <10)
@@ -30,6 +31,7 @@ const AlbumsComponent = () => {
                             <div key={`${album.id}`} className='album-selections'>
                                 <button className='album-details-button' onClick={e => {
                                     e.preventDefault()
+                                    setToggle(!toggle)
                                     history.push(`/albums/${album.id}`)
                                     }}>
                                     <img src={album.previewImage} alt='previewImage'></img>
