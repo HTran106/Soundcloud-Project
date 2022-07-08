@@ -29,7 +29,7 @@ function UploadAlbumForm({song, closeModal}) {
 
   return (
     <>
-      <h1>Add Song to Album</h1>
+      <h1>Create a new Album</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors?.map((error, idx) => (
