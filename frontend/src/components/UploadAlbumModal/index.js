@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import EditForm from './EditForm.js';
+import UploadAlbumForm from './UploadAlbumForm';
 
-function EditFormModal({song}) {
+function UploadAlbumModal({album}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>✎ Edit</button>
+      <button className='upload-own-button' onClick={() => setShowModal(true)}>Upload</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditForm song={song}/>
+          <UploadAlbumForm album={album}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default EditFormModal;
+export default UploadAlbumModal;

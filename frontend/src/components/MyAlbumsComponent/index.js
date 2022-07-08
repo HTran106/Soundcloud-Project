@@ -5,6 +5,7 @@ import { Redirect, useHistory } from "react-router-dom"
 import EditFormModal from "../EditModal"
 import './MyAlbumsComponent.css'
 import * as albumActions from '../../store/albums'
+import UploadAlbumModal from "../UploadAlbumModal"
 
 const MyAlbumsComponent = ({albums}) => {
     const dispatch = useDispatch()
@@ -23,7 +24,8 @@ const MyAlbumsComponent = ({albums}) => {
             <div className='all-song-sections'>
                 <div className="my-songs-header">
                     <h2>All Albums</h2>
-                    <button className="upload-own-button">Upload</button>
+                    <UploadAlbumModal />
+                    {/* <button className="upload-own-button">Upload</button> */}
                 </div>
                     <h4>All available albums</h4>
                         <ul className="all-songs-list">

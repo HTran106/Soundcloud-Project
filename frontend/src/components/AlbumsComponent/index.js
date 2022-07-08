@@ -9,13 +9,13 @@ import './AlbumsComponent.css'
 const AlbumsComponent = () => {
     const dispatch = useDispatch()
     const history = useHistory()
+    const albums = Object.values(useSelector(state => state.albums))
 
     useEffect(() => {
         dispatch(albumActions.fetchAllAlbums())
         dispatch(userActions.fetchAllUsers())
     }, [dispatch])
 
-    const albums = Object.values(useSelector(state => state.albums))
     const top5 = albums?.filter((album, i) => i < 5)
     const newAndHot = albums?.filter((album, i) => i >= 5 && i <10)
 
