@@ -58,8 +58,8 @@ export const deleteSong = songId => async dispatch => {
     }
 }
 
-export const updateSong = (song, songId) => async dispatch => {
-    const res = await csrfFetch(`/songs/${songId}`, {
+export const updateSong = (song) => async dispatch => {
+    const res = await csrfFetch(`/songs/${song.id}`, {
         method: "PUT",
         headers: {
             "CONTENT-TYPE": "application/json"
@@ -69,7 +69,7 @@ export const updateSong = (song, songId) => async dispatch => {
 
     if (res.ok) {
         const parsedRes = await res.json()
-        await dispatch(editSong(parsedRes))
+        dispatch(editSong(parsedRes))
         return res
     }
 }

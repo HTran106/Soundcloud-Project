@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { deleteSong } from "../../store/song"
-import EditFormModal from "../EditModal"
+import EditFormModal from "../EditSongModal"
 import './MySongsComponent.css'
 
 

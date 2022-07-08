@@ -1,56 +1,29 @@
-import React, { useEffect, useState } from "react";
-import * as sessionActions from "../../store/session";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import './EditForm.css'
-import { useHistory } from 'react-router-dom'
+import './EditSongForm.css'
 import * as songActions from '../../store/song'
 
-function EditForm({song}) {
+function EditSongForm({song, closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [url, setUrl] = useState("")
   const [previewImage, setPreviewImage] = useState("")
   const [errors, setErrors] = useState([]);
-  const history = useHistory()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrors([]);
+  console.log(song)
 
-    return await dispatch(songActions.updateSong({
-      // albumId: song.albumId,
+  const handleSubmit = e => {
+    e.preventDefault()
+    dispatch(songActions.updateSong({
+      id: song.id,
+      albumId: song.albumId,
       title,
       description,
-      url,
       imageUrl: previewImage
-    }, song.id))
-    // .then(() => history.push('/my/songs'))
-    // .catch(
-    //   async (res) => {
-    //     const data = await res.json();
-    //     if (data && data.errors) setErrors(data.errors);
-    //   }
-    // );
-  };
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   setErrors([]);
-
-  //   return dispatch(songActions.updateSong({
-  //     title,
-  //     description,
-  //     url,
-  //     previewImage
-  //   })).catch(
-  //     async (res) => {
-  //       const data = await res.json();
-  //       if (data && data.errors) setErrors(data.errors);
-  //     }
-  //   )
-  // }
-
-
+    }))
+    closeModal()
+  }
 
   return (
     <>
@@ -91,12 +64,8 @@ function EditForm({song}) {
           />
         <button className="login-button" type="submit">Submit</button>
       </form>
-      {/* <form onSubmit={loginGuestUser}>
-        <p className='or'>----------------or----------------</p>
-        <button className='login-guest-button' type='submit'>Login as Guest</button>
-      </form> */}
     </>
   );
 }
 
-export default EditForm;
+export default EditSongForm;
