@@ -71,6 +71,7 @@ export const deleteAlbum = albumId => async dispatch => {
     if (res.ok) {
         const parsedRes = await res.json()
         dispatch(removeAlbum(albumId))
+        return res;
     }
 }
 
@@ -82,8 +83,8 @@ const albumsReducer = (state = {}, action) => {
             return setAlbumState
         case ALL_ALBUMS:
             const setAllAlbums = {...state}
-            action.payload.Albums?.forEach(song => {
-                setAllAlbums[song.id] = song
+            action.payload.Albums?.forEach(album => {
+                setAllAlbums[album.id] = album
             });
             return setAllAlbums
         case CREATE_ALBUM:

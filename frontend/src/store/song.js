@@ -1,3 +1,4 @@
+import { removeAlbum } from "./albums"
 import { csrfFetch } from "./csrf"
 
 const SINGLE_SONG = 'songs/getSingleSong'
@@ -45,14 +46,14 @@ export const fetchAllSongs = () => async dispatch => {
     }
 }
 
-export const deleteSong = song => async dispatch => {
-    const res = await csrfFetch(`/songs/${song.id}`, {
+export const deleteSong = songId => async dispatch => {
+    const res = await csrfFetch(`/songs/${songId}`, {
         method: 'DELETE'
     })
 
     if (res.ok) {
         const parsedRes = await res.json()
-        await dispatch(removeSong(parsedRes))
+        dispatch(removeSong(songId))
         return res;
     }
 }
@@ -73,18 +74,22 @@ export const updateSong = (song, songId) => async dispatch => {
     }
 }
 
-const songsReducer = (state={}, action) => {
+const songsReducer = (state = {}, action) => {
     switch (action.type) {
         case SINGLE_SONG:
-            let setSongState = {...state}
-            setSongState = action.payload
+            const setSongState = {...state}
+            setSongState[action.payload.id] = action.payload
             return setSongState
         case ALL_SONGS:
-            let setAllSongs = {...state}
-            setAllSongs = action.payload.Songs
+            const setAllSongs = {...state}
+            action.payload.Songs?.forEach(song => {
+                setAllSongs[song.id] = song
+            })
             return setAllSongs
         case REMOVE_SONG:
-            return {}
+            const removeSongState = {...state}
+            delete removeSongState[action.payload]
+            return removeSongState
         case EDIT_SONG:
             const updatedSongState = {...state}
             updatedSongState[action.payload.id] = action.payload

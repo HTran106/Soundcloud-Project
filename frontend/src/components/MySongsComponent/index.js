@@ -40,7 +40,7 @@ const MySongsComponent = ({songs}) => {
                                         <EditFormModal song={song} />
                                         <button onClick={e => {
                                             e.preventDefault()
-                                            dispatch(deleteSong(song))
+                                            dispatch(deleteSong(song.id))
                                             setSubmitted(!submitted)
                                         }}>
                                         Delete

@@ -18,7 +18,6 @@ const MyAlbumsComponent = ({albums}) => {
                 <div className="my-songs-header">
                     <h2>All Albums</h2>
                     <UploadAlbumModal />
-                    {/* <button className="upload-own-button">Upload</button> */}
                 </div>
                     <h4>All available albums</h4>
                         <ul className="all-songs-list">
