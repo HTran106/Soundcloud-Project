@@ -34,7 +34,8 @@
     grid-template-rows: repeat(3, 1fr);
     width: 100vw;
     height: 100px;
-    padding-left: 150px;
+    /* padding-left: 225px; */
+    margin-left: 225px;
 }
 
 .songs-list {

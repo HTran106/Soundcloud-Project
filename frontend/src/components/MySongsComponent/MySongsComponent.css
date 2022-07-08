@@ -6,7 +6,9 @@
 
 .edit-buttons button{
     background-color: white;
-    border: 1px solid lightgray
+    border: 1px solid lightgray;
+    margin-top: 5px;
+    margin-bottom: -5px;
 }
 
 .my-songs-header {
