@@ -17,7 +17,7 @@ const HomePageComponent = () => {
 
     const songs = Object.values(useSelector(state => state.songs))
     const trending = songs?.filter((song, i) => i >= 10 && i < 15)
-    const newAndHot = albums?.filter((song, i) => i % 2 !== 0)
+    const newAndHot = albums?.filter((song, i) => i >= 5 && i < 10)
 
 
 

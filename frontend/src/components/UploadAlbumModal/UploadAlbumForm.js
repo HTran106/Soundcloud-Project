@@ -1,29 +1,30 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import * as albumActions from '../../store/albums'
 
-function UploadAlbumForm({song, closeModal}) {
+function UploadAlbumForm({closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [previewImage, setPreviewImage] = useState("")
   const [errors, setErrors] = useState([]);
+  const history = useHistory()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-
 
     dispatch(albumActions.uploadAlbum({
         title,
         description,
         imageUrl: previewImage
-    })).catch(async (res) => {
+    }))
+    .then(() => {closeModal()})
+    .catch(async (res) => {
       const data = await res.json()
       if (data && data.errors) setErrors(Object.values(data.errors))
     });
-
-    // closeModal()
 
 }
 

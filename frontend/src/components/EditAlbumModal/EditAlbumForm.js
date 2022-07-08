@@ -18,7 +18,11 @@ function EditAlbumForm({album, closeModal}) {
         description,
         imageUrl: previewImage
     }))
-    closeModal()
+    .then(() => {closeModal()})
+    .catch(async (res) => {
+      const data = await res.json()
+      if (data && data.errors) setErrors(Object.values(data.errors))
+    });
   }
 
   return (
