@@ -25,7 +25,7 @@
 .album-info {
     display: grid;
     grid-template-rows: 25% 50% 25%;
-    width: 100px;
+    width: 100vw;
     color: white;
 }
 

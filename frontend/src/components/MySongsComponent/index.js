@@ -1,12 +1,8 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
-import { deleteSong, fetchAllSongs } from "../../store/song"
+import { deleteSong } from "../../store/song"
 import EditFormModal from "../EditSongModal"
 import './MySongsComponent.css'
-import { useEffect, useState } from 'react'
-
-
-
 
 const MySongsComponent = ({songs}) => {
     const dispatch = useDispatch()
@@ -20,7 +16,6 @@ const MySongsComponent = ({songs}) => {
             <div className='all-song-sections'>
                 <div className="my-songs-header">
                     <h2>My Songs</h2>
-                    <button className="upload-own-button">Upload</button>
                 </div>
                     <h4>All songs uploaded by You!</h4>
                         <ul className="all-songs-list">

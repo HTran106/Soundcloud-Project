@@ -60,7 +60,7 @@ function Navigation({ isLoaded }){
             <p className='growing'>SoundCloud Go+ lets you listen offline, ad-free, with over 150 million tracks - and growing.</p>
           </div>
         </div>
-        <SearchBarComponent />
+        {/* <SearchBarComponent /> */}
       </>
     );
   }
