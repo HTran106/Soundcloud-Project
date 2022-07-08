@@ -217,7 +217,8 @@
 
 .albums-button {
     background-color: transparent;
-    border: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
     font-family: sans-serif;
     color: #ccc;
     width: 100px;
