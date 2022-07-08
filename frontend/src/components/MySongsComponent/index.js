@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { deleteSong } from "../../store/song"
 import EditFormModal from "../EditModal"
 import './MySongsComponent.css'
-import * as songActions from '../../store/song'
+
 
 const MySongsComponent = ({songs}) => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const [submitted, setSubmitted] = useState(false)
-
-    useEffect(() => {
-        dispatch(songActions.fetchAllSongs())
-    }, [submitted])
 
     const sessionUser = useSelector(state => state.session.user)
     const mySongs = songs?.filter(song => song.userId === sessionUser?.id)
@@ -41,7 +35,6 @@ const MySongsComponent = ({songs}) => {
                                         <button onClick={e => {
                                             e.preventDefault()
                                             dispatch(deleteSong(song.id))
-                                            setSubmitted(!submitted)
                                         }}>
                                         Delete
                                         </button>

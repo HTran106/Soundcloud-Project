@@ -4,6 +4,12 @@ const SINGLE_ALBUM = 'albums/getSingleAlbum'
 const ALL_ALBUMS = 'albums/getAllAlbums'
 const CREATE_ALBUM = 'albums/createAlbum'
 const REMOVE_ALBUM = 'albums/removeAlbum'
+const EDIT_ALBUM = 'albums/editAlbum'
+
+export const editAlbum = album => ({
+    type: EDIT_ALBUM,
+    payload: album
+})
 
 export const removeAlbum = (id) => ({
     type: REMOVE_ALBUM,
@@ -46,7 +52,6 @@ export const fetchAllAlbums = () => async dispatch => {
 }
 
 export const uploadAlbum = (album) => async dispatch => {
-
         const res = await csrfFetch('/albums', {
             method: 'POST',
             header: {
@@ -62,15 +67,30 @@ export const uploadAlbum = (album) => async dispatch => {
         }
 }
 
-
 export const deleteAlbum = albumId => async dispatch => {
     const res = await csrfFetch(`/albums/${albumId}`, {
         method: 'DELETE',
     })
 
     if (res.ok) {
-        const parsedRes = await res.json()
+        await res.json()
         dispatch(removeAlbum(albumId))
+        return res;
+    }
+}
+
+export const updateAlbum = album => async dispatch => {
+    const res = await csrfFetch(`/albums/${album.id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(album)
+    });
+
+    if (res.ok) {
+        const parsedRes = await res.json()
+        dispatch(editAlbum(parsedRes))
         return res;
     }
 }
@@ -95,6 +115,10 @@ const albumsReducer = (state = {}, action) => {
             const removeAlbumState = {...state}
             delete removeAlbumState[action.payload]
             return removeAlbumState
+        case EDIT_ALBUM:
+            const editAlbumState = {...state}
+            editAlbumState[action.payload.id] = action.payload
+            return editAlbumState
         default:
             return state;
     }

@@ -1,35 +1,32 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import './EditAlbumForm.css'
 import * as albumActions from '../../store/albums'
 
-function UploadAlbumForm({song, closeModal}) {
+function EditAlbumForm({album, closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [previewImage, setPreviewImage] = useState("")
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrors([]);
-
-
-    dispatch(albumActions.uploadAlbum({
+  const handleSubmit = e => {
+    e.preventDefault()
+    dispatch(albumActions.updateAlbum({
+        id: album.id,
         title,
         description,
         imageUrl: previewImage
     }))
-
     closeModal()
-
-}
+  }
 
   return (
     <>
-      <h1>Add an Album</h1>
+      <h1>Edit Album</h1>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors?.map((error, idx) => (
+          {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
@@ -56,12 +53,8 @@ function UploadAlbumForm({song, closeModal}) {
           />
         <button className="login-button" type="submit">Submit</button>
       </form>
-      {/* <form onSubmit={loginGuestUser}>
-        <p className='or'>----------------or----------------</p>
-        <button className='login-guest-button' type='submit'>Login as Guest</button>
-      </form> */}
     </>
   );
 }
 
-export default UploadAlbumForm;
+export default EditAlbumForm;

@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { Redirect, useHistory } from "react-router-dom"
-import EditFormModal from "../EditModal"
+import { useHistory } from "react-router-dom"
+import EditAlbumModal from "../EditAlbumModal"
 import './MyAlbumsComponent.css'
 import * as albumActions from '../../store/albums'
 import UploadAlbumModal from "../UploadAlbumModal"
@@ -31,7 +30,7 @@ const MyAlbumsComponent = ({albums}) => {
                                     </button>
                                     <li key={album.id}>{album.title}</li>
                                     <div className="edit-buttons">
-                                        <EditFormModal album={album} />
+                                        <EditAlbumModal album={album} />
                                         <button onClick={e => {
                                             e.preventDefault()
                                             dispatch(albumActions.deleteAlbum(album.id))
