@@ -38,7 +38,6 @@ function SignupForm() {
     }
   };
 
-  console.log(errors)
   return (
     <div className="form-container">
       <h1>Create your SoundCloud account</h1>
