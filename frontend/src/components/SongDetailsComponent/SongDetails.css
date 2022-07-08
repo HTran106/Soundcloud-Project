@@ -41,13 +41,13 @@
     height: 90px;
 }
 
-.artist {
+.song-artist {
     display: flex;
     width: 300px;
     justify-content: center;
 }
 
-.artist h2 {
+.song-artist h2 {
     color: whitesmoke;
     font-weight: 400;
     font-family: Bradley Hand;
@@ -62,14 +62,14 @@
     font-size: 15px;
 }
 
-.title {
+.song-title {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 
-.title h2 {
+.song-title h2 {
     color: white;
     font-weight: 400;
     font-family: Bradley Hand;

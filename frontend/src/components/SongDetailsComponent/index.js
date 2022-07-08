@@ -36,10 +36,10 @@ const SongDetailsComponent = ({songs}) => {
                             <img src={`${currentSong?.previewImage}`} alt='previewImage'></img>
                         </div>
                         <div className='player-buttons-container'>
-                            <div className='artist'>
+                            <div className='song-artist'>
                                 <h2>{`${artist?.firstName} ${artist?.lastName}`}</h2>
                             </div>
-                            <div className='title'>
+                            <div className='song-title'>
                                 <h2>{currentSong?.title}</h2>
                             </div>
                             <div className="player-buttons">
