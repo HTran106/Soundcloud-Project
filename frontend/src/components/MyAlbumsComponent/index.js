@@ -1,46 +1,46 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { useHistory } from "react-router-dom"
-import { deleteSong } from "../../store/song"
+import { Redirect, useHistory } from "react-router-dom"
+// import { deleteAlbum } from "../../store/albums"
 import EditFormModal from "../EditModal"
-import './MySongsComponent.css'
-import * as songActions from '../../store/song'
+import './MyAlbumsComponent.css'
+import * as albumActions from '../../store/albums'
 
-const MySongsComponent = ({songs}) => {
+const MyAlbumsComponent = ({albums}) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [submitted, setSubmitted] = useState(false)
 
     useEffect(() => {
-        dispatch(songActions.fetchAllSongs())
-    }, [submitted])
+        dispatch(albumActions.fetchAllAlbums())
+    }, [submitted, dispatch])
 
     const sessionUser = useSelector(state => state.session.user)
-    const mySongs = songs?.filter(song => song.userId === sessionUser?.id)
+    const myAlbums = albums?.filter(album => album.userId === sessionUser?.id)
 
     return (
         <div className="songs-container">
             <div className='all-song-sections'>
                 <div className="my-songs-header">
-                    <h2>My Songs</h2>
+                    <h2>All Albums</h2>
                     <button className="upload-own-button">Upload</button>
                 </div>
-                    <h4>All songs uploaded by You!</h4>
+                    <h4>All available albums</h4>
                         <ul className="all-songs-list">
-                            {mySongs?.map(song => (
-                                <div key={`${song.id}`}className='all-song-selections'>
+                            {myAlbums?.map(album => (
+                                <div key={`${album.id}`}className='all-song-selections'>
                                     <button className='all-song-details-button' onClick={e => {
                                         e.preventDefault()
-                                        history.push(`/songs/${song.id}`)
+                                        history.push(`/albums/${album.id}`)
                                         }}>
-                                        <img src={song.previewImage} alt='previewImage'></img>
+                                        <img src={album.previewImage} alt='previewImage'></img>
                                     </button>
-                                    <li key={song.id}>{song.title}</li>
+                                    <li key={album.id}>{album.title}</li>
                                     <div className="edit-buttons">
-                                        <EditFormModal song={song} />
+                                        <EditFormModal album={album} />
                                         <button onClick={e => {
                                             e.preventDefault()
-                                            dispatch(deleteSong(song))
+                                            // dispatch(deleteAlbum(album))
                                             setSubmitted(!submitted)
                                         }}>
                                         Delete
@@ -54,4 +54,4 @@ const MySongsComponent = ({songs}) => {
     )
 }
 
-export default MySongsComponent
+export default MyAlbumsComponent
