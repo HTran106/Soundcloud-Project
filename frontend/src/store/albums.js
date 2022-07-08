@@ -82,7 +82,7 @@ const albumsReducer = (state = {}, action) => {
             return setAlbumState
         case ALL_ALBUMS:
             const setAllAlbums = {...state}
-            action.payload.Albums.forEach(song => {
+            action.payload.Albums?.forEach(song => {
                 setAllAlbums[song.id] = song
             });
             return setAllAlbums

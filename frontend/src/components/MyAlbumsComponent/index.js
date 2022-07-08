@@ -9,12 +9,6 @@ import UploadAlbumModal from "../UploadAlbumModal"
 const MyAlbumsComponent = ({albums}) => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const [submitted, setSubmitted] = useState(false)
-
-    useEffect(() => {
-
-    }, [albums])
-
     const sessionUser = useSelector(state => state.session.user)
     const myAlbums = albums?.filter(album => album.userId === sessionUser?.id)
 
@@ -42,7 +36,6 @@ const MyAlbumsComponent = ({albums}) => {
                                         <button onClick={e => {
                                             e.preventDefault()
                                             dispatch(albumActions.deleteAlbum(album.id))
-                                            setSubmitted(!submitted)
                                         }}>
                                         Delete
                                         </button>
