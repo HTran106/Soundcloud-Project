@@ -46,6 +46,7 @@ import AlbumsComponent from "./components/AlbumsComponent";
 import AlbumDetailsComponent from "./components/AlbumDetailsComponent";
 import * as albumActions from './store/albums'
 import MySongsComponent from "./components/MySongsComponent";
+import MyAlbumsComponent from "./components/MyAlbumsComponent";
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
   }, [dispatch]);
 
   const songs = Object.values(useSelector(state => state.songs))
+  const albums = Object.values(useSelector(state => state.albums))
   const sessionUser = useSelector(state => state.session.user)
 
   return (
@@ -70,6 +72,9 @@ function App() {
         </Route>
         <Route path='/albums'>
           <AlbumsComponent />
+        </Route>
+        <Route path='/my/albums'>
+          <MyAlbumsComponent albums={albums}/>
         </Route>
         <Route path='/my/songs'>
           <MySongsComponent songs={songs}/>
