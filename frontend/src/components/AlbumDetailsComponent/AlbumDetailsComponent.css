@@ -1,7 +1,7 @@
 .album-details-container {
     display: grid;
     grid-template-rows: 60% 40%;
-    height: 850px;
+    height: 800px;
     width: 98vw;
     background-repeat: no-repeat;
     align-items: flex-end;
@@ -12,6 +12,7 @@
     padding-left: 15px;
     padding-bottom: 25px;
     background-position-x: -14px;
+    /* margin-right: 8px; */
 }
 
 .album-info-container {
