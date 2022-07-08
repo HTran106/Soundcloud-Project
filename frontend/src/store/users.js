@@ -17,12 +17,14 @@ export const fetchAllUsers = () => async dispatch => {
     }
 }
 
-const usersReducer = (state = [], action) => {
+const usersReducer = (state = {}, action) => {
     switch (action.type) {
         case ALL_USERS:
-            let getAllUsersState = []
-            getAllUsersState = action.payload
-            return getAllUsersState;
+            let getAllUsersState = {...state}
+            action.payload?.forEach(user => {
+                getAllUsersState[user.id] = user
+            })
+            return getAllUsersState
         default:
             return state
     }

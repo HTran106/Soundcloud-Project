@@ -13,7 +13,7 @@ import { fetchAllUsers } from "../../store/users";
 const SongDetailsComponent = ({songs}) => {
     const { songId } = useParams()
     const dispatch = useDispatch()
-    const users = useSelector(state => state.users)
+    const users = Object.values(useSelector(state => state.users))
 
     const currentSong = songs.find(song => song.id === +songId)
 
