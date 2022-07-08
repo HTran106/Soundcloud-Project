@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import * as albumActions from '../../store/albums'
 
-function UploadAlbumForm({song}) {
+function UploadAlbumForm({song, closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -18,13 +18,14 @@ function UploadAlbumForm({song}) {
     setErrors([]);
 
 
-    const result = await dispatch(albumActions.uploadAlbum({
+    dispatch(albumActions.uploadAlbum({
         title,
         description,
         imageUrl: previewImage
     }))
 
-    
+    closeModal()
+
 }
 
   return (
