@@ -18,24 +18,17 @@ function SignupForm() {
 
   if (sessionUser) return <Redirect to="/" />;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
-
-    if (password !== confirmPassword) setErrors(['Confirm Password field must be the same as the Password field'])
-
-
-    if (!errors.length) {
-      const result = await dispatch(
-        sessionActions.signup({ firstName, lastName, email, username, password })
-      )
-
-      if(result.id){
-        history.push('/')
-      } else {
-        setErrors([...errors, result])
-      }
+    if (password === confirmPassword) {
+      setErrors([]);
+      return dispatch(sessionActions.signup({ email, username, password }))
+        .catch(async (res) => {
+          const data = await res.json();
+          if (data && data.errors) setErrors(Object.values(data.errors));
+        });
     }
+    return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
   return (
