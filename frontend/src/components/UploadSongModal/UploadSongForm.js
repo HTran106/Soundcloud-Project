@@ -18,7 +18,6 @@ function UploadSongForm({album, closeModal}) {
     dispatch(songActions.uploadSong({
         title,
         description,
-        albumId: +album.id,
         url,
         imageUrl: previewImage
     }, album.id))
