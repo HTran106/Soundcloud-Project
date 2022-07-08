@@ -103,7 +103,7 @@ router.post('/:albumId', requireAuth, songValidator, restoreUser, async (req, re
     if (album) {
         if (album.userId === user.id) {
             const newSong = await Song.create({
-                albumId,
+                albumId: +albumId,
                 userId: user.id,
                 title,
                 description,

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import * as albumActions from '../../store/albums'
+import * as songActions from '../../store/song'
 
-function UploadSongForm({song, closeModal}) {
+function UploadSongForm({album, closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [url, setUrl] = useState("")
   const [previewImage, setPreviewImage] = useState("")
   const [errors, setErrors] = useState([]);
 
@@ -14,19 +15,19 @@ function UploadSongForm({song, closeModal}) {
     setErrors([]);
 
 
-    dispatch(albumActions.uploadAlbum({
+    dispatch(songActions.uploadSong({
         title,
         description,
+        albumId: +album.id,
+        url,
         imageUrl: previewImage
-    }))
-
+    }, album.id))
     closeModal()
-
 }
 
   return (
     <>
-      <h1>Add Song to Album</h1>
+      <h1>Add Song to this Album</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors?.map((error, idx) => (
@@ -46,6 +47,13 @@ function UploadSongForm({song, closeModal}) {
             onChange={(e) => setDescription(e.target.value)}
             required
             placeholder="Description"
+          />
+          <input
+            type="url"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            required
+            placeholder="Song Url"
           />
           <input
             type="url"

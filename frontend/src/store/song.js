@@ -4,6 +4,12 @@ const SINGLE_SONG = 'songs/getSingleSong'
 const ALL_SONGS = 'songs/getAllSongs'
 const REMOVE_SONG = 'songs/removeSong'
 const EDIT_SONG = 'songs/editSong'
+const CREATE_SONG = 'songs/createSong'
+
+export const createSong = (song) => ({
+    type: CREATE_SONG,
+    payload: song
+})
 
 export const editSong = song => ({
     type: EDIT_SONG,
@@ -72,6 +78,22 @@ export const updateSong = (song) => async dispatch => {
     }
 }
 
+export const uploadSong = (song, albumId) => async dispatch => {
+    const res = await csrfFetch(`/albums/${albumId}`, {
+        method: 'POST',
+        header: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(song)
+    })
+
+    if (res.ok) {
+        const parsedRes = await res.json()
+        dispatch(createSong(parsedRes))
+        return res;
+    }
+}
+
 const songsReducer = (state = {}, action) => {
     switch (action.type) {
         case SINGLE_SONG:
@@ -92,6 +114,10 @@ const songsReducer = (state = {}, action) => {
             const updatedSongState = {...state}
             updatedSongState[action.payload.id] = action.payload
             return updatedSongState;
+        case CREATE_SONG:
+            const newSongState = {...state}
+            newSongState[action.payload.id] = action.payload
+            return newSongState
         default:
             return state;
     }

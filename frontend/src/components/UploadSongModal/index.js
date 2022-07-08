@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import UploadAlbumForm from './UploadAlbumForm';
-import './UploadAlbumForm.css'
+import UploadSongForm from './UploadSongForm';
+import './UploadSongForm.css'
 
-function UploadAlbumModal({album}) {
+function UploadSongModal({album}) {
   const [showModal, setShowModal] = useState(false);
 
   const closeModal = () => {
@@ -12,14 +12,14 @@ function UploadAlbumModal({album}) {
 
   return (
     <>
-      <button className='add-album-button' onClick={() => setShowModal(true)}>Add Album</button>
+      <button className='add-song-button' onClick={() => setShowModal(true)}>Add Song to Album</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <UploadAlbumForm closeModal={closeModal} album={album}/>
+          <UploadSongForm closeModal={closeModal} album={album}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default UploadAlbumModal;
+export default UploadSongModal;

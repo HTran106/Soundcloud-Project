@@ -4,6 +4,7 @@ import EditAlbumModal from "../EditAlbumModal"
 import './MyAlbumsComponent.css'
 import * as albumActions from '../../store/albums'
 import UploadAlbumModal from "../UploadAlbumModal"
+import UploadSongModal from "../UploadSongModal"
 
 const MyAlbumsComponent = ({albums}) => {
     const dispatch = useDispatch()
@@ -15,7 +16,7 @@ const MyAlbumsComponent = ({albums}) => {
         <div className="songs-container">
             <div className='all-song-sections'>
                 <div className="my-songs-header">
-                    <h2>All Albums</h2>
+                    <h2>Albums created by You!</h2>
                     <UploadAlbumModal />
                 </div>
                     <h4>All available albums</h4>
@@ -30,6 +31,7 @@ const MyAlbumsComponent = ({albums}) => {
                                     </button>
                                     <li key={album.id}>{album.title}</li>
                                     <div className="edit-buttons">
+                                        <UploadSongModal album={album}/>
                                         <EditAlbumModal album={album} />
                                         <button onClick={e => {
                                             e.preventDefault()
