@@ -11,14 +11,9 @@ import { useEffect, useState } from 'react'
 const MySongsComponent = ({songs}) => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const [toggle, setToggle] = useState(false)
 
     const sessionUser = useSelector(state => state.session.user)
     const mySongs = songs?.filter(song => song.userId === sessionUser?.id)
-
-    useEffect(() => {
-        dispatch(fetchAllSongs())
-    }, [toggle])
 
     return (
         <div className="songs-container">
@@ -43,7 +38,6 @@ const MySongsComponent = ({songs}) => {
                                         <button onClick={e => {
                                             e.preventDefault()
                                             dispatch(deleteSong(song.id))
-                                            setToggle(!toggle)
                                         }}>
                                         Delete
                                         </button>

@@ -13,10 +13,6 @@ const MyAlbumsComponent = ({albums}) => {
     const sessionUser = useSelector(state => state.session.user)
     const myAlbums = albums?.filter(album => album.userId === sessionUser?.id)
 
-    useEffect(() => {
-
-    }, [albums])
-
     return (
         <div className="songs-container">
             <div className='all-song-sections'>
