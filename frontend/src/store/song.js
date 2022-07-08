@@ -51,7 +51,7 @@ export const deleteSong = songId => async dispatch => {
     })
 
     if (res.ok) {
-        const parsedRes = await res.json()
+        await res.json()
         dispatch(removeSong(songId))
         return res;
     }
