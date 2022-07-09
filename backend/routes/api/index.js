@@ -13,7 +13,7 @@ router.use(sessionRouter);
 router.use('/users', usersRouter);
 
 //Search query route
-router.get('/search', validateSearchQuery, async (req, res, next) => {
+router.get('/api/search', validateSearchQuery, async (req, res, next) => {
   let { page, size, title, createdAt } = req.query;
 
   if (!size) size = 20
