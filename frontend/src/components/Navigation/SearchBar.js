@@ -11,6 +11,7 @@ const SearchBar = () => {
     const handleSubmit = e => {
         e.preventDefault()
         dispatch(searchActions.search(searchParams))
+        setSearchParams("")
         history.push("/search")
     }
 
