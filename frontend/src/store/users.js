@@ -8,7 +8,7 @@ export const getAllUsers = (users) => ({
 })
 
 export const fetchAllUsers = () => async dispatch => {
-    const res = await csrfFetch('/users')
+    const res = await csrfFetch('/api/users')
 
     if (res.ok) {
         const parsedRes = await res.json()

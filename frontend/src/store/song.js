@@ -32,7 +32,7 @@ export const removeSong = (songId) => ({
 })
 
 export const fetchSingleSong = songId => async dispatch => {
-    const res = await csrfFetch(`/songs/${songId}`)
+    const res = await csrfFetch(`/api/songs/${songId}`)
 
     if (res.ok) {
         const parsedRes = await res.json()
@@ -42,7 +42,7 @@ export const fetchSingleSong = songId => async dispatch => {
 }
 
 export const fetchAllSongs = () => async dispatch => {
-    const res = await csrfFetch('/songs')
+    const res = await csrfFetch('/api/songs')
 
     if (res.ok) {
         const parsedRes = await res.json()
@@ -52,7 +52,7 @@ export const fetchAllSongs = () => async dispatch => {
 }
 
 export const deleteSong = songId => async dispatch => {
-    const res = await csrfFetch(`/songs/${songId}`, {
+    const res = await csrfFetch(`/api/songs/${songId}`, {
         method: 'DELETE'
     })
 
@@ -64,7 +64,7 @@ export const deleteSong = songId => async dispatch => {
 }
 
 export const updateSong = (song) => async dispatch => {
-    const res = await csrfFetch(`/songs/${song.id}`, {
+    const res = await csrfFetch(`/api/songs/${song.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -79,7 +79,7 @@ export const updateSong = (song) => async dispatch => {
 }
 
 export const uploadSong = (song, albumId) => async dispatch => {
-    const res = await csrfFetch(`/albums/${albumId}`, {
+    const res = await csrfFetch(`/api/albums/${albumId}`, {
         method: 'POST',
         header: {
             "Content-Type": "application/json"

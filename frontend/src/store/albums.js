@@ -32,7 +32,7 @@ export const getAllAlbums = (albums) => ({
 })
 
 export const fetchSingleAlbum = albumId => async dispatch => {
-    const res = await csrfFetch(`/albums/${albumId}`)
+    const res = await csrfFetch(`/api/albums/${albumId}`)
 
     if (res.ok) {
         const parsedRes = await res.json()
@@ -42,7 +42,7 @@ export const fetchSingleAlbum = albumId => async dispatch => {
 }
 
 export const fetchAllAlbums = () => async dispatch => {
-    const res = await csrfFetch('/albums')
+    const res = await csrfFetch('/api/albums')
 
     if (res.ok) {
         const parsedRes = await res.json()
@@ -52,7 +52,7 @@ export const fetchAllAlbums = () => async dispatch => {
 }
 
 export const uploadAlbum = (album) => async dispatch => {
-        const res = await csrfFetch('/albums', {
+        const res = await csrfFetch('/api/albums', {
             method: 'POST',
             header: {
                 "Content-Type": "application/json"
@@ -68,7 +68,7 @@ export const uploadAlbum = (album) => async dispatch => {
 }
 
 export const deleteAlbum = albumId => async dispatch => {
-    const res = await csrfFetch(`/albums/${albumId}`, {
+    const res = await csrfFetch(`/api/albums/${albumId}`, {
         method: 'DELETE',
     })
 
@@ -80,7 +80,7 @@ export const deleteAlbum = albumId => async dispatch => {
 }
 
 export const updateAlbum = album => async dispatch => {
-    const res = await csrfFetch(`/albums/${album.id}`, {
+    const res = await csrfFetch(`/api/albums/${album.id}`, {
         method: 'PUT',
         headers: {
             "Content-Type": "application/json"

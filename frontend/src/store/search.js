@@ -8,7 +8,7 @@ export const searchSong = (songs) => ({
 })
 
 export const search = (title) => async dispatch => {
-    const res = await csrfFetch(`/search?title=${title}`)
+    const res = await csrfFetch(`/api/search?title=${title}`)
 
     if (res.ok) {
         const parsedRes = await res.json()
