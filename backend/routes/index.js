@@ -9,12 +9,12 @@ const songsRouter = require('./songs')
 const artistRouter = require('./artists')
 const playlistRouter = require('./playlists')
 
-router.use('/playlists', playlistRouter)
+router.use('/api/playlists', playlistRouter)
 router.use(apiRouter);
-router.use('/my', myRouter);
-router.use('/albums', albumsRouter);
-router.use('/songs', songsRouter)
-router.use('/artists', artistRouter)
+router.use('/api/my', myRouter);
+router.use('/api/albums', albumsRouter);
+router.use('/api/songs', songsRouter)
+router.use('/api/artists', artistRouter)
 
 if (process.env.NODE_ENV === 'production') {
   const path = require('path');
