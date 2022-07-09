@@ -65,7 +65,7 @@ function Navigation({ isLoaded }){
           <p>
             As the world's largest music and audio platform,
             SoundCloud-Clone lets people discover and enjoy the greatest selection of music from the most diverse creator community on earth.
-            Since launching in 2008, the platform has become renowned for its unique content and features,
+            Since launching in 2022, the platform has become renowned for its unique content and features,
             including the ability to share music and connect directly with artists, as well as unearth breakthrough tracks,
             raw demos, podcasts and more. This is made possible by an open platform that directly connects creators and their fans across the globe.
             Music and audio creators use SoundCloud-Clone to both share and monetise their content with a global audience,
