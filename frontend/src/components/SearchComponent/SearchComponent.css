@@ -1,0 +1,29 @@
+.search-container {
+    display: grid;
+    grid-template-rows: 30% 50%;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 50vw;
+}
+
+.search-song-section {
+    display: flex;
+    justify-content: center;
+}
+
+.search-title {
+    display: flex;
+    justify-content: center;
+}
+
+.search-songs-list {
+    display: flex;
+    margin-top: -20%
+}
+
+.search-songs-list li {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}

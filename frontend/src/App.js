@@ -47,6 +47,7 @@ import AlbumDetailsComponent from "./components/AlbumDetailsComponent";
 import * as albumActions from './store/albums'
 import MySongsComponent from "./components/MySongsComponent";
 import MyAlbumsComponent from "./components/MyAlbumsComponent";
+import SearchComponent from "./components/SearchComponent";
 
 
 function App() {
@@ -67,7 +68,9 @@ function App() {
     <div className="page">
       <Navigation isLoaded={isLoaded} />
       <Switch>
-        <Route path='/search'>hello</Route>
+        <Route path='/search'>
+          <SearchComponent />
+        </Route>
         <Route path='/albums/:albumId'>
           <AlbumDetailsComponent albums={albums}/>
         </Route>
