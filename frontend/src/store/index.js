@@ -7,7 +7,6 @@ import songsReducer from "./song";
 import usersReducer from "./users";
 
 const rootReducer = combineReducers({
-  // add reducer functions here
   session: sessionReducer,
   songs: songsReducer,
   users: usersReducer,

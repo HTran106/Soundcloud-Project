@@ -12,7 +12,6 @@
     padding-left: 15px;
     padding-bottom: 25px;
     background-position-x: -14px;
-    /* margin-right: 8px; */
 }
 
 .album-info-container {
@@ -126,7 +125,6 @@
 }
 
 .single-song-box button {
-    /* border-radius: 50%; */
     width: 40px;
     height: 30px;
     padding-right: 10px;

@@ -67,10 +67,6 @@ function UploadSongForm({album, closeModal}) {
           />
         <button className="login-button" type="submit">Submit</button>
       </form>
-      {/* <form onSubmit={loginGuestUser}>
-        <p className='or'>----------------or----------------</p>
-        <button className='login-guest-button' type='submit'>Login as Guest</button>
-      </form> */}
     </>
   );
 }

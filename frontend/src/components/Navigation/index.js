@@ -4,17 +4,12 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
-// import SearchBarComponent from '../SearchBar';
 import HomeButton from './HomeButton';
 import SongsButton from './SongsButton';
 import AlbumsButton from './AlbumsButton';
 import SearchBar from './SearchBar';
-// import PlaylistsButton from './PlaylistsButton';
 import MySongsButton from './MySongsButton';
 import MyAlbumsButton from './MyAlbumsButton';
-// import HomePageComponent from '../HomePageComponent/HomePageComponent';
-
-
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -50,14 +45,11 @@ function Navigation({ isLoaded }){
               <div className='create-account-button'>
                 <SignupFormModal />
               </div>
-              {/* <div className='for-creators-button'>
-                <button>For Creators</button>
-              </div> */}
             </div>
           </div>
           <div className='banner-words'>
-            <p className='discover'>Discover more with SoundCloud Go+</p>
-            <p className='growing'>SoundCloud Go+ lets you listen offline, ad-free, with over 150 million tracks - and growing.</p>
+            <p className='discover'>Discover more with SoundCloud Clone!</p>
+            <p className='growing'>SoundCloud Clone lets you listen to all the hottest hits, ad-free, with over 150 million tracks - and growing.</p>
           </div>
         </div>
         <h1 style={{fontSize: "48px"}}>About Soundcloud Clone</h1>
@@ -72,7 +64,6 @@ function Navigation({ isLoaded }){
             as well as receive detailed stats and feedback from the SoundCloud community.
           </p>
         </div>
-        {/* <SearchBarComponent /> */}
       </>
     );
   }

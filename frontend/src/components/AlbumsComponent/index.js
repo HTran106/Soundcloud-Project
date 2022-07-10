@@ -81,22 +81,4 @@ const AlbumsComponent = () => {
     )
 }
 
-// const AlbumsComponent = () => {
-//     const dispatch = useDispatch()
-//     const albums = useSelector(state => state.albums)
-//     const top5 = albums.filter((album, i) => i < 5)
-//     const newAndHot = albums.filter((album, i) => i >= 5 && i < 10)
-
-//     useEffect(() => {
-//         dispatch(albumActions.fetchAllAlbums())
-//     }, [dispatch])
-
-
-
-//     console.log(newAndHot)
-//     return (
-//         <h1>Album Component</h1>
-//     )
-// }
-
 export default AlbumsComponent

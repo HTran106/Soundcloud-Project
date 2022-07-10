@@ -13,20 +13,16 @@ const HomePageComponent = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const albums = Object.values(useSelector(state => state.albums))
-    // const sessionUser = useSelector(state => state.session.user)
 
     const songs = Object.values(useSelector(state => state.songs))
     const trending = songs?.filter((song, i) => i >= 10 && i < 15)
     const newAndHot = albums?.filter((song, i) => i >= 5 && i < 10)
-
-
 
     useEffect(() => {
         dispatch(songsActions.fetchAllSongs())
         dispatch(userActions.fetchAllUsers())
         dispatch(albumActions.fetchAllAlbums())
     }, [dispatch])
-
 
     return (
         <div className="songs-container">

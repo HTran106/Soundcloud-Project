@@ -5,7 +5,6 @@ import './MyAlbumsComponent.css'
 import * as albumActions from '../../store/albums'
 import UploadAlbumModal from "../UploadAlbumModal"
 import UploadSongModal from "../UploadSongModal"
-import { useEffect } from "react"
 
 const MyAlbumsComponent = ({albums}) => {
     const dispatch = useDispatch()

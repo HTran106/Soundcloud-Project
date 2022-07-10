@@ -7,7 +7,6 @@
   width: 100%;
   padding: 10px 15px;
   background-color: transparent;
-  /* box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2); */
 }
 .rhap_container:focus:not(:focus-visible) {
   outline: 0;

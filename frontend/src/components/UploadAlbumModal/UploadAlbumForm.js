@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import * as albumActions from '../../store/albums'
 
 function UploadAlbumForm({closeModal}) {
@@ -9,7 +8,6 @@ function UploadAlbumForm({closeModal}) {
   const [description, setDescription] = useState("");
   const [previewImage, setPreviewImage] = useState("")
   const [errors, setErrors] = useState([]);
-  const history = useHistory()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +23,6 @@ function UploadAlbumForm({closeModal}) {
       const data = await res.json()
       if (data && data.errors) setErrors(Object.values(data.errors))
     });
-
 }
 
   return (
@@ -60,10 +57,6 @@ function UploadAlbumForm({closeModal}) {
           />
         <button className="login-button" type="submit">Submit</button>
       </form>
-      {/* <form onSubmit={loginGuestUser}>
-        <p className='or'>----------------or----------------</p>
-        <button className='login-guest-button' type='submit'>Login as Guest</button>
-      </form> */}
     </>
   );
 }

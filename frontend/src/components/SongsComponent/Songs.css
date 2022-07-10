@@ -1,18 +1,3 @@
-/* .songs-component-container {
-    display: grid;
-    width: 100%;
-    height: 800px;
-    background-image: url("https://wallpapercave.com/wp/wc1785700.jpg");
-    background-size: cover;
-    background-position-y: 20%;
-} */
-/*
-.songs-sections {
-    display: flex;
-    height: 100px;
-    flex-direction: row;
-} */
-
 .song-sections h2 {
     font-weight: 100;
     font-family: sans-serif;
@@ -87,7 +72,6 @@
 
 .all-songs-list {
     display: flex;
-    /* justify-content: flex-start; */
     align-items: flex-start;
     margin-left: -10px;
     flex-wrap: wrap;

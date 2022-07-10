@@ -44,7 +44,7 @@ const SearchComponent = () => {
                                     setUrl(song.url)
                                 }}
                                 className='play-button'>
-                                    <img src='https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/transparent-play-button-icon-21.png'></img>
+                                    <img src='https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/transparent-play-button-icon-21.png' alt="previewImage"></img>
                                 </button>
                             </div>
                             <div className='list-container'>
@@ -61,15 +61,15 @@ const SearchComponent = () => {
                                 </div>
                                 <div className='search-icons-section'>
                                     <div className='icons'>
-                                        <img src='https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/play-solid.svg'></img>
+                                        <img src='https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/play-solid.svg' alt="previewImage"></img>
                                         {`${Math.floor(Math.random() * 100000).toLocaleString("en-US")}`}
                                     </div>
                                     <div className='icons'>
-                                        <img src='https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/upload-solid.svg'></img>
+                                        <img src='https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/upload-solid.svg' alt="previewImage"></img>
                                         {`${Math.floor(Math.random() * 11).toLocaleString("en-US")}y ago`}
                                     </div>
                                     <div className='icons'>
-                                        <img src='https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/download-solid.svg'></img>
+                                        <img src='https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/download-solid.svg' alt="previewImage"></img>
                                         {`${Math.floor(Math.random() * 100000).toLocaleString("en-US")}`}
                                     </div>
                                 </div>
@@ -77,24 +77,6 @@ const SearchComponent = () => {
                         </div>
                     ))}
             </div>
-            {/* <div className='search-title'>
-                <h1>The following songs were found:</h1>
-            </div>
-            <div className='search-song-section'>
-                    <ul className="search-songs-list">
-                        {songs.map(song => (
-                            <div key={`${song.id}`}className='all-song-selections'>
-                                <button className='all-song-details-button' onClick={e => {
-                                    e.preventDefault()
-                                    history.push(`/songs/${song.id}`)
-                                    }}>
-                                    <img src={song.previewImage} alt='previewImage'></img>
-                                </button>
-                                <li key={song.id}>{song.title}</li>
-                            </div>
-                        ))}
-                    </ul>
-            </div> */}
         </div>
     )
 }
