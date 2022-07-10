@@ -1,0 +1,23 @@
+.edit-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15px;
+}
+
+.edit-buttons button{
+    background-color: white;
+    border: 1px solid lightgray;
+    margin-top: 5px;
+    margin-bottom: -5px;
+}
+
+.my-songs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1340px;
+}
+
+.my-songs-header button {
+    margin-bottom: -30px;
+}

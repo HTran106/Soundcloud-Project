@@ -1,0 +1,139 @@
+.album-details-container {
+    display: grid;
+    grid-template-rows: 60% 40%;
+    height: 800px;
+    width: 98vw;
+    background-repeat: no-repeat;
+    align-items: flex-end;
+    justify-content: center;
+    background-size: cover;
+    background-position-y: -130px;
+    padding-top: 55px;
+    padding-left: 15px;
+    padding-bottom: 25px;
+    background-position-x: -14px;
+}
+
+.album-info-container {
+    display: grid;
+    grid-template-columns: 15% 50% 35%;
+    width: 98vw;
+    height: 200px;
+    margin-bottom: 5px;
+}
+
+.album-info {
+    display: grid;
+    grid-template-rows: 25% 50% 25%;
+    width: 100vw;
+    color: white;
+}
+
+.album-image {
+    border: 4px solid white;
+    width: 200px;
+    height: 200px;
+}
+
+.album-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.artist {
+    display: flex;
+    justify-content: flex-start;
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+.title {
+    display: flex;
+    justify-content: flex-start;
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 38px;
+    align-items: flex-start;
+    margin-top: 25px;
+}
+
+.description {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.album-songs-container {
+    display: flex;
+    align-items: flex-start;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100;
+    height: 100%;
+    /* background-color: rgb(83, 82, 82); */
+    background: rgba(147, 147, 147, 0.4);
+    opacity: 90%;
+    margin-bottom: -12px;
+    width: 97.8%;
+}
+
+.album-song-list li {
+    /* display: flex; */
+    /* justify-content: space-around; */
+    margin-bottom: 15px;
+    color: white;
+    width: 90vw;
+}
+
+.songs-list-container {
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+    width: 100%;
+    color: white;
+}
+
+.album-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.album-image button {
+    border-radius: 50%;
+}
+
+.player {
+    width: 70%;
+}
+
+.audio-player {
+    display: flex;
+    width: 94%;
+    padding-top: 100px;
+}
+
+.single-song-box {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+}
+
+.single-song-box li {
+    list-style: none;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.single-song-box button {
+    width: 40px;
+    height: 30px;
+    padding-right: 10px;
+    margin-top: 5px;
+    margin-right: 10px;
+    background-color: transparent;
+    border: none;
+}
+
+.fa-circle-play {
+    color: white;
+}

@@ -4,6 +4,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie } = require('../../utils/auth');
 const { User } = require('../../db/models');
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3')
 
 // backend/routes/api/users.js
 // ...
@@ -41,10 +42,11 @@ const validateSignup = [
 
 
 
-//Sign up a user
-router.post('/signup', validateSignup, async (req, res, next) => {
+//Sign up a user //////added test for amazon s3 to add image to previewImage
+router.post('/signup', singleMulterUpload("image") ,validateSignup, async (req, res, next) => {
 
-  const { email, firstName, lastName, password, username } = req.body;
+  const { email, firstName, lastName, password, username, previewImage } = req.body;
+  // const previewImage = await singlePublicFileUpload(req.file)
 
    const checkEmail = await User.findOne({ where: { email, }  })
    const checkUsername = await User.findOne({ where: { username } })
@@ -63,7 +65,7 @@ router.post('/signup', validateSignup, async (req, res, next) => {
         return next(error)
       }
 
-    let user = await User.signup({ firstName, lastName, username, email, password});
+    let user = await User.signup({ firstName, lastName, username, email, password, previewImage,});
 
     const token = setTokenCookie(res, user);
     user = user.toSafeObject()
@@ -72,9 +74,13 @@ router.post('/signup', validateSignup, async (req, res, next) => {
       user,
       token,
     });
-
   }
 );
+
+router.get('/', async (req, res) => {
+  const allUsers = await User.findAll()
+  res.json(allUsers)
+})
 
 
 module.exports = router;

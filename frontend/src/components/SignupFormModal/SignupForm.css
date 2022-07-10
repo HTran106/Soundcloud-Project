@@ -1,0 +1,28 @@
+.signup-button {
+    display: inline-block;
+    text-align: center;
+    background-color: #f50;
+    color: #fff;
+    width: 410px;
+    height: 48px;
+    margin-left: -6px;
+    font-size: 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+form {
+    display: inline;
+    justify-content: center;
+    align-items: center;
+
+}
+
+input {
+    width: 400px;
+    margin-left: -5px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray
+}

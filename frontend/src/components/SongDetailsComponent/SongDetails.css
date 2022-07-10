@@ -1,0 +1,104 @@
+.song-details-container {
+    display: grid;
+    grid-template-rows: 60% 30%;
+    height: 850px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+}
+
+.song-details-info {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 95%;
+    width: 60vw;
+}
+
+.player-box {
+    display: flex;
+    width: 300px;
+    margin-left: -280px
+}
+
+.player-buttons-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    background-color: rgb(43, 43, 43);
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-buttons {
+    display: flex;
+    align-items: flex-end;
+    width: 300px;
+    height: 90px;
+}
+
+.song-artist {
+    display: flex;
+    width: 300px;
+    justify-content: center;
+}
+
+.song-artist h2 {
+    color: whitesmoke;
+    font-weight: 400;
+    font-family: Bradley Hand;
+    font-size: 24px;
+}
+
+.player-buttons-container p {
+    color: rgb(105, 105, 105);
+    margin-left: 15px;
+    margin-top: -10px;
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+.song-title {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.song-title h2 {
+    color: white;
+    font-weight: 400;
+    font-family: Bradley Hand;
+    font-size: 28px;
+    display: flex;
+}
+
+.song-description {
+    display: flex;
+    width: 700px;
+    color: white;
+    justify-content: center;
+}
+
+.description-box-container {
+    display: flex;
+    background-color: rgb(43, 43, 43);
+    align-items: flex-start;
+    height: 300px;
+    width: 60vw;
+    opacity: 95%;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 15px;
+}
+
+.description-box-container p {
+    font-size: 22px;
+    font-family: sans-serif;
+    color: white;
+    padding: 10px 10px 10px 10px;
+}
