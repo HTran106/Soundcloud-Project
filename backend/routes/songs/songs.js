@@ -51,7 +51,7 @@ router.put('/:songId/:commentId', requireAuth, commentValidator, restoreUser, as
 router.put('/:songId', requireAuth, songValidator, restoreUser, async (req, res, next) => {
     const { songId } = req.params;
     const { user } = req;
-    const { albumId, title, description, url, imageUrl } = req.body;
+    const { title, description, url, imageUrl } = req.body;
 
 
     let song = await Song.findByPk(songId)
@@ -60,7 +60,6 @@ router.put('/:songId', requireAuth, songValidator, restoreUser, async (req, res,
         if (song.userId === user.id) {
             await song.update({
                 userId: user.id,
-                albumId,
                 title,
                 description,
                 url,
