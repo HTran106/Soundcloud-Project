@@ -1,12 +1,96 @@
 .search-container {
     display: grid;
-    grid-template-rows: 30% 50%;
+    grid-template-rows: 15% 85%;
     justify-content: center;
-    align-items: center;
     width: 100vw;
     height: 50vw;
 }
 
+.search-top {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    border-bottom: 1.5px solid darkgray;
+    width: 70vw;
+    /* margin-top: 3px; */
+}
+
+.search-title {
+    display: flex;
+    align-items: flex-end;
+    color: #5b5b5b;
+    margin-bottom: -6px;
+}
+
+.search-audio-player {
+    display: flex;
+    align-items: flex-end;
+}
+
+.search-songs-container {
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+
+}
+
+.search-list-container {
+    display: grid;
+    grid-template-columns: 10% 10% 80%;
+    padding: 10px 2px 10px;
+}
+
+.search-list-container li {
+    list-style-type: none;
+}
+
+.search-list-container img{
+    width: 90%;
+}
+
+.play-button {
+    border: none;
+    background-color: transparent;
+}
+
+.search-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-button {
+    padding-top: 5px;
+}
+
+.list-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.list-item {
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
+}
+
+.search-icons-section {
+    display: grid;
+    grid-template-columns: 10% 10% 10% 70%;
+    padding-left: 10px;
+}
+
+.icons {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.icons img {
+    width: 12px;
+    height: 15px;
+}
+
+/*
 .search-song-section {
     display: flex;
     justify-content: center;
@@ -26,4 +110,4 @@
     display: flex;
     justify-content: center;
     list-style-type: none;
-}
+} */

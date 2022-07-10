@@ -19,7 +19,7 @@ const SearchBar = () => {
         <form onSubmit={handleSubmit} className="mini-search-bar">
             <input
             type='search'
-            placeholder="Search"
+            placeholder="Search songs"
             name="q"
             value={searchParams}
             onChange={e => setSearchParams(e.target.value)}

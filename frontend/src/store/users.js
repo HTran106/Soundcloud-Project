@@ -21,7 +21,7 @@ const usersReducer = (state = {}, action) => {
     switch (action.type) {
         case ALL_USERS:
             let getAllUsersState = {...state}
-            action.payload?.forEach(user => {
+            action.payload.forEach(user => {
                 getAllUsersState[user.id] = user
             })
             return getAllUsersState
