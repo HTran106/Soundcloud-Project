@@ -59,7 +59,9 @@ const SearchComponent = () => {
                                     ${users.find(user => user.id === song.userId).lastName}
                                     `}
                                 </div>
-                                <div className='search-icons-section'>
+                                <div style={{marginLeft: '10px'}}>{song?.description}</div>
+                                {/* played, uploaded, downloaded, will implement later.
+                                    <div className='search-icons-section'>
                                     <div className='icons'>
                                         <img src='https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/play-solid.svg' alt="previewImage"></img>
                                         {`${Math.floor(Math.random() * 100000).toLocaleString("en-US")}`}
@@ -72,7 +74,7 @@ const SearchComponent = () => {
                                         <img src='https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/download-solid.svg' alt="previewImage"></img>
                                         {`${Math.floor(Math.random() * 100000).toLocaleString("en-US")}`}
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     ))}

@@ -53,7 +53,7 @@ Returns the information about the current user that is logged in.
 - Request
 
   - Method: GET
-  - URL: /my/info
+  - URL: /api/my/info
   - Body: none
 
 - Successful Response
@@ -248,7 +248,7 @@ Returns all the songs.
 - Request
 
   - Method: GET
-  - URL: /songs
+  - URL: /api/songs
   - Body: none
 
 - Successful Response
@@ -284,7 +284,7 @@ Returns all the songs created by the current user.
 - Request
 
   - Method: GET
-  - URL: /my/songs
+  - URL: /api/my/songs
   - Body: none
 
 - Successful Response
@@ -320,7 +320,7 @@ Returns the details of a song specified by its id.
 - Request
 
   - Method: GET
-  - URL: /songs/:songId
+  - URL: /api/songs/:songId
   - Body: none
 
 - Successful Response
@@ -377,7 +377,7 @@ Creates and returns a new song.
 - Request
 
   - Method: POST
-  - URL: /albums/:albumId
+  - URL: /api/albums/:albumId
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -453,7 +453,7 @@ Updates and returns an existing song.
 - Request
 
   - Method: PUT
-  - URL: /songs/:songId
+  - URL: /api/songs/:songId
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -529,7 +529,7 @@ Deletes an existing song.
 - Request
 
   - Method: DELETE
-  - URL: /songs/:songId
+  - URL: /api/songs/:songId
   - Body: none
 
 - Successful Response
@@ -568,7 +568,7 @@ Returns all the Albums.
 - Request
 
   - Method: GET
-  - URL: /albums
+  - URL: /api/albums
   - Body: none
 
 - Successful Response
@@ -602,7 +602,7 @@ Returns all the Albums created by the current user.
 - Request
 
   - Method: GET
-  - URL: /my/albums
+  - URL: /api/my/albums
   - Body: none
 
 - Successful Response
@@ -636,7 +636,7 @@ Returns the details of an album specified by its id.
 - Request
 
   - Method: GET
-  - URL: /albums/:albumId
+  - URL: /api/albums/:albumId
   - Body: none
 
 - Successful Response
@@ -698,7 +698,7 @@ Creates and returns a new album.
 - Request
 
   - Method: POST
-  - URL: /albums
+  - URL: /api/albums
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -756,7 +756,7 @@ Updates and returns an existing album.
 - Request
 
   - Method: PUT
-  - URL: /albums/:albumId
+  - URL: /api/albums/:albumId
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -828,7 +828,7 @@ Deletes an existing album.
 - Request
 
   - Method: DELETE
-  - URL: /albums/:albumId
+  - URL: /api/albums/:albumId
   - Body: none
 
 - Successful Response
@@ -867,7 +867,7 @@ Returns all the comments that belong to a song specified by id.
 - Request
 
   - Method: GET
-  - URL: /songs/:songId/comments
+  - URL: /api/songs/:songId/comments
   - Body: none
 
 - Successful Response
@@ -918,7 +918,7 @@ Create and return a new comment for a song specified by id.
 - Request
 
   - Method: POST
-  - URL: /songs/:songId
+  - URL: /api/songs/:songId
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -987,7 +987,7 @@ Update and return an existing comment.
 - Request
 
   - Method: PUT
-  - URL: /songs/:songId/:commentId
+  - URL: /api/songs/:songId/:commentId
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -1056,7 +1056,7 @@ Delete an existing comment.
 - Request
 
   - Method: DELETE
-  - URL: /songs/:songId/:commentId
+  - URL: /api/songs/:songId/:commentId
   - Body: none
 
 - Successful Response
@@ -1095,7 +1095,7 @@ Returns the details of an artist specified by their id.
 - Request
 
   - Method: GET
-  - URL: /artists/:userId
+  - URL: /api/artists/:userId
   - Body: none
 
 - Successful Response
@@ -1137,7 +1137,7 @@ Returns all the songs created by the specified artist.
 - Request
 
   - Method: GET
-  - URL: /artists/:userId/songs
+  - URL: /api/artists/:userId/songs
   - Body: none
 
 - Successful Response
@@ -1187,7 +1187,7 @@ Returns all the albums created by the specified artist.
 - Request
 
   - Method: GET
-  - URL: /artists/:userId/albums
+  - URL: /api/artists/:userId/albums
   - Body: none
 
 - Successful Response
@@ -1235,7 +1235,7 @@ Returns all the playlists created by the specified artist.
 - Request
 
   - Method: GET
-  - URL: /artists/:userId/playlists
+  - URL: /api/artists/:userId/playlists
   - Body: none
 
 - Successful Response
@@ -1282,7 +1282,7 @@ Creates and returns a new playlist.
 - Request
 
   - Method: POST
-  - URL: /playlists
+  - URL: /api/playlists
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -1338,7 +1338,7 @@ Add a song to a playlist specified by the playlist's id.
 - Request
 
   - Method: POST
-  - URL: /playlists/:playlistId/songs
+  - URL: /api/playlists/:playlistId/songs
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -1400,7 +1400,7 @@ Returns the details of a playlist specified by its id.
 - Request
 
   - Method: GET
-  - URL: /playlists/:playlistId
+  - URL: /api/playlists/:playlistId
   - Body: none
 
 - Successful Response
@@ -1457,7 +1457,7 @@ Updates and returns an existing playlist.
 - Request
 
   - Method: PUT
-  - URL: /playlists/:playlistId
+  - URL: /api/playlists/:playlistId
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -1527,7 +1527,7 @@ Deletes an existing playlist.
 - Request
 
   - Method: DELETE
-  - URL: /playlists/:playlistId
+  - URL: /api/playlists/:playlistId
   - Body: none
 
 - Successful Response
@@ -1566,7 +1566,7 @@ Returns all the playlists created by the current user.
 - Request
 
   - Method: GET
-  - URL: /my/playlists
+  - URL: /api/my/playlists
   - Body: none
 
 - Successful Response
