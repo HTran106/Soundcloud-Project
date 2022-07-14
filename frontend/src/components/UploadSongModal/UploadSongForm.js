@@ -35,7 +35,7 @@ function UploadSongForm({album, closeModal}) {
     const updatePreviewImageFile = e => {
     const file = e.target.files[0];
     if (file) setPreviewImageFile(file)
-  }
+    }
 
   return (
     <>

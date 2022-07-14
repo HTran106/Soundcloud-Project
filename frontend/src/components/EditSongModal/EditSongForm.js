@@ -29,6 +29,16 @@ function EditSongForm({song, closeModal}) {
     });
   }
 
+    const updateUrlFile = e => {
+    const file = e.target.files[0];
+    if (file) setUrl(file)
+    }
+
+    const updatePreviewImageFile = e => {
+    const file = e.target.files[0];
+    if (file) setPreviewImage(file)
+    }
+
   return (
     <>
       <h1>Edit Song</h1>
@@ -53,18 +63,16 @@ function EditSongForm({song, closeModal}) {
             placeholder="Description"
           />
           <input
-            type="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            type="file"
+            name='url'
+            onChange={updateUrlFile}
             required
-            placeholder="Song Url"
           />
           <input
-            type="url"
-            value={previewImage}
-            onChange={(e) => setPreviewImage(e.target.value)}
+            type="file"
+            name='imageUrl'
+            onChange={updatePreviewImageFile}
             required
-            placeholder="Preview Image Url"
           />
         <button className="login-button" type="submit">Submit</button>
       </form>

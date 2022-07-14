@@ -64,12 +64,19 @@ export const deleteSong = songId => async dispatch => {
 }
 
 export const updateSong = (song) => async dispatch => {
+    const { title, description, url, imageUrl } = song
+    const formData = new FormData()
+    formData.append('title', title)
+    formData.append('description', description)
+    formData.append('url', url)
+    if (imageUrl) formData.append('imageUrl', imageUrl)
+
     const res = await csrfFetch(`/api/songs/${song.id}`, {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "multipart/form-data"
         },
-        body: JSON.stringify(song)
+        body: formData
     })
 
     if (res.ok) {
@@ -79,7 +86,6 @@ export const updateSong = (song) => async dispatch => {
 }
 
 export const uploadSong = (song, albumId) => async dispatch => {
-    console.log(song)
     const { title, description, url, imageUrl } = song
     const formData = new FormData();
     formData.append('title', title)
