@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
@@ -16,7 +16,6 @@ function SignupForm() {
   const [lastName, setLastName] = useState("")
   const [previewImage, setPreviewImage] = useState(null)
   const [disabled, setDisabled] = useState(false)
-  const history = useHistory()
 
   if (sessionUser) return <Redirect to="/" />;
 

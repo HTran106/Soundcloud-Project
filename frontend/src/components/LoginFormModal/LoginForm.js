@@ -29,7 +29,7 @@ function EditForm() {
   }
 
   return (
-    <>
+    <div className="form-container">
       <h1>Login to your SoundCloud account</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -45,7 +45,7 @@ function EditForm() {
             placeholder="Username or Email"
           />
           <input
-            type="password"
+            type="text"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -57,7 +57,7 @@ function EditForm() {
         <p className='or'>----------------or----------------</p>
         <button className='login-guest-button' type='submit'>Login as Guest</button>
       </form>
-    </>
+    </div>
   );
 }
 
