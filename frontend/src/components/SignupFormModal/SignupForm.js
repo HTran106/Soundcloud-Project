@@ -14,15 +14,25 @@ function SignupForm() {
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
+  const [previewImage, setPreviewImage] = useState(null)
   const history = useHistory()
 
   if (sessionUser) return <Redirect to="/" />;
+
+  const reset = () => {
+    setFirstName("")
+    setLastName("")
+    setUsername("")
+    setPassword("")
+    setConfirmPassword("")
+    setPreviewImage(null)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ firstName, lastName, email, username, password }))
+      return dispatch(sessionActions.signup({ firstName, lastName, email, username, password, previewImage }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(Object.values(data.errors));
@@ -30,6 +40,11 @@ function SignupForm() {
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
+
+  const updateFile = e => {
+    const file = e.target.files[0];
+    if (file) setPreviewImage(file)
+  }
 
   return (
     <div className="form-container">
@@ -80,6 +95,11 @@ function SignupForm() {
             placeholder="Confirm Password"
             required
           />
+          <p>Profile Picture</p>
+          <input
+            type="file"
+            onChange={updateFile}
+            />
         <button className="signup-button" type="submit">Sign up</button>
       </form>
     </div>

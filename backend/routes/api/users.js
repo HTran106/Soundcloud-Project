@@ -43,10 +43,11 @@ const validateSignup = [
 
 
 //Sign up a user //////added test for amazon s3 to add image to previewImage
-router.post('/signup', singleMulterUpload("image") ,validateSignup, async (req, res, next) => {
+router.post('/signup', singleMulterUpload("previewImage") ,validateSignup, async (req, res, next) => {
 
-  const { email, firstName, lastName, password, username, previewImage } = req.body;
-  // const previewImage = await singlePublicFileUpload(req.file)
+  const { email, firstName, lastName, password, username } = req.body;
+  const previewImage = await singlePublicFileUpload(req.file)
+  console.log(previewImage)
 
    const checkEmail = await User.findOne({ where: { email, }  })
    const checkUsername = await User.findOne({ where: { username } })

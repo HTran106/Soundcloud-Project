@@ -87,6 +87,9 @@ const singleMulterUpload = (nameOfKey) =>
   multer({ storage: storage }).single(nameOfKey);
 const multipleMulterUpload = (nameOfKey) =>
   multer({ storage: storage }).array(nameOfKey);
+const multipleFileKeysUpload = (fieldArr) =>
+  multer({ storage: storage }).fields(fieldArr);
+
 
 module.exports = {
   s3,

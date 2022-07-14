@@ -49,18 +49,23 @@ export const loginGuest = user => async (dispatch) => {
 }
 
 export const signup = (user) => async (dispatch) => {
-  const { firstName, lastName, username, email, password } = user;
+  const { firstName, lastName, username, email, password, previewImage } = user;
+  const formData = new FormData();
+  formData.append('firstName', firstName)
+  formData.append('lastName', lastName)
+  formData.append('username', username)
+  formData.append('email', email)
+  formData.append('password', password)
+  if(previewImage) formData.append('previewImage', previewImage)
 
   const response = await csrfFetch("/users/signup", {
     method: "POST",
-    body: JSON.stringify({
-      firstName,
-      lastName,
-      username,
-      email,
-      password,
-    }),
+    headers: {
+      "Content-Type": "multipart/form-data"
+    },
+    body: formData,
   });
+
   const data = await response.json();
   dispatch(setSessionUser(data.user));
   return response;
