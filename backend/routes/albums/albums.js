@@ -4,7 +4,7 @@ const router = express.Router();
 const { unauthorized, requireAuth, restoreUser, doesNotExist } = require('../../utils/auth');
 const { User, Song, Album } = require('../../db/models');
 const { songValidator, albumValidator, validatePagination, pagination } = require('../../utils/validation');
-const { multipleFileKeysUpload, singlePublicFileUpload } = require('../../awsS3');
+const { multipleFileKeysUpload, singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 
 //Delete album by albumId
@@ -44,10 +44,13 @@ router.post('/', requireAuth, albumValidator, restoreUser, async (req, res) => {
 })
 
 //update album by albumId
-router.put('/:albumId', requireAuth, albumValidator, restoreUser, async (req, res, next) => {
+router.put('/:albumId', requireAuth,
+singleMulterUpload("imageUrl"),
+albumValidator, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { albumId } = req.params;
-    const { title, description, imageUrl } = req.body
+    const { title, description } = req.body
+    const previewImage = await singlePublicFileUpload(req.file)
 
     let album = await Album.findByPk(albumId)
 
@@ -56,7 +59,7 @@ router.put('/:albumId', requireAuth, albumValidator, restoreUser, async (req, re
             await album.update({
                 title,
                 description,
-                previewImage: imageUrl
+                previewImage,
             })
             res.json(album)
         } else {
