@@ -114,7 +114,7 @@ function SignupForm() {
           <input
             type="file"
             onChange={updateFile}
-            />
+          />
         <button disabled={disabled} className="signup-button" type="submit">{signUp}</button>
       </form>
     </div>
