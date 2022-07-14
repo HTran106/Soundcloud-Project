@@ -52,12 +52,18 @@ export const fetchAllAlbums = () => async dispatch => {
 }
 
 export const uploadAlbum = (album) => async dispatch => {
+    const { title, description, imageUrl } = album;
+    const formData = new FormData();
+    formData.append('title', title)
+    formData.append('description', description)
+    formData.append('imageUrl', imageUrl)
+
         const res = await csrfFetch('/api/albums', {
             method: 'POST',
-            header: {
-                "Content-Type": "application/json"
+            headers: {
+                "Content-Type": "multipart/form-data"
             },
-            body: JSON.stringify(album)
+            body: formData
         })
 
         if (res.ok) {

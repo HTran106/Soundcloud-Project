@@ -23,7 +23,12 @@ function UploadAlbumForm({closeModal}) {
       const data = await res.json()
       if (data && data.errors) setErrors(Object.values(data.errors))
     });
-}
+  }
+
+  const updateFile = e => {
+    const file = e.target.files[0];
+    if (file) setPreviewImage(file)
+  }
 
   return (
     <>
@@ -49,11 +54,10 @@ function UploadAlbumForm({closeModal}) {
             placeholder="Description"
           />
           <input
-            type="url"
-            value={previewImage}
-            onChange={(e) => setPreviewImage(e.target.value)}
+            type="file"
+            name='previewImage'
+            onChange={updateFile}
             required
-            placeholder="Preview Image Url"
           />
         <button className="login-button" type="submit">Submit</button>
       </form>
