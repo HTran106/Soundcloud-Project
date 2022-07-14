@@ -43,7 +43,7 @@ function EditAlbumForm({album, closeModal}) {
   }
 
   return (
-    <>
+    <div className="form-container">
       <h1>Edit Album</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -59,12 +59,13 @@ function EditAlbumForm({album, closeModal}) {
             placeholder="Title"
           />
           <input
-            type="description"
+            type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
             placeholder="Description"
           />
+          <p>Preview Image:</p>
           <input
             type="file"
             name='previewImage'
@@ -73,7 +74,7 @@ function EditAlbumForm({album, closeModal}) {
           />
         <button disabled={disabled} className="login-button" type="submit">Submit</button>
       </form>
-    </>
+    </div>
   );
 }
 

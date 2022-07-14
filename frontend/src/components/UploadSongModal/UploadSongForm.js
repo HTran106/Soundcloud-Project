@@ -51,7 +51,7 @@ function UploadSongForm({album, closeModal}) {
     }
 
   return (
-    <>
+    <div className="form-container">
       <h1>Add Song to this Album</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -67,18 +67,20 @@ function UploadSongForm({album, closeModal}) {
             placeholder="Title"
           />
           <input
-            type="description"
+            type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
             placeholder="Description"
           />
+          <p>Song:</p>
           <input
             type="file"
             onChange={updateUrlFile}
             name='url'
             required
           />
+          <p>Preview Image: </p>
           <input
             type="file"
             name="imageUrl"
@@ -87,7 +89,7 @@ function UploadSongForm({album, closeModal}) {
           />
         <button disabled={disabled} className="login-button" type="submit">Submit</button>
       </form>
-    </>
+    </div>
   );
 }
 

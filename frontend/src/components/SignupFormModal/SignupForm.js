@@ -88,20 +88,20 @@ function SignupForm() {
             required
           />
           <input
-            type="password"
+            type="text"
             value={password}
             onChange={e => setPassword(e.target.value)}
             placeholder='Password'
             required
           />
           <input
-            type="password"
+            type="text"
             value={confirmPassword}
             onChange={e => setConfirmPassword(e.target.value)}
             placeholder="Confirm Password"
             required
           />
-          <p>Profile Picture</p>
+          <p>Profile Picture:</p>
           <input
             type="file"
             onChange={updateFile}
