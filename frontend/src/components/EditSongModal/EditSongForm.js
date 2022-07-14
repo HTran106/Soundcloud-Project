@@ -25,7 +25,7 @@ function EditSongForm({song, closeModal}) {
   const handleSubmit = async e => {
     e.preventDefault()
     setSubmit(<div className="fa fa-cog fa-spin"></div>)
-    errors ? setDisabled(false) : setDisabled(true)
+    setDisabled(true)
 
     dispatch(songActions.updateSong({
         id: song?.id,
@@ -42,7 +42,11 @@ function EditSongForm({song, closeModal}) {
     })
     .catch(async (res) => {
       const data = await res.json()
-      if (data && data.errors) setErrors(Object.values(data.errors))
+      if (data && data.errors) {
+        setDisabled(false)
+        setSubmit("Submit")
+        setErrors(Object.values(data.errors))
+      }
     });
   }
 

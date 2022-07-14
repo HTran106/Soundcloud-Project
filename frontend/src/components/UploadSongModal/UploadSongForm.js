@@ -24,13 +24,8 @@ function UploadSongForm({album, closeModal}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-
-    if (errors.length) {
-      setDisabled(false)
-    } else {
-      setSubmit(<div className="fa fa-cog fa-spin"></div>)
-      setDisabled(true)
-    }
+    setSubmit(<div className="fa fa-cog fa-spin"></div>)
+    setDisabled(true)
 
     dispatch(songActions.uploadSong({
         title,
@@ -45,7 +40,11 @@ function UploadSongForm({album, closeModal}) {
     })
     .catch(async (res) => {
       const data = await res.json()
-      if (data && data.errors) setErrors(Object.values(data.errors))
+      if (data && data.errors) {
+        setSubmit("Submit")
+        setDisabled(false)
+        setErrors(Object.values(data.errors))
+      }
     });
   }
 

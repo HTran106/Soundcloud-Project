@@ -23,7 +23,7 @@ function EditAlbumForm({album, closeModal}) {
   const handleSubmit = e => {
     e.preventDefault()
     setSubmit(<div className="fa fa-cog fa-spin"></div>)
-    errors ? setDisabled(false) : setDisabled(true)
+    setDisabled(true)
 
     dispatch(albumActions.updateAlbum({
         id: album.id,
@@ -38,7 +38,11 @@ function EditAlbumForm({album, closeModal}) {
     })
     .catch(async (res) => {
       const data = await res.json()
-      if (data && data.errors) setErrors(Object.values(data.errors))
+      if (data && data.errors) {
+        setSubmit("Submit")
+        setDisabled(false)
+        setErrors(Object.values(data.errors))
+      }
     });
   }
 

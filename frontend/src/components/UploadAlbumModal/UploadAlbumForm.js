@@ -23,7 +23,7 @@ function UploadAlbumForm({closeModal}) {
     e.preventDefault();
     setErrors([]);
     setSubmit(<div className="fa fa-cog fa-spin"></div>)
-    errors ? setDisabled(false) : setDisabled(true)
+    setDisabled(true)
 
     dispatch(albumActions.uploadAlbum({
         title,
@@ -37,7 +37,11 @@ function UploadAlbumForm({closeModal}) {
     })
     .catch(async (res) => {
       const data = await res.json()
-      if (data && data.errors) setErrors(Object.values(data.errors))
+      if (data && data.errors) {
+        setDisabled(false)
+        setSubmit("Submit")
+        setErrors(Object.values(data.errors))
+      }
     });
   }
 
