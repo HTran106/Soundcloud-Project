@@ -20,4 +20,25 @@ body {
 
 html {
     overflow: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.components {
+    display: flex;
+    justify-content: center;
+    padding-left: 12%;
+    position: relative;
+}
+
+@media screen and (min-width: 2067px) {
+    .components {
+        padding-left: 22%
+    }
+}
+
+@media screen and (max-width: 1654px) {
+    .components {
+        padding-left: 0%
+    }
 }

@@ -32,35 +32,37 @@ function App() {
   return (
     <div className="page">
       <Navigation isLoaded={isLoaded} />
-      <Switch>
-        <Route exact path='/search'>
-          <SearchComponent />
-        </Route>
-        <Route exact path='/albums/:albumId'>
-          <AlbumDetailsComponent albums={albums}/>
-        </Route>
-        <Route exact path='/albums'>
-          <AlbumsComponent />
-        </Route>
-        <Route exact path='/my/albums'>
-          <MyAlbumsComponent albums={albums}/>
-        </Route>
-        <Route exact path='/my/songs'>
-          <MySongsComponent songs={songs}/>
-        </Route>
-        <Route exact path='/songs/:songId'>
-          <SongDetailsComponent songs={songs} />
-        </Route>
-        <Route exact path='/songs'>
-          <SongsComponent />
-        </Route>
-        <Route exact path="/">
-          {sessionUser && <HomePageComponent />}
-        </Route>
-        <Route>
-          Page not found
-        </Route>
-      </Switch>
+      <div className="components">
+        <Switch>
+          <Route exact path='/search'>
+            <SearchComponent />
+          </Route>
+          <Route exact path='/albums/:albumId'>
+            <AlbumDetailsComponent albums={albums}/>
+          </Route>
+          <Route exact path='/albums'>
+            <AlbumsComponent />
+          </Route>
+          <Route exact path='/my/albums'>
+            <MyAlbumsComponent albums={albums}/>
+          </Route>
+          <Route exact path='/my/songs'>
+            <MySongsComponent songs={songs}/>
+          </Route>
+          <Route exact path='/songs/:songId'>
+            <SongDetailsComponent songs={songs} />
+          </Route>
+          <Route exact path='/songs'>
+            <SongsComponent />
+          </Route>
+          <Route exact path="/">
+            {sessionUser && <HomePageComponent />}
+          </Route>
+          <Route>
+            Page not found
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 }
