@@ -10,16 +10,20 @@ function EditAlbumForm({album, closeModal}) {
   const [previewImage, setPreviewImage] = useState(null)
   const [errors, setErrors] = useState([]);
   const [disabled, setDisabled] = useState(false)
+  const [submit, setSubmit] = useState("Submit")
 
   const reset = () => {
     setTitle("")
     setDescription("")
     setPreviewImage(null)
+    setSubmit("Submit")
   }
 
   const handleSubmit = e => {
     e.preventDefault()
     setDisabled(true)
+    setSubmit(<div className="fa fa-cog fa-spin"></div>)
+
     dispatch(albumActions.updateAlbum({
         id: album.id,
         title,
@@ -72,7 +76,7 @@ function EditAlbumForm({album, closeModal}) {
             onChange={updateFile}
             required
           />
-        <button disabled={disabled} className="login-button" type="submit">Submit</button>
+        <button disabled={disabled} className="login-button" type="submit">{submit}</button>
       </form>
     </div>
   );

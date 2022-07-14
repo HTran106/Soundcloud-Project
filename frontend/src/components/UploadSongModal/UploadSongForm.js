@@ -10,18 +10,21 @@ function UploadSongForm({album, closeModal}) {
   const [disabled, setDisabled] = useState(false)
   const [previewImage, setPreviewImageFile] = useState(null)
   const [errors, setErrors] = useState([]);
+  const [submit, setSubmit] = useState("Submit")
 
   const reset = () => {
       setTitle("")
       setDescription("")
       setUrlFile(null)
       setPreviewImageFile(null)
+      setSubmit("Submit")
     }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
     setDisabled(true)
+    setSubmit(<div className="fa fa-cog fa-spin"></div>)
 
     dispatch(songActions.uploadSong({
         title,
@@ -87,7 +90,9 @@ function UploadSongForm({album, closeModal}) {
             onChange={updatePreviewImageFile}
             required
           />
-        <button disabled={disabled} className="login-button" type="submit">Submit</button>
+        <button disabled={disabled} className="login-button" type="submit">
+          {submit}
+        </button>
       </form>
     </div>
   );

@@ -33,29 +33,32 @@ function App() {
     <div className="page">
       <Navigation isLoaded={isLoaded} />
       <Switch>
-        <Route path='/search'>
+        <Route exact path='/search'>
           <SearchComponent />
         </Route>
-        <Route path='/albums/:albumId'>
+        <Route exact path='/albums/:albumId'>
           <AlbumDetailsComponent albums={albums}/>
         </Route>
-        <Route path='/albums'>
+        <Route exact path='/albums'>
           <AlbumsComponent />
         </Route>
-        <Route path='/my/albums'>
+        <Route exact path='/my/albums'>
           <MyAlbumsComponent albums={albums}/>
         </Route>
-        <Route path='/my/songs'>
+        <Route exact path='/my/songs'>
           <MySongsComponent songs={songs}/>
         </Route>
-        <Route path='/songs/:songId'>
+        <Route exact path='/songs/:songId'>
           <SongDetailsComponent songs={songs} />
         </Route>
-        <Route path='/songs'>
+        <Route exact path='/songs'>
           <SongsComponent />
         </Route>
         <Route exact path="/">
           {sessionUser && <HomePageComponent />}
+        </Route>
+        <Route>
+          Page not found
         </Route>
       </Switch>
     </div>
