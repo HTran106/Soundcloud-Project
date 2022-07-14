@@ -3,6 +3,7 @@ const router = express.Router();
 const { doesNotExist, requireAuth, restoreUser, unauthorized } = require('../../utils/auth');
 const { User, Song, Album, Comment } = require('../../db/models');
 const { songValidator, commentValidator, validatePagination, pagination } = require('../../utils/validation');
+const { singlePublicFileUpload, multipleFileKeysUpload } = require('../../awsS3');
 
 
 //delete comment
@@ -48,10 +49,14 @@ router.put('/:songId/:commentId', requireAuth, commentValidator, restoreUser, as
 
 
 //Edit a song
-router.put('/:songId', requireAuth, songValidator, restoreUser, async (req, res, next) => {
+router.put('/:songId', requireAuth,
+multipleFileKeysUpload([{name: 'url', maxCount: 1}, {name: 'imageUrl', maxCount: 1}]),
+songValidator, restoreUser, async (req, res, next) => {
     const { songId } = req.params;
     const { user } = req;
-    const { title, description, url, imageUrl } = req.body;
+    const { title, description } = req.body;
+    const previewImage = await singlePublicFileUpload(req.files.imageUrl[0])
+    const url = await singlePublicFileUpload(req.files.url[0])
 
 
     let song = await Song.findByPk(songId)
@@ -63,7 +68,7 @@ router.put('/:songId', requireAuth, songValidator, restoreUser, async (req, res,
                 title,
                 description,
                 url,
-                previewImage: imageUrl
+                previewImage,
             })
             res.json(song)
         } else {
