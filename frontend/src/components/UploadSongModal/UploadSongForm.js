@@ -18,13 +18,19 @@ function UploadSongForm({album, closeModal}) {
       setUrlFile(null)
       setPreviewImageFile(null)
       setSubmit("Submit")
+      setErrors([])
     }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-    setDisabled(true)
-    setSubmit(<div className="fa fa-cog fa-spin"></div>)
+
+    if (errors.length) {
+      setDisabled(false)
+    } else {
+      setSubmit(<div className="fa fa-cog fa-spin"></div>)
+      setDisabled(true)
+    }
 
     dispatch(songActions.uploadSong({
         title,

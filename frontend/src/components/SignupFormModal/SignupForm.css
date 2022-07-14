@@ -27,6 +27,15 @@
     border: 1px solid lightgray
 }
 
+.form-container input[type='password'] {
+    width: 400px;
+    margin-left: -5px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray
+}
+
 .form-container input[type='file'] {
     display: flex;
     margin-bottom: 20px;

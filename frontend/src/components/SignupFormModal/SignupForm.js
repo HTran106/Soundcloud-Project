@@ -16,6 +16,7 @@ function SignupForm() {
   const [lastName, setLastName] = useState("")
   const [previewImage, setPreviewImage] = useState(null)
   const [disabled, setDisabled] = useState(false)
+  const [signUp, setSignUp] = useState("Sign up")
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -26,11 +27,14 @@ function SignupForm() {
     setPassword("")
     setConfirmPassword("")
     setPreviewImage(null)
+    setErrors([])
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSignUp(<div className="fa fa-cog fa-spin"></div>)
     setDisabled(true)
+
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signup({ firstName, lastName, email, username, password, previewImage }))
@@ -40,9 +44,15 @@ function SignupForm() {
         })
         .catch(async (res) => {
           const data = await res.json();
-          if (data && data.errors) setErrors(Object.values(data.errors));
+          if (data && data.errors) {
+            setErrors(Object.values(data.errors))
+            setDisabled(false)
+            setSignUp("Sign up")
+          };
         });
     }
+    setSignUp("Sign up")
+    setDisabled(false)
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
@@ -87,14 +97,14 @@ function SignupForm() {
             required
           />
           <input
-            type="text"
+            type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             placeholder='Password'
             required
           />
           <input
-            type="text"
+            type="password"
             value={confirmPassword}
             onChange={e => setConfirmPassword(e.target.value)}
             placeholder="Confirm Password"
@@ -105,7 +115,7 @@ function SignupForm() {
             type="file"
             onChange={updateFile}
             />
-        <button disabled={disabled} className="signup-button" type="submit">Sign up</button>
+        <button disabled={disabled} className="signup-button" type="submit">{signUp}</button>
       </form>
     </div>
   );

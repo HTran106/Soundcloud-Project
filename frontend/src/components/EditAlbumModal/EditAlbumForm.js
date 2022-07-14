@@ -17,12 +17,13 @@ function EditAlbumForm({album, closeModal}) {
     setDescription("")
     setPreviewImage(null)
     setSubmit("Submit")
+    setErrors([])
   }
 
   const handleSubmit = e => {
     e.preventDefault()
-    setDisabled(true)
     setSubmit(<div className="fa fa-cog fa-spin"></div>)
+    errors ? setDisabled(false) : setDisabled(true)
 
     dispatch(albumActions.updateAlbum({
         id: album.id,

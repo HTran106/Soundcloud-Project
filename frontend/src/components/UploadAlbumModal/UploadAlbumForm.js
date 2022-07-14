@@ -16,13 +16,14 @@ function UploadAlbumForm({closeModal}) {
     setDescription("")
     setPreviewImage(null)
     setSubmit("Submit")
+    setErrors([])
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    setDisabled(true)
     setSubmit(<div className="fa fa-cog fa-spin"></div>)
+    errors ? setDisabled(false) : setDisabled(true)
 
     dispatch(albumActions.uploadAlbum({
         title,

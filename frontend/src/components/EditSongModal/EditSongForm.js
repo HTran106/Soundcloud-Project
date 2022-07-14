@@ -19,12 +19,13 @@ function EditSongForm({song, closeModal}) {
     setPreviewImage(null)
     setUrl(null)
     setSubmit("Submit")
+    setErrors([])
   }
 
   const handleSubmit = async e => {
     e.preventDefault()
-    setDisabled(true)
     setSubmit(<div className="fa fa-cog fa-spin"></div>)
+    errors ? setDisabled(false) : setDisabled(true)
 
     dispatch(songActions.updateSong({
         id: song?.id,
