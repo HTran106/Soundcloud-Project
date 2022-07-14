@@ -6,14 +6,13 @@ function UploadSongForm({album, closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("")
-  const [previewImage, setPreviewImage] = useState("")
+  const [url, setUrlFile] = useState(null)
+  const [previewImage, setPreviewImageFile] = useState(null)
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-
 
     dispatch(songActions.uploadSong({
         title,
@@ -26,7 +25,17 @@ function UploadSongForm({album, closeModal}) {
       const data = await res.json()
       if (data && data.errors) setErrors(Object.values(data.errors))
     });
-}
+  }
+
+    const updateUrlFile = e => {
+    const file = e.target.files[0];
+    if (file) setUrlFile(file)
+    }
+
+    const updatePreviewImageFile = e => {
+    const file = e.target.files[0];
+    if (file) setPreviewImageFile(file)
+  }
 
   return (
     <>
@@ -52,18 +61,14 @@ function UploadSongForm({album, closeModal}) {
             placeholder="Description"
           />
           <input
-            type="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            type="file"
+            onChange={updateUrlFile}
             required
-            placeholder="Song Url"
           />
           <input
-            type="url"
-            value={previewImage}
-            onChange={(e) => setPreviewImage(e.target.value)}
+            type="file"
+            onChange={updatePreviewImageFile}
             required
-            placeholder="Preview Image Url"
           />
         <button className="login-button" type="submit">Submit</button>
       </form>

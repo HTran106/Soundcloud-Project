@@ -4,6 +4,7 @@ const router = express.Router();
 const { unauthorized, requireAuth, restoreUser, doesNotExist } = require('../../utils/auth');
 const { User, Song, Album } = require('../../db/models');
 const { songValidator, albumValidator, validatePagination, pagination } = require('../../utils/validation');
+const { multipleFileKeysUpload, singlePrivateFileUpload } = require('../../awsS3');
 
 
 //Delete album by albumId
@@ -93,10 +94,14 @@ router.get('/:albumId', async (req, res, next) => {
 })
 
 //Add song to album by albumID
-router.post('/:albumId', requireAuth, songValidator, restoreUser, async (req, res, next) => {
+router.post('/:albumId',
+multipleFileKeysUpload([{name: 'url', maxCount: 1}, {name: 'previewImage', maxCount: 1}]),
+requireAuth, songValidator, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { albumId } = req.params
-    const { title, description, url, imageUrl } = req.body
+    const { title, description } = req.body
+    const previewImage = await singlePublicFileUpload(req.files.previewImage[0])
+    const url = await singlePublicFileUpload(req.files.url[0])
 
     const album = await Album.findByPk(albumId)
 
@@ -108,7 +113,7 @@ router.post('/:albumId', requireAuth, songValidator, restoreUser, async (req, re
                 title,
                 description,
                 url,
-                previewImage: imageUrl
+                previewImage,
             })
             res.status(201)
             res.json(newSong)

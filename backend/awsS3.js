@@ -100,4 +100,5 @@ module.exports = {
   retrievePrivateFile,
   singleMulterUpload,
   multipleMulterUpload,
+  multipleFileKeysUpload,
 };

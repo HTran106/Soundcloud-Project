@@ -33,6 +33,7 @@ function SignupForm() {
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signup({ firstName, lastName, email, username, password, previewImage }))
+        .then(() => {reset()})
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(Object.values(data.errors));

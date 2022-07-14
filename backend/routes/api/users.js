@@ -47,7 +47,6 @@ router.post('/signup', singleMulterUpload("previewImage") ,validateSignup, async
 
   const { email, firstName, lastName, password, username } = req.body;
   const previewImage = await singlePublicFileUpload(req.file)
-  console.log(previewImage)
 
    const checkEmail = await User.findOne({ where: { email, }  })
    const checkUsername = await User.findOne({ where: { username } })
