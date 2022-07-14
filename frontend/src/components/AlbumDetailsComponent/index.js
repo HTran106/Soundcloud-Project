@@ -1,5 +1,4 @@
 import './AlbumDetailsComponent.css'
-import { backgroundImageData } from '../SongDetailsComponent/backgroundImageData'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';

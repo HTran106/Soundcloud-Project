@@ -56,7 +56,7 @@ function EditAlbumForm({album, closeModal}) {
       <h1>Edit Album</h1>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
+          {errors?.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>

@@ -1,9 +1,7 @@
 import './HomePageComponent.css'
-
 import * as songsActions from '../../store/song'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import './Songs.css'
 import { useHistory } from 'react-router-dom'
 import * as userActions from '../../store/users'
 import * as albumActions from '../../store/albums'

@@ -24,7 +24,7 @@ const SongsComponent = () => {
                 <h2>Charts: Top 5</h2>
                 <h4>The most played tracks on SoundCloud this week</h4>
                     <ul className="songs-list">
-                        {top5.map(song => (
+                        {top5?.map(song => (
                             <div key={`${song.id}`} className='song-selections'>
                                 <button className='song-details-button' onClick={e => {
                                     e.preventDefault()
@@ -42,7 +42,7 @@ const SongsComponent = () => {
                 <h2>Charts: New & Hot</h2>
                 <h4>Up-and-coming tracks on SoundCloud</h4>
                     <ul className="songs-list">
-                        {newAndHot.map(song => (
+                        {newAndHot?.map(song => (
                             <div key={`${song.id}`} className='song-selections'>
                                 <button className='song-details-button' onClick={e => {
                                     e.preventDefault()
@@ -60,7 +60,7 @@ const SongsComponent = () => {
                 <h2>All Songs</h2>
                 <h4>All available Songs</h4>
                     <ul className="all-songs-list">
-                        {songs.map(song => (
+                        {songs?.map(song => (
                             <div key={`${song.id}`}className='all-song-selections'>
                                 <button className='all-song-details-button' onClick={e => {
                                     e.preventDefault()

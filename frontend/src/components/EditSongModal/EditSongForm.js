@@ -65,7 +65,7 @@ function EditSongForm({song, closeModal}) {
       <h1>Edit Song</h1>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
+          {errors?.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>

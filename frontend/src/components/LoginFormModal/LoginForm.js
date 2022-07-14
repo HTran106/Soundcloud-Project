@@ -33,7 +33,7 @@ function EditForm() {
       <h1>Login to your SoundCloud account</h1>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
+          {errors?.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
