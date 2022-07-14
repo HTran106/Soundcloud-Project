@@ -55,11 +55,11 @@ const SearchComponent = () => {
                                 </div>
                                 <div style={{fontSize: '14px', color: 'gray'}} className='list-item'>
                                     {`by
-                                    ${users.find(user => user.id === song.userId).firstName}
-                                    ${users.find(user => user.id === song.userId).lastName}
+                                    ${users?.find(user => user.id === song.userId).firstName}
+                                    ${users?.find(user => user.id === song.userId).lastName}
                                     `}
                                 </div>
-                                <div style={{marginLeft: '10px'}}>{song?.description}</div>
+                                <div className='search-song-description'>{song?.description}</div>
                                 {/* played, uploaded, downloaded, will implement later.
                                     <div className='search-icons-section'>
                                     <div className='icons'>

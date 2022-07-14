@@ -91,24 +91,9 @@
     height: 15px;
 }
 
-/*
-.search-song-section {
+.search-song-description {
     display: flex;
-    justify-content: center;
+    margin-left: 10px;
+    width: 50vw;
+    flex-wrap: wrap;
 }
-
-.search-title {
-    display: flex;
-    justify-content: center;
-}
-
-.search-songs-list {
-    display: flex;
-    margin-top: -20%
-}
-
-.search-songs-list li {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-} */
