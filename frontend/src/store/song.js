@@ -89,7 +89,7 @@ export const uploadSong = (song, albumId) => async dispatch => {
 
     const res = await csrfFetch(`/api/albums/${albumId}`, {
         method: 'POST',
-        header: {
+        headers: {
             "Content-Type": "multipart/form-data"
         },
         body: formData,

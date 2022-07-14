@@ -63,10 +63,12 @@ function UploadSongForm({album, closeModal}) {
           <input
             type="file"
             onChange={updateUrlFile}
+            name='url'
             required
           />
           <input
             type="file"
+            name="imageUrl"
             onChange={updatePreviewImageFile}
             required
           />
