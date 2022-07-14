@@ -24,21 +24,21 @@ html {
     justify-content: center;
 }
 
-.components {
+/* .components {
     display: flex;
     justify-content: center;
-    padding-left: 12%;
+    margin-left: 12%;
     position: relative;
-}
+} */
 
-@media screen and (min-width: 2067px) {
+/* @media screen and (min-width: 2067px) {
     .components {
-        padding-left: 22%
+        margin-left: 22%
     }
 }
 
 @media screen and (max-width: 1654px) {
     .components {
-        padding-left: 0%
+        margin-left: 0%
     }
-}
+} */
