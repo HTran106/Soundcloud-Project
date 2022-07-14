@@ -4,6 +4,7 @@ const router = express.Router();
 const { unauthorized, requireAuth, restoreUser, doesNotExist } = require('../../utils/auth');
 const { User, Song, Album } = require('../../db/models');
 const { songValidator, albumValidator, validatePagination, pagination } = require('../../utils/validation');
+const { multipleFileKeysUpload, singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 
 //Delete album by albumId
@@ -28,9 +29,12 @@ router.delete('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
 
 
 //create new album
-router.post('/', requireAuth, albumValidator, restoreUser, async (req, res) => {
+router.post('/', requireAuth,
+singleMulterUpload("imageUrl"),
+albumValidator, restoreUser, async (req, res) => {
     const { user } = req
-    const { title, description, imageUrl } = req.body
+    const { title, description } = req.body
+    const imageUrl = await singlePublicFileUpload(req.file)
 
     const newAlbum = await Album.create({
         userId: user.id,
@@ -43,10 +47,13 @@ router.post('/', requireAuth, albumValidator, restoreUser, async (req, res) => {
 })
 
 //update album by albumId
-router.put('/:albumId', requireAuth, albumValidator, restoreUser, async (req, res, next) => {
+router.put('/:albumId', requireAuth,
+singleMulterUpload("imageUrl"),
+albumValidator, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { albumId } = req.params;
-    const { title, description, imageUrl } = req.body
+    const { title, description } = req.body
+    const previewImage = await singlePublicFileUpload(req.file)
 
     let album = await Album.findByPk(albumId)
 
@@ -55,7 +62,7 @@ router.put('/:albumId', requireAuth, albumValidator, restoreUser, async (req, re
             await album.update({
                 title,
                 description,
-                previewImage: imageUrl
+                previewImage,
             })
             res.json(album)
         } else {
@@ -93,10 +100,14 @@ router.get('/:albumId', async (req, res, next) => {
 })
 
 //Add song to album by albumID
-router.post('/:albumId', requireAuth, songValidator, restoreUser, async (req, res, next) => {
+router.post('/:albumId',requireAuth,
+multipleFileKeysUpload([{name: 'url', maxCount: 1}, {name: 'imageUrl', maxCount: 1}]),
+songValidator, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { albumId } = req.params
-    const { title, description, url, imageUrl } = req.body
+    const { title, description } = req.body
+    const previewImage = await singlePublicFileUpload(req.files.imageUrl[0])
+    const url = await singlePublicFileUpload(req.files.url[0])
 
     const album = await Album.findByPk(albumId)
 
@@ -108,7 +119,7 @@ router.post('/:albumId', requireAuth, songValidator, restoreUser, async (req, re
                 title,
                 description,
                 url,
-                previewImage: imageUrl
+                previewImage,
             })
             res.status(201)
             res.json(newSong)

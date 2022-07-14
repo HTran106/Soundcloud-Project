@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
@@ -14,22 +14,52 @@ function SignupForm() {
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
-  const history = useHistory()
+  const [previewImage, setPreviewImage] = useState(null)
+  const [disabled, setDisabled] = useState(false)
+  const [signUp, setSignUp] = useState("Sign up")
 
   if (sessionUser) return <Redirect to="/" />;
 
+  const reset = () => {
+    setFirstName("")
+    setLastName("")
+    setUsername("")
+    setPassword("")
+    setConfirmPassword("")
+    setPreviewImage(null)
+    setErrors([])
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSignUp(<div className="fa fa-cog fa-spin"></div>)
+    setDisabled(true)
+
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ firstName, lastName, email, username, password }))
+      return dispatch(sessionActions.signup({ firstName, lastName, email, username, password, previewImage }))
+        .then(() => {
+          setDisabled(false)
+          reset()
+        })
         .catch(async (res) => {
           const data = await res.json();
-          if (data && data.errors) setErrors(Object.values(data.errors));
+          if (data && data.errors) {
+            setErrors(Object.values(data.errors))
+            setDisabled(false)
+            setSignUp("Sign up")
+          };
         });
     }
+    setSignUp("Sign up")
+    setDisabled(false)
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
+
+  const updateFile = e => {
+    const file = e.target.files[0];
+    if (file) setPreviewImage(file)
+  }
 
   return (
     <div className="form-container">
@@ -80,7 +110,12 @@ function SignupForm() {
             placeholder="Confirm Password"
             required
           />
-        <button className="signup-button" type="submit">Sign up</button>
+          <p>Profile Picture:</p>
+          <input
+            type="file"
+            onChange={updateFile}
+            />
+        <button disabled={disabled} className="signup-button" type="submit">{signUp}</button>
       </form>
     </div>
   );

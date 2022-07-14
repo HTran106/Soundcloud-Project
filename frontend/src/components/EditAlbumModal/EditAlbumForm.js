@@ -7,26 +7,52 @@ function EditAlbumForm({album, closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [previewImage, setPreviewImage] = useState("")
+  const [previewImage, setPreviewImage] = useState(null)
   const [errors, setErrors] = useState([]);
+  const [disabled, setDisabled] = useState(false)
+  const [submit, setSubmit] = useState("Submit")
+
+  const reset = () => {
+    setTitle("")
+    setDescription("")
+    setPreviewImage(null)
+    setSubmit("Submit")
+    setErrors([])
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
+    setSubmit(<div className="fa fa-cog fa-spin"></div>)
+    setDisabled(true)
+
     dispatch(albumActions.updateAlbum({
         id: album.id,
         title,
         description,
         imageUrl: previewImage
     }))
-    .then(() => {closeModal()})
+    .then(() => {
+      reset()
+      setDisabled(false)
+      closeModal()
+    })
     .catch(async (res) => {
       const data = await res.json()
-      if (data && data.errors) setErrors(Object.values(data.errors))
+      if (data && data.errors) {
+        setSubmit("Submit")
+        setDisabled(false)
+        setErrors(Object.values(data.errors))
+      }
     });
   }
 
+  const updateFile = e => {
+    const file = e.target.files[0];
+    if (file) setPreviewImage(file)
+  }
+
   return (
-    <>
+    <div className="form-container">
       <h1>Edit Album</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -42,22 +68,22 @@ function EditAlbumForm({album, closeModal}) {
             placeholder="Title"
           />
           <input
-            type="description"
+            type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
             placeholder="Description"
           />
+          <p>Preview Image:</p>
           <input
-            type="url"
-            value={previewImage}
-            onChange={(e) => setPreviewImage(e.target.value)}
+            type="file"
+            name='previewImage'
+            onChange={updateFile}
             required
-            placeholder="Preview Image Url"
           />
-        <button className="login-button" type="submit">Submit</button>
+        <button disabled={disabled} className="login-button" type="submit">{submit}</button>
       </form>
-    </>
+    </div>
   );
 }
 

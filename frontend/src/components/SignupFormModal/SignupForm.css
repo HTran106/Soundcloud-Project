@@ -11,18 +11,37 @@
     border-radius: 5px;
 }
 
-form {
+.form-container form {
     display: inline;
     justify-content: center;
     align-items: center;
 
 }
 
-input {
+.form-container input[type='text'] {
     width: 400px;
     margin-left: -5px;
     height: 40px;
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid lightgray
+}
+
+.form-container input[type='password'] {
+    width: 400px;
+    margin-left: -5px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray
+}
+
+.form-container input[type='file'] {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.form-container p {
+    display: flex;
 }

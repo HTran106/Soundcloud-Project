@@ -6,14 +6,26 @@ function UploadSongForm({album, closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("")
-  const [previewImage, setPreviewImage] = useState("")
+  const [url, setUrlFile] = useState(null)
+  const [disabled, setDisabled] = useState(false)
+  const [previewImage, setPreviewImageFile] = useState(null)
   const [errors, setErrors] = useState([]);
+  const [submit, setSubmit] = useState("Submit")
+
+  const reset = () => {
+      setTitle("")
+      setDescription("")
+      setUrlFile(null)
+      setPreviewImageFile(null)
+      setSubmit("Submit")
+      setErrors([])
+    }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-
+    setSubmit(<div className="fa fa-cog fa-spin"></div>)
+    setDisabled(true)
 
     dispatch(songActions.uploadSong({
         title,
@@ -21,15 +33,33 @@ function UploadSongForm({album, closeModal}) {
         url,
         imageUrl: previewImage
     }, album.id))
-    .then(() => {closeModal()})
+    .then(() => {
+      reset()
+      setDisabled(false)
+      closeModal()
+    })
     .catch(async (res) => {
       const data = await res.json()
-      if (data && data.errors) setErrors(Object.values(data.errors))
+      if (data && data.errors) {
+        setSubmit("Submit")
+        setDisabled(false)
+        setErrors(Object.values(data.errors))
+      }
     });
-}
+  }
+
+    const updateUrlFile = e => {
+    const file = e.target.files[0];
+    if (file) setUrlFile(file)
+    }
+
+    const updatePreviewImageFile = e => {
+    const file = e.target.files[0];
+    if (file) setPreviewImageFile(file)
+    }
 
   return (
-    <>
+    <div className="form-container">
       <h1>Add Song to this Album</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -45,29 +75,31 @@ function UploadSongForm({album, closeModal}) {
             placeholder="Title"
           />
           <input
-            type="description"
+            type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
             placeholder="Description"
           />
+          <p>Song:</p>
           <input
-            type="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            type="file"
+            onChange={updateUrlFile}
+            name='url'
             required
-            placeholder="Song Url"
           />
+          <p>Preview Image: </p>
           <input
-            type="url"
-            value={previewImage}
-            onChange={(e) => setPreviewImage(e.target.value)}
+            type="file"
+            name="imageUrl"
+            onChange={updatePreviewImageFile}
             required
-            placeholder="Preview Image Url"
           />
-        <button className="login-button" type="submit">Submit</button>
+        <button disabled={disabled} className="login-button" type="submit">
+          {submit}
+        </button>
       </form>
-    </>
+    </div>
   );
 }
 

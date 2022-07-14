@@ -7,12 +7,25 @@ function EditSongForm({song, closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [previewImage, setPreviewImage] = useState("")
-  const [url, setUrl] = useState("")
+  const [previewImage, setPreviewImage] = useState(null)
+  const [url, setUrl] = useState(null)
+  const [disabled, setDisabled] = useState(false)
   const [errors, setErrors] = useState([]);
+  const [submit, setSubmit] = useState("Submit")
+
+  const reset = () => {
+    setTitle("")
+    setDescription("")
+    setPreviewImage(null)
+    setUrl(null)
+    setSubmit("Submit")
+    setErrors([])
+  }
 
   const handleSubmit = async e => {
     e.preventDefault()
+    setSubmit(<div className="fa fa-cog fa-spin"></div>)
+    setDisabled(true)
 
     dispatch(songActions.updateSong({
         id: song?.id,
@@ -22,15 +35,33 @@ function EditSongForm({song, closeModal}) {
         url,
         imageUrl: previewImage
     }))
-    .then(() => {closeModal()})
+    .then(() => {
+      reset()
+      setDisabled(false)
+      closeModal()
+    })
     .catch(async (res) => {
       const data = await res.json()
-      if (data && data.errors) setErrors(Object.values(data.errors))
+      if (data && data.errors) {
+        setDisabled(false)
+        setSubmit("Submit")
+        setErrors(Object.values(data.errors))
+      }
     });
   }
 
+    const updateUrlFile = e => {
+    const file = e.target.files[0];
+    if (file) setUrl(file)
+    }
+
+    const updatePreviewImageFile = e => {
+    const file = e.target.files[0];
+    if (file) setPreviewImage(file)
+    }
+
   return (
-    <>
+    <div className="form-container">
       <h1>Edit Song</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -46,29 +77,29 @@ function EditSongForm({song, closeModal}) {
             placeholder="Title"
           />
           <input
-            type="description"
+            type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
             placeholder="Description"
           />
+          <p>Song:</p>
           <input
-            type="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            type="file"
+            name='url'
+            onChange={updateUrlFile}
             required
-            placeholder="Song Url"
           />
+          <p>Preview Image:</p>
           <input
-            type="url"
-            value={previewImage}
-            onChange={(e) => setPreviewImage(e.target.value)}
+            type="file"
+            name='imageUrl'
+            onChange={updatePreviewImageFile}
             required
-            placeholder="Preview Image Url"
           />
-        <button className="login-button" type="submit">Submit</button>
+        <button disabled={disabled} className="login-button" type="submit">{submit}</button>
       </form>
-    </>
+    </div>
   );
 }
 

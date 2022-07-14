@@ -51,8 +51,8 @@ const SongDetailsComponent = ({songs}) => {
                     </div>
                 </div>
                 <div className="description-box-container">
-                <p>About this song:</p>
-                <p>{`${currentSong?.description}`}</p>
+                    <p>About this song:</p>
+                    <p>{`${currentSong?.description}`}</p>
                 </div>
             </div>
     )

@@ -59,9 +59,6 @@ const validatePagination = [
 ]
 
 const songValidator = [
-    check('url')
-      .exists({ checkFalsy: true })
-      .withMessage('Audio is required'),
     check('title')
       .exists({ checkFalsy: true })
       .withMessage('Song title is required'),
@@ -97,7 +94,7 @@ const playlistValidator = [
 
 const pagination = (page, size) => {
     let pagination = {}
-    
+
     if (page > 0) {
       pagination.limit = size
       pagination.offset = size * (page - 1)

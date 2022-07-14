@@ -6,6 +6,7 @@
     height: 600px;
     width: 95vw;
     margin-right: 18px;
+    border-top: 7px solid #f50;
 }
 
 .buttons-container {
@@ -234,17 +235,17 @@
 .mini-search-bar {
     display: flex;
     width: auto;
-    margin-top: 10px;
-    /* margin-left: -5px;
-    margin-right: -7px; */
+    margin-top: 7px;
     padding-left: 10px;
-    padding-right: 5px;
+    padding-right: 10px;
 }
 
 .mini-search-bar input{
     width: 42vw;
     height: 30px;
     border-color: transparent;
+    border-radius: 5px;
+    /* margin-bottom: 10px; */
 }
 
 .mini-search-bar button {
@@ -380,4 +381,11 @@
     height: 20px;
     object-fit: cover;
     cursor: pointer;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
 }

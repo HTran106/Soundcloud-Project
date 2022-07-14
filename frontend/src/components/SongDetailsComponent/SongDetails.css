@@ -25,6 +25,13 @@
     margin-left: -280px
 }
 
+.player-box-contents {
+    display: flex;
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+}
+
 .player-buttons-container {
     display: grid;
     grid-template-rows: repeat(3, 1fr);
