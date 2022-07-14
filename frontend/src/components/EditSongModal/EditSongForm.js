@@ -7,10 +7,17 @@ function EditSongForm({song, closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [previewImage, setPreviewImage] = useState("")
-  const [url, setUrl] = useState("")
+  const [previewImage, setPreviewImage] = useState(null)
+  const [url, setUrl] = useState(null)
   const [disabled, setDisabled] = useState(false)
   const [errors, setErrors] = useState([]);
+
+  const reset = () => {
+    setTitle("")
+    setDescription("")
+    setPreviewImage(null)
+    setUrl(null)
+  }
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -25,6 +32,7 @@ function EditSongForm({song, closeModal}) {
         imageUrl: previewImage
     }))
     .then(() => {
+      reset()
       setDisabled(false)
       closeModal()
     })

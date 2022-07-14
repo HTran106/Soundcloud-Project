@@ -7,9 +7,15 @@ function EditAlbumForm({album, closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [previewImage, setPreviewImage] = useState("")
+  const [previewImage, setPreviewImage] = useState(null)
   const [errors, setErrors] = useState([]);
   const [disabled, setDisabled] = useState(false)
+
+  const reset = () => {
+    setTitle("")
+    setDescription("")
+    setPreviewImage(null)
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -21,6 +27,7 @@ function EditAlbumForm({album, closeModal}) {
         imageUrl: previewImage
     }))
     .then(() => {
+      reset()
       setDisabled(false)
       closeModal()
     })

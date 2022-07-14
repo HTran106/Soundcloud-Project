@@ -4,6 +4,7 @@
     justify-content: center;
     width: 100vw;
     height: 50vw;
+    margin-left: 270px;
 }
 
 .search-top {
@@ -73,8 +74,8 @@
 }
 
 .search-icons-section {
-    display: grid;
-    grid-template-columns: 10% 10% 10% 70%;
+    display: flex;
+    /* grid-template-columns: 10% 10% 10% 70%; */
     padding-left: 10px;
 }
 

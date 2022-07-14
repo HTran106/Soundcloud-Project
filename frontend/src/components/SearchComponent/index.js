@@ -60,7 +60,8 @@ const SearchComponent = () => {
                                     `}
                                 </div>
                                 <div className='search-icons-section'>
-                                    <div className='icons'>
+                                    {song.description}
+                                    {/* <div className='icons'>
                                         <img src='https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/play-solid.svg' alt="previewImage"></img>
                                         {`${Math.floor(Math.random() * 100000).toLocaleString("en-US")}`}
                                     </div>
@@ -71,7 +72,7 @@ const SearchComponent = () => {
                                     <div className='icons'>
                                         <img src='https://soundcloud-files-hdt.s3.us-west-1.amazonaws.com/download-solid.svg' alt="previewImage"></img>
                                         {`${Math.floor(Math.random() * 100000).toLocaleString("en-US")}`}
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>

@@ -6,9 +6,15 @@ function UploadAlbumForm({closeModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [previewImage, setPreviewImage] = useState("")
+  const [previewImage, setPreviewImage] = useState(null)
   const [disabled, setDisabled] = useState(false)
   const [errors, setErrors] = useState([]);
+
+  const reset = () => {
+    setTitle("")
+    setDescription("")
+    setPreviewImage(null)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +27,7 @@ function UploadAlbumForm({closeModal}) {
         imageUrl: previewImage
     }))
     .then(() => {
+      reset()
       setDisabled(false)
       closeModal()
     })

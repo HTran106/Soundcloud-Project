@@ -11,6 +11,13 @@ function UploadSongForm({album, closeModal}) {
   const [previewImage, setPreviewImageFile] = useState(null)
   const [errors, setErrors] = useState([]);
 
+  const reset = () => {
+      setTitle("")
+      setDescription("")
+      setUrlFile(null)
+      setPreviewImageFile(null)
+    }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
@@ -23,6 +30,7 @@ function UploadSongForm({album, closeModal}) {
         imageUrl: previewImage
     }, album.id))
     .then(() => {
+      reset()
       setDisabled(false)
       closeModal()
     })
