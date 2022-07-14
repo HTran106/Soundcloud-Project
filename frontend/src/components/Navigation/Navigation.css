@@ -235,17 +235,17 @@
 .mini-search-bar {
     display: flex;
     width: auto;
-    margin-top: 10px;
-    /* margin-left: -5px;
-    margin-right: -7px; */
+    margin-top: 7px;
     padding-left: 10px;
-    padding-right: 5px;
+    padding-right: 10px;
 }
 
 .mini-search-bar input{
     width: 42vw;
     height: 30px;
     border-color: transparent;
+    border-radius: 5px;
+    /* margin-bottom: 10px; */
 }
 
 .mini-search-bar button {
