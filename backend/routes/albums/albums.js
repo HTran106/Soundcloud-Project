@@ -94,9 +94,9 @@ router.get('/:albumId', async (req, res, next) => {
 })
 
 //Add song to album by albumID
-router.post('/:albumId',
+router.post('/:albumId',requireAuth,
 multipleFileKeysUpload([{name: 'url', maxCount: 1}, {name: 'previewImage', maxCount: 1}]),
-requireAuth, songValidator, restoreUser, async (req, res, next) => {
+songValidator, restoreUser, async (req, res, next) => {
     const { user } = req;
     const { albumId } = req.params
     const { title, description } = req.body
