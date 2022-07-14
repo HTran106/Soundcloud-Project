@@ -29,9 +29,12 @@ router.delete('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
 
 
 //create new album
-router.post('/', requireAuth, albumValidator, restoreUser, async (req, res) => {
+router.post('/', requireAuth,
+singleMulterUpload("imageUrl"),
+albumValidator, restoreUser, async (req, res) => {
     const { user } = req
-    const { title, description, imageUrl } = req.body
+    const { title, description } = req.body
+    const imageUrl = await singlePublicFileUpload(req.file)
 
     const newAlbum = await Album.create({
         userId: user.id,
