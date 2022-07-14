@@ -25,6 +25,11 @@ function EditAlbumForm({album, closeModal}) {
     });
   }
 
+  const updateFile = e => {
+    const file = e.target.files[0];
+    if (file) setPreviewImage(file)
+  }
+
   return (
     <>
       <h1>Edit Album</h1>
@@ -49,11 +54,10 @@ function EditAlbumForm({album, closeModal}) {
             placeholder="Description"
           />
           <input
-            type="url"
-            value={previewImage}
-            onChange={(e) => setPreviewImage(e.target.value)}
+            type="file"
+            name='previewImage'
+            onChange={updateFile}
             required
-            placeholder="Preview Image Url"
           />
         <button className="login-button" type="submit">Submit</button>
       </form>

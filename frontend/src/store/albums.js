@@ -80,12 +80,18 @@ export const deleteAlbum = albumId => async dispatch => {
 }
 
 export const updateAlbum = album => async dispatch => {
+    const { title, description, imageUrl } = album
+    const formData = new FormData();
+    formData.append("title", title)
+    formData.append('description', description)
+    formData.append("imageUrl", imageUrl)
+
     const res = await csrfFetch(`/api/albums/${album.id}`, {
         method: 'PUT',
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "multipart/form-data"
         },
-        body: JSON.stringify(album)
+        body: formData
     });
 
     if (res.ok) {
