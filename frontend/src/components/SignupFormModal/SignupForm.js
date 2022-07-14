@@ -15,6 +15,7 @@ function SignupForm() {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [previewImage, setPreviewImage] = useState(null)
+  const [disabled, setDisabled] = useState(false)
   const history = useHistory()
 
   if (sessionUser) return <Redirect to="/" />;
@@ -30,10 +31,14 @@ function SignupForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setDisabled(true)
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signup({ firstName, lastName, email, username, password, previewImage }))
-        .then(() => {reset()})
+        .then(() => {
+          setDisabled(false)
+          reset()
+        })
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(Object.values(data.errors));
@@ -101,7 +106,7 @@ function SignupForm() {
             type="file"
             onChange={updateFile}
             />
-        <button className="signup-button" type="submit">Sign up</button>
+        <button disabled={disabled} className="signup-button" type="submit">Sign up</button>
       </form>
     </div>
   );

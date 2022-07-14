@@ -9,10 +9,12 @@ function EditSongForm({song, closeModal}) {
   const [description, setDescription] = useState("");
   const [previewImage, setPreviewImage] = useState("")
   const [url, setUrl] = useState("")
+  const [disabled, setDisabled] = useState(false)
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async e => {
     e.preventDefault()
+    setDisabled(true)
 
     dispatch(songActions.updateSong({
         id: song?.id,
@@ -22,7 +24,10 @@ function EditSongForm({song, closeModal}) {
         url,
         imageUrl: previewImage
     }))
-    .then(() => {closeModal()})
+    .then(() => {
+      setDisabled(false)
+      closeModal()
+    })
     .catch(async (res) => {
       const data = await res.json()
       if (data && data.errors) setErrors(Object.values(data.errors))
@@ -74,7 +79,7 @@ function EditSongForm({song, closeModal}) {
             onChange={updatePreviewImageFile}
             required
           />
-        <button className="login-button" type="submit">Submit</button>
+        <button disabled={disabled} className="login-button" type="submit">Submit</button>
       </form>
     </>
   );

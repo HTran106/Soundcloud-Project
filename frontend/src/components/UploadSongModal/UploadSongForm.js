@@ -7,12 +7,14 @@ function UploadSongForm({album, closeModal}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [url, setUrlFile] = useState(null)
+  const [disabled, setDisabled] = useState(false)
   const [previewImage, setPreviewImageFile] = useState(null)
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
+    setDisabled(true)
 
     dispatch(songActions.uploadSong({
         title,
@@ -20,7 +22,10 @@ function UploadSongForm({album, closeModal}) {
         url,
         imageUrl: previewImage
     }, album.id))
-    .then(() => {closeModal()})
+    .then(() => {
+      setDisabled(false)
+      closeModal()
+    })
     .catch(async (res) => {
       const data = await res.json()
       if (data && data.errors) setErrors(Object.values(data.errors))
@@ -72,7 +77,7 @@ function UploadSongForm({album, closeModal}) {
             onChange={updatePreviewImageFile}
             required
           />
-        <button className="login-button" type="submit">Submit</button>
+        <button disabled={disabled} className="login-button" type="submit">Submit</button>
       </form>
     </>
   );

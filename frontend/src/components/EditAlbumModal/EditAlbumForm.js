@@ -9,16 +9,21 @@ function EditAlbumForm({album, closeModal}) {
   const [description, setDescription] = useState("");
   const [previewImage, setPreviewImage] = useState("")
   const [errors, setErrors] = useState([]);
+  const [disabled, setDisabled] = useState(false)
 
   const handleSubmit = e => {
     e.preventDefault()
+    setDisabled(true)
     dispatch(albumActions.updateAlbum({
         id: album.id,
         title,
         description,
         imageUrl: previewImage
     }))
-    .then(() => {closeModal()})
+    .then(() => {
+      setDisabled(false)
+      closeModal()
+    })
     .catch(async (res) => {
       const data = await res.json()
       if (data && data.errors) setErrors(Object.values(data.errors))
@@ -59,7 +64,7 @@ function EditAlbumForm({album, closeModal}) {
             onChange={updateFile}
             required
           />
-        <button className="login-button" type="submit">Submit</button>
+        <button disabled={disabled} className="login-button" type="submit">Submit</button>
       </form>
     </>
   );

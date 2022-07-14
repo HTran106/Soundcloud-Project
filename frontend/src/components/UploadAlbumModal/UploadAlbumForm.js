@@ -7,18 +7,23 @@ function UploadAlbumForm({closeModal}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [previewImage, setPreviewImage] = useState("")
+  const [disabled, setDisabled] = useState(false)
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+    setDisabled(true)
 
     dispatch(albumActions.uploadAlbum({
         title,
         description,
         imageUrl: previewImage
     }))
-    .then(() => {closeModal()})
+    .then(() => {
+      setDisabled(false)
+      closeModal()
+    })
     .catch(async (res) => {
       const data = await res.json()
       if (data && data.errors) setErrors(Object.values(data.errors))
@@ -59,7 +64,7 @@ function UploadAlbumForm({closeModal}) {
             onChange={updateFile}
             required
           />
-        <button className="login-button" type="submit">Submit</button>
+        <button disabled={disabled} className="login-button" type="submit">Submit</button>
       </form>
     </>
   );
