@@ -43,10 +43,8 @@ const validateSignup = [
 
 
 //Sign up a user //////added test for amazon s3 to add image to previewImage
-router.post('/signup', singleMulterUpload("previewImage") ,validateSignup, async (req, res, next) => {
-
+router.post('/signup', validateSignup, async (req, res, next) => {
   const { email, firstName, lastName, password, username } = req.body;
-  const previewImage = await singlePublicFileUpload(req.file)
 
    const checkEmail = await User.findOne({ where: { email, }  })
    const checkUsername = await User.findOne({ where: { username } })
@@ -65,7 +63,7 @@ router.post('/signup', singleMulterUpload("previewImage") ,validateSignup, async
         return next(error)
       }
 
-    let user = await User.signup({ firstName, lastName, username, email, password, previewImage,});
+    let user = await User.signup({ firstName, lastName, username, email, password});
 
     const token = setTokenCookie(res, user);
     user = user.toSafeObject()

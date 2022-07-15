@@ -14,7 +14,6 @@ function SignupForm() {
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
-  const [previewImage, setPreviewImage] = useState(null)
   const [disabled, setDisabled] = useState(false)
   const [signUp, setSignUp] = useState("Sign up")
 
@@ -26,7 +25,6 @@ function SignupForm() {
     setUsername("")
     setPassword("")
     setConfirmPassword("")
-    setPreviewImage(null)
     setErrors([])
   }
 
@@ -37,7 +35,7 @@ function SignupForm() {
 
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ firstName, lastName, email, username, password, previewImage }))
+      return dispatch(sessionActions.signup({ firstName, lastName, email, username, password }))
         .then(() => {
           setDisabled(false)
           reset()
@@ -55,11 +53,6 @@ function SignupForm() {
     setDisabled(false)
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
-
-  const updateFile = e => {
-    const file = e.target.files[0];
-    if (file) setPreviewImage(file)
-  }
 
   return (
     <div className="form-container">
@@ -109,11 +102,6 @@ function SignupForm() {
             onChange={e => setConfirmPassword(e.target.value)}
             placeholder="Confirm Password"
             required
-          />
-          <p>Profile Picture:</p>
-          <input
-            type="file"
-            onChange={updateFile}
           />
         <button disabled={disabled} className="signup-button" type="submit">{signUp}</button>
       </form>
