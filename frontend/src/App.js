@@ -59,7 +59,7 @@ function App() {
             {sessionUser && <HomePageComponent />}
           </Route>
           <Route>
-            Page not found
+            {sessionUser && <p>Page not found</p>}
           </Route>
         </Switch>
       </div>
