@@ -54,5 +54,4 @@ Inside of the .env file, you will need the following contents:
 - [ ] Download
 - [ ] Likes, followers, followees
 
-[Original Design Docs](https://github.com/HTran106/Soundcloud-Project/wiki/Soundcloud-Clone-Original-Design-Docs)<br></br>
-[Backend README.md](https://github.com/HTran106/Soundcloud-Project/blob/main/backend/README.md)
+[Original Design Docs](https://github.com/HTran106/Soundcloud-Project/wiki/Soundcloud-Clone-Original-Design-Docs)
