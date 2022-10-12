@@ -32,22 +32,44 @@ function App() {
   return (
     <div className="page">
       <Navigation isLoaded={isLoaded} />
+      {sessionUser && (
+        <div className='github-linked'>
+          <a href='https://github.com/htran106'>
+            <button className='github-button'>
+              <img
+                className='github-logo'
+                src="https://airbnb-files.s3.us-west-1.amazonaws.com/github-logo.png"
+                alt='github' />
+            </button>
+          </a>
+          <div className='linkedin-container'>
+          </div>
+          <a href='https://www.linkedin.com/in/huydu-tran/'>
+            <button className='linkedin-button'>
+              <img
+                className='linkedin-logo'
+                src="https://airbnb-files.s3.us-west-1.amazonaws.com/linklogo.png"
+                alt='github' />
+            </button>
+          </a>
+        </div>
+      )}
       <div className="components">
         <Switch>
           <Route exact path='/search'>
             <SearchComponent />
           </Route>
           <Route exact path='/albums/:albumId'>
-            <AlbumDetailsComponent albums={albums}/>
+            <AlbumDetailsComponent albums={albums} />
           </Route>
           <Route exact path='/albums'>
             <AlbumsComponent />
           </Route>
           <Route exact path='/my/albums'>
-            <MyAlbumsComponent albums={albums}/>
+            <MyAlbumsComponent albums={albums} />
           </Route>
           <Route exact path='/my/songs'>
-            <MySongsComponent songs={songs}/>
+            <MySongsComponent songs={songs} />
           </Route>
           <Route exact path='/songs/:songId'>
             <SongDetailsComponent songs={songs} />
