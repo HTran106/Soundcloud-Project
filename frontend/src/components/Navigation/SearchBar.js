@@ -18,14 +18,14 @@ const SearchBar = () => {
     return (
         <form onSubmit={handleSubmit} className="mini-search-bar">
             <input
-            type='search'
-            placeholder="Search songs"
-            name="q"
-            value={searchParams}
-            onChange={e => setSearchParams(e.target.value)}
+                type='search'
+                placeholder="Search songs"
+                name="q"
+                value={searchParams}
+                onChange={e => setSearchParams(e.target.value)}
             />
             <button type='submit' className='search-button'>
-                <img src='https://www.kindacode.com/wp-content/uploads/2020/12/search.png' alt='mag-glass'></img>
+                <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </form>
     )
