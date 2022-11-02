@@ -27,7 +27,6 @@ router.delete('/:albumId', requireAuth, restoreUser, async (req, res, next) => {
 
 })
 
-
 //create new album
 router.post('/', requireAuth,
 singleMulterUpload("imageUrl"),
@@ -154,6 +153,5 @@ router.get('/', validatePagination ,async (req, res) => {
         size
     })
 })
-
 
 module.exports = router
