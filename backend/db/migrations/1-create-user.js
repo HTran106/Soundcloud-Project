@@ -49,9 +49,9 @@ module.exports = {
       previewImage: {
         type: Sequelize.STRING
       }
-    });
+    }, options);
   },
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Users");
+    return queryInterface.dropTable("Users", options);
   }
 };
