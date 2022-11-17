@@ -25,7 +25,7 @@ const HomePageComponent = () => {
     return (
         <div className="songs-container">
             <div className='song-sections'>
-                {/* <a href='/songs/2'>testing link</a> */}
+                <a href='/songs/2'>testing link</a>
                 <h2>Top Trending Songs</h2>
                 <h4>Songs that will light the fire in you</h4>
                 <ul className="songs-list">
